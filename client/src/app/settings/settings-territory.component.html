@@ -1,49 +1,29 @@
 <div class="form-group row">
     <div class="col-md-4">
         <div class="input-group">
-            <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
-                  </span>
-            <input type="text" id="input1-group2" name="input1-group2" class="form-control" placeholder="Search">
+            <span class="input-group-addon"><i class="fa fa-search"></i>&nbsp; Search</span>
+            <input #searchTerritory type="text" id="search" name="search" class="form-control" (keyup)="search(searchTerritory.value)">
         </div>
     </div>
+    <button type="button" class="btn btn-outline-success" (click)="infoModal.show()"><i class="fa fa-plus"></i>&nbsp; Gebiet hinzufügen</button>
 </div>
-<table class="table table-striped">
-    <thead>
+<table class="table table-responsive table-hover table-outline mb-0 hidden-sm-down">
+    <thead class="thead-default">
         <tr>
             <th>Gebiet-Nr.</th>
             <th>Bezeichnung</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>100</td>
-            <td>Mitterndorf an der Fischa 1</td>
-
-        </tr>
-        <tr>
-            <td>200</td>
-            <td>Ebreichsdorf 2</td>
-
-        </tr>
-        <tr>
-            <td>300</td>
-            <td>Ebergassing</td>
-
-        </tr>
-        <tr>
-            <td>400</td>
-            <td>Götzendorf</td>
-
-        </tr>
-        <tr>
-            <td>500</td>
-            <td>Gramatneusiedl</td>
-
+        <tr *ngFor="let territory of territories |async">
+            <td>{{territory.territoryNumber}}</td>
+            <td>{{territory.name}}</td>
         </tr>
     </tbody>
 </table>
-<ul class="pagination">
+
+<app-settings-territory-dialog #infoModal></app-settings-territory-dialog>
+<!--<ul class="pagination">
     <li class="page-item"><a class="page-link" href="#">Prev</a></li>
     <li class="page-item active">
         <a class="page-link" href="#">1</a>
@@ -52,4 +32,4 @@
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item"><a class="page-link" href="#">4</a></li>
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
-</ul>
+</ul>-->

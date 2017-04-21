@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 import { SettingsProclaimerComponent } from './settings-proclaimer.component';
 import { SettingsTerritoryComponent } from './settings-territory.component';
@@ -9,5 +10,7 @@ import { SettingsTerritoryComponent } from './settings-territory.component';
 })
 export class SettingsComponent {
 
-    constructor() { }
+    constructor(public toastr: ToastsManager, vRef: ViewContainerRef) {
+        this.toastr.setRootViewContainerRef(vRef);
+    }
 }

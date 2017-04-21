@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
@@ -32,15 +34,21 @@ import { AppRoutingModule } from './app.routing';
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 
+// Toastr
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { ToastOptions } from 'ng2-toastr';
+import { CustomToastOptions } from './custom-toast.options';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    HttpModule
+    HttpModule,
+    ToastModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -61,7 +69,13 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
-    }],
+    },
+    { provide: ToastOptions, useClass: CustomToastOptions },
+
+  ],
+  exports: [
+    SimpleLayoutComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

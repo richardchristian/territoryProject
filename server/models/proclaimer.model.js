@@ -1,17 +1,19 @@
 var mongoose = require('mongoose');
 
 var ProclaimerSchema = new mongoose.Schema({
-    territoryNumber: {
-        type: Number,
-        required: true
+    firstName: {
+        type: String,
+        required: true,
+        trim: true
+
     },
-    name: {
+    lastName: {
         type: String,
         required: true,
         trim: true
     }
 });
 
-var Proclaimer = mongoose.model('Proclaimer', TerritorySchema);
+var Proclaimer = mongoose.model('proclaimers', ProclaimerSchema);
 
 module.exports = { Proclaimer };

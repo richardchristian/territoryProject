@@ -155,6 +155,7 @@ var corsOptions = {
     },
     credentials: true
 };
+
 app.use(cors(corsOptions));
 
 var User = require('./models/user.model');
@@ -162,6 +163,8 @@ var auth = require('./passport/passport')(app, User);
 
 app.use('', require('./routes/common.route'));
 app.use('/users', require('./routes/user.route'));
+app.use('/proclaimers', require('./routes/proclaimer.route'));
+app.use('/territories', require('./routes/territory.route'));
 
 app.listen(3000, () => {
     console.log('Started on port 3000');

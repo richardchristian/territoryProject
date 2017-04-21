@@ -107,7 +107,7 @@ function updateUser(req, res) {
         return res.status(404).send();
     }
 
-    User.findByIdAndUpdate(id, { $set: req.body }, { new: true }).then((territuserory) => {
+    User.findByIdAndUpdate(id, { $set: req.body }, { new: true }).then((user) => {
         if (!user) {
             return res.status(404).send();
         }

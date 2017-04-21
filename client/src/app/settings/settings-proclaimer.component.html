@@ -1,29 +1,29 @@
 <div class="form-group row">
     <div class="col-md-4">
         <div class="input-group">
-            <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
-                  </span>
-            <input type="text" id="input1-group2" name="input1-group2" class="form-control" placeholder="Search">
+            <span class="input-group-addon"><i class="fa fa-search"></i>&nbsp; Search</span>
+            <input #searchProclaimer type="text" id="search" name="search" class="form-control" (keyup)="search(searchProclaimer.value)">
         </div>
     </div>
+    <button type="button" class="btn btn-outline-success" (click)="infoModal.show()"><i class="fa fa-plus"></i>&nbsp; Verkündiger hinzufügen</button>
+
 </div>
 
-<table class="table table-striped">
-    <thead>
+<table class="table table-responsive table-hover table-outline mb-0 hidden-sm-down">
+    <thead class="thead-default">
         <tr>
-            <th>Vorname</th>
-            <th>Nachname</th>
+            <th>Name</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let proclaimer of proclaimers">
-            <td>{{proclaimer.firstName}}</td>
-            <td>{{proclaimer.lastName}}</td>
+        <tr *ngFor="let proclaimer of proclaimers |async">
+            <td>{{proclaimer.firstName}} {{proclaimer.lastName}}</td>
         </tr>
     </tbody>
 </table>
-<ul class="pagination">
+
+<app-settings-proclaimer-dialog #infoModal></app-settings-proclaimer-dialog>
+<!--<ul class="pagination">
     <li class="page-item"><a class="page-link" href="#">Prev</a></li>
     <li class="page-item active">
         <a class="page-link" href="#">1</a>
@@ -32,4 +32,4 @@
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item"><a class="page-link" href="#">4</a></li>
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
-</ul>
+</ul>-->

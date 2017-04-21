@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var TerritorySchema = new mongoose.Schema({
     territoryNumber: {
-        type: Number,
+        type: String,
         required: true
     },
     name: {
@@ -12,6 +12,6 @@ var TerritorySchema = new mongoose.Schema({
     }
 });
 
-var Territory = mongoose.model('Territory', TerritorySchema);
+var Territory = mongoose.model('territories', TerritorySchema);
 
 module.exports = { Territory };
