@@ -35,9 +35,42 @@ export class TerritoryService {
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
+    getNotProcessing(): Observable<Territory[]> {
+        return this.http
+            .get(this.config.apiUrl + '/processing/territories/not', { withCredentials: true })
+            .map((res) => res.json().territories)
+            .catch(err => this.handleError(err));
+        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+    getProcessing(): Observable<Territory[]> {
+        return this.http
+            .get(this.config.apiUrl + '/processing/territories', { withCredentials: true })
+            .map((res) => res.json().territories)
+            .catch(err => this.handleError(err));
+        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+
+    searchNotProcessing(term: string): Observable<Territory[]> {
+        return this.http
+            .get(this.config.apiUrl + '/processing/territories/not/search?term=' + term, { withCredentials: true })
+            .map((res) => res.json().territories)
+            .catch(err => this.handleError(err));
+        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+    searchProcessing(term: string): Observable<Territory[]> {
+        return this.http
+            .get(this.config.apiUrl + '/processing/territories/search?term=' + term, { withCredentials: true })
+            .map((res) => res.json().territories)
+            .catch(err => this.handleError(err));
+        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
     update(territory: Territory): Observable<Response> {
         return this.http
-            .put(this.config.apiUrl + '/territories/' + territory.id, territory, { withCredentials: true })
+            .put(this.config.apiUrl + '/territories/' + territory._id, territory, { withCredentials: true })
             .catch(err => this.handleError(err));
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }

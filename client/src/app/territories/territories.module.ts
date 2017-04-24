@@ -15,6 +15,9 @@ import { TerritoriesRetractionComponent } from './territories-retraction.compone
 
 import { TerritoriesRoutingModule } from './territories-routing.module';
 
+import { TerritoryService } from '../_services/territory.service';
+import { ProclaimerService } from '../_services/proclaimer.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -28,6 +31,10 @@ import { TerritoriesRoutingModule } from './territories-routing.module';
     TerritoriesIssueComponent,
     TerritoriesRetractionComponent
   ],
-  providers: [{ provide: ToastOptions, useClass: CustomToastOptions }]
+  providers: [
+    TerritoryService,
+    ProclaimerService,
+    { provide: ToastOptions, useClass: CustomToastOptions }
+  ]
 })
 export class TerritoriesModule { }

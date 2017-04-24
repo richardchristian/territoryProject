@@ -39,7 +39,7 @@ export class ProclaimerService {
 
     update(proclaimer: Proclaimer): Observable<Response> {
         return this.http
-            .put(this.config.apiUrl + '/proclaimers/' + proclaimer.id, proclaimer, { withCredentials: true })
+            .put(this.config.apiUrl + '/proclaimers/' + proclaimer._id, proclaimer, { withCredentials: true })
             .catch(err => this.handleError(err));
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }

@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
-var ProcessingTerritorySchema = new mongoose.Schema({
+var ProcessingDataSchema = new mongoose.Schema({
     proclaimerID: {
         type: ObjectId,
         required: true
@@ -27,6 +27,6 @@ var ProcessingTerritorySchema = new mongoose.Schema({
     }
 });
 
-var ProcessingTerritory = mongoose.model('processingTerritories', ProcessingTerritorySchema);
+var ProcessingData = mongoose.model('processingdata', ProcessingDataSchema);
 
-module.exports = { ProcessingTerritory };
+module.exports = { ProcessingData };

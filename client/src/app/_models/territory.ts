@@ -1,5 +1,5 @@
 export class Territory {
-    id: number;
+    _id: number;
     territoryNumber: number;
     name: string;
 }
