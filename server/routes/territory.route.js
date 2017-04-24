@@ -6,7 +6,7 @@ var territoryController = require('../controller/territory.controller');
 
 router.post('/create', auth.isAuthenticated, territoryController.createTerritory);
 
-router.get('/search', territoryController.getSearchTerritories);
+router.get('/search', auth.isAuthenticated, territoryController.getSearchTerritories);
 
 router.get('/:id', auth.isAuthenticated, territoryController.getTerritoryById);
 
