@@ -18,7 +18,7 @@ import { Territory } from '../_models/territory';
 import { SettingsTerritoryDialogComponent } from './dialogs/settings-territory-dialog.component';
 
 @Component({
-  selector: 'app-settings-territory',
+  selector: 'settings-territory',
   templateUrl: './settings-territory.component.html',
   providers: [TerritoryService]
 })

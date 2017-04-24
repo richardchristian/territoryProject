@@ -40,6 +40,10 @@ export const routes: Routes = [
       {
         path: 'charts',
         loadChildren: './chartjs/chartjs.module#ChartJSModule'
+      },
+      {
+        path: 'territories',
+        loadChildren: './territories/territories.module#TerritoriesModule',
       }
     ]
   },

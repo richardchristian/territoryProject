@@ -18,7 +18,7 @@ import { Proclaimer } from '../_models/proclaimer';
 import { SettingsProclaimerDialogComponent } from './dialogs/settings-proclaimer-dialog.component';
 
 @Component({
-  selector: 'app-settings-proclaimer',
+  selector: 'settings-proclaimer',
   templateUrl: './settings-proclaimer.component.html',
   providers: [ProclaimerService]
 })

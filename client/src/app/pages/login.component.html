@@ -8,23 +8,29 @@
               <div class="card-block">
                 <h1>Login</h1>
                 <p class="text-muted">Sign In to your account</p>
-                <div class="input-group mb-3">
-                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                  <input class="form-control" type="text" name='email' placeholder="email" [(ngModel)]="model.email" #email="ngModel" required
-                    pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" />
-
+                <div [ngClass]="{'form-group md': true, 'has-success': !email.errors, 'has-danger': email.errors}">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input class="form-control" type="text" name='email' placeholder="email" [(ngModel)]="model.email" #email="ngModel" required
+                      pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" />
+                  </div>
+                  <div>&nbsp;
+                    <span *ngIf="email.errors && email.errors.required" class="help-block">Email is required</span>
+                    <span *ngIf="email.errors && email.errors.pattern" class="help-block">Email is invalid.</span>
+                  </div>
                 </div>
-                <div class="input-group mb-4">
-                  <span class="input-group-addon"><i class="icon-lock"></i></span>
-                  <input class="form-control" type="password" name='password' placeholder="password" [(ngModel)]="model.password" #password="ngModel"
-                    required/>
+                <div [ngClass]="{'form-group md': true, 'has-success': password.valid, 'has-danger': !password.valid}">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                    <input class="form-control" type="password" name='password' placeholder="password" [(ngModel)]="model.password" #password="ngModel"
+                      required/>
+                  </div>
+                  <div>&nbsp;<span *ngIf="!password.valid" class="help-block">Password is required.</span></div>
+
                 </div>
                 <div class="row">
                   <div class="col-6">
                     <button type="submit" class="btn btn-primary px-4">Login</button>
-                    <div *ngIf="email.errors && email.errors.required" class="help-block">Email is required</div>
-                    <div *ngIf="email.errors && email.errors.pattern" class="help-block">Email is invalid.</div>
-                    <div *ngIf="!password.valid" class="help-block">Password is required.</div>
                   </div>
                 </div>
               </div>
