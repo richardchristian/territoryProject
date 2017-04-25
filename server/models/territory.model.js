@@ -9,6 +9,11 @@ var TerritorySchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
+    },
+    comment: {
+        type: String,
+        required: false,
+        trim: true
     }
 });
 

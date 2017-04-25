@@ -1,5 +1,8 @@
 export class ProcessingData {
-    id: number;
-    territoryNumber: number;
-    name: string;
+    _id: string;
+    proclaimerID: any;
+    territoryID: any;
+    from: Date;
+    to: Date;
+    submitted: boolean;
 }

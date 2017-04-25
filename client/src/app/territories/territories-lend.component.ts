@@ -16,10 +16,10 @@ import { SelectComponent } from 'ng2-select';
 import * as moment from 'moment';
 
 @Component({
-    selector: 'territories-issue',
-    templateUrl: './territories-issue.component.html'
+    selector: 'territories-lend',
+    templateUrl: './territories-lend.component.html'
 })
-export class TerritoriesIssueComponent implements OnInit {
+export class TerritoriesLendComponent implements OnInit {
     @ViewChild('territoriesInput') territoriesInput: SelectComponent;
     @ViewChild('proclaimersInput') proclaimersInput: SelectComponent;
 

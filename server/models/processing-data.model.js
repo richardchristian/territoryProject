@@ -5,12 +5,13 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 var ProcessingDataSchema = new mongoose.Schema({
     proclaimerID: {
         type: ObjectId,
-        required: true
+        required: true,
+        ref: 'proclaimers'
     },
     territoryID: {
         type: ObjectId,
         required: true,
-        trim: true
+        ref: 'territories'
     },
     from:
     {

@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
 
 @Component({
-    selector: 'app-settings-proclaimer-dialog',
+    selector: 'settings-proclaimer-dialog',
     templateUrl: 'settings-proclaimer-dialog.component.html'
 })
 export class SettingsProclaimerDialogComponent {

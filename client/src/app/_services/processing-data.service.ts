@@ -60,7 +60,7 @@ export class ProcessingDataService {
     search(term: string): Observable<ProcessingData[]> {
         return this.http
             .get(this.config.apiUrl + '/processing/search?term=' + term, { withCredentials: true })
-            .map((res) => res.json().territories)
+            .map((res) => res.json().processingData)
             .catch(err => this.handleError(err));
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }

@@ -1,6 +1,7 @@
 
 var mongoose = require('mongoose');
 var _ = require('lodash');
+var moment = require('moment');
 var { ProcessingData } = require('../models/processing-data.model');
 
 var { Territory } = require('../models/territory.model');
@@ -21,14 +22,12 @@ module.exports = {
 
 function addProcessingData(req, res) {
     console.log("add new processing Territory Entry");
-    var fromDate = req.body.from;
-    var toDate = req.body.to;
 
     var processingData = new ProcessingData({
         proclaimerID: req.body.proclaimerID,
         territoryID: req.body.territoryID,
-        from: new Date(fromDate + ' 00:00'),
-        to: new Date(toDate + ' 00:00'),
+        from: new Date(req.body.from),
+        to: new Date(req.body.to),
         submitted: req.body.submitted
     });
 
@@ -111,7 +110,7 @@ function getSearchNonProcessingTerritories(req, res) {
                 { $or: findArr }
             ]
         }).then(territories => {
-            res.send({ territories: territories });
+            res.send({ territories });
         }, (e) => {
             res.status(400).send(e);
         });
@@ -136,28 +135,51 @@ function getSearchProcessingTerritories(req, res) {
                 { $or: findArr }
             ]
         }).then(territories => {
-            res.send({ territories: territories });
+            res.send({ territories });
         }, (e) => {
             res.status(400).send(e);
         });
     }, (e) => {
         res.status(400).send(e);
     });
-
 }
 
 function getSearchProcessingData(req, res) {
-    /*var searchTerm = req.query.term;
-    var findArr = [{ 'name': { $regex: searchTerm, $options: 'i' } }];
+    var searchTerm = req.query.term;
 
-    if (!isNaN(searchTerm))
-        findArr.push({ 'territoryNumber': { $regex: searchTerm, $options: 'i' } });
+    ProcessingData.find({ submitted: false })
+        .populate('territoryID')
+        .populate('proclaimerID')
+        .then(processingTerritories => {
+            var processingData = getSearchResult(processingTerritories, searchTerm);
+            res.send({ processingData });
+        }, (e) => {
+            res.status(400).send(e);
+        });
+}
 
-    Territory.find({ $or: findArr }).then((territories) => {
-        res.send({ territories });
-    }, (e) => {
-        res.status(400).send(e);
-    });*/
+function getSearchResult(data, searchTerm) {
+    return _.filter(data, entry => {
+
+        var from = moment(entry.from).format('DD.MM.YYYY');
+        var to = moment(entry.to).format('DD.MM.YYYY');
+
+        var pattern = new RegExp(searchTerm, 'i');
+        if (pattern.test(entry.proclaimerID.firstName))
+            return true;
+        if (pattern.test(entry.proclaimerID.lastName))
+            return true;
+        if (pattern.test(entry.territoryID.territoryNumber))
+            return true;
+        if (pattern.test(entry.territoryID.name))
+            return true;
+        if (pattern.test(from))
+            return true;
+        if (pattern.test(to))
+            return true;
+
+        return false;
+    });
 }
 
 function updateProcessingData(req, res) {

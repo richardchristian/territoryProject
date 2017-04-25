@@ -10,8 +10,8 @@ import { CustomToastOptions } from '../custom-toast.options';
 import { SelectModule } from 'ng2-select';
 
 import { TerritoriesComponent } from './territories.component';
-import { TerritoriesIssueComponent } from './territories-issue.component';
-import { TerritoriesRetractionComponent } from './territories-retraction.component';
+import { TerritoriesLendComponent } from './territories-lend.component';
+import { TerritoriesGetbackExtendComponent } from './territories-getback-extend.component';
 
 import { TerritoriesRoutingModule } from './territories-routing.module';
 
@@ -29,8 +29,8 @@ import { ProcessingDataService } from '../_services/processing-data.service';
   ],
   declarations: [
     TerritoriesComponent,
-    TerritoriesIssueComponent,
-    TerritoriesRetractionComponent
+    TerritoriesLendComponent,
+    TerritoriesGetbackExtendComponent
   ],
   providers: [
     TerritoryService,

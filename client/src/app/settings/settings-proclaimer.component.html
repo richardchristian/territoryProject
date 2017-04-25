@@ -1,7 +1,7 @@
 <div class="form-group row">
     <div class="col-md-4">
         <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-search"></i>&nbsp; Search</span>
+            <span class="input-group-addon"><i class="fa fa-search"></i>&nbsp; Suche</span>
             <input #searchProclaimer type="text" id="search" name="search" class="form-control" (keyup)="search(searchProclaimer.value)">
         </div>
     </div>
@@ -22,7 +22,7 @@
     </tbody>
 </table>
 
-<app-settings-proclaimer-dialog #infoModal></app-settings-proclaimer-dialog>
+<settings-proclaimer-dialog #infoModal></settings-proclaimer-dialog>
 <!--<ul class="pagination">
     <li class="page-item"><a class="page-link" href="#">Prev</a></li>
     <li class="page-item active">

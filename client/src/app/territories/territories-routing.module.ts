@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { TerritoriesComponent } from './territories.component';
-import { TerritoriesIssueComponent } from './territories-issue.component';
-import { TerritoriesRetractionComponent } from './territories-retraction.component';
+import { TerritoriesLendComponent } from './territories-lend.component';
+import { TerritoriesGetbackExtendComponent } from './territories-getback-extend.component';
 
 
 const routes: Routes = [
@@ -15,15 +15,15 @@ const routes: Routes = [
     },
     children: [
       {
-        path: 'issue',
-        component: TerritoriesIssueComponent,
+        path: 'lend',
+        component: TerritoriesLendComponent,
         data: {
           title: 'Gebiet-Ausgabe'
         }
       },
       {
-        path: 'retraction',
-        component: TerritoriesRetractionComponent,
+        path: 'getback-extend',
+        component: TerritoriesGetbackExtendComponent,
         data: {
           title: 'Gebiet-Rücknahme'
         }
