@@ -42,9 +42,9 @@ export class ProcessingDataService {
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    create(territory: ProcessingData): Observable<ProcessingData> {
+    create(processingData: ProcessingData): Observable<ProcessingData> {
         return this.http
-            .post(this.config.apiUrl + '/processing/add', territory, { withCredentials: true })
+            .post(this.config.apiUrl + '/processing/add', processingData, { withCredentials: true })
             .map(res => res.json())
             .catch(err => this.handleError(err));
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));

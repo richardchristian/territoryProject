@@ -9,9 +9,11 @@ import { Proclaimer } from '../_models/proclaimer';
 
 import { TerritoryService } from '../_services/territory.service';
 import { ProclaimerService } from '../_services/proclaimer.service';
+import { ProcessingDataService } from '../_services/processing-data.service';
 
 import { SelectComponent } from 'ng2-select';
 
+import * as moment from 'moment';
 
 @Component({
     selector: 'territories-issue',
@@ -31,7 +33,8 @@ export class TerritoriesIssueComponent implements OnInit {
         private route: ActivatedRoute,
         private toastr: ToastsManager,
         private territoryService: TerritoryService,
-        private proclaimerService: ProclaimerService
+        private proclaimerService: ProclaimerService,
+        private processingDataService: ProcessingDataService
     ) { }
 
     ngOnInit() {
@@ -97,23 +100,71 @@ export class TerritoriesIssueComponent implements OnInit {
         this.form.proclaimerID = value;
     }
 
+    inputFromChanged(value: any) {
+        if (this.form.to === undefined || this.form.to === '' || this.form.to === null)
+            this.form.to = moment(value).add(6, 'month').format('YYYY-MM-DD');
+    }
+
     save() {
-        var errorMessage = '';
-        if (this.form.territoryID === undefined)
-            errorMessage = 'Kein Gebiet ausgewählt.';
-        if (this.form.proclaimerID === undefined)
-            errorMessage = 'Kein Verkündiger ausgewählt.';
-        if (this.form.from === undefined || this.form.from === '')
-            errorMessage = 'Kein "Ausgeborgt am" - Datum ausgewählt.';
+        this.validateForm(this.form).then(result => {
+            if (!result.valid) {
+                this.toastr.error(result.message, 'Fehler!');
+                return;
+            }
 
-        if (this.form.to === undefined || this.form.to === '')
-            errorMessage = 'Kein Rückgabe - Datum ausgewählt.';
-        if (errorMessage != '')
-            this.toastr.error(errorMessage);
+            this.processingDataService.create(result.validForm)
+                .subscribe(
+                data => {
+                    this.toastr.success('Eintrag hinzugefügt.', 'Erfolgreich gespeichert!');
+                    this.reset();
+                }, error => {
+                    this.toastr.error(error.message);
+                });
+        });
+    }
 
-        console.log(this.form);
+    reset() {
+        this.form = <any>{};
+        var territoryActive = this.territoriesInput.activeOption;
+        this.territoriesInput.remove(territoryActive);
+        var proclaimersActive = this.proclaimersInput.activeOption;
+        this.proclaimersInput.remove(proclaimersActive);
+    }
 
-        this.toastr.success('Erfolgreich gespeicher');
+    validateForm(form): Promise<any> {
+        var valid: Boolean = true;
+        var message: String = '<ul>';
+        var validForm = <any>{};
+
+        if (form.territoryID === undefined || form.territoryID === '' || form.territoryID === null) {
+            message += '<li>Kein Gebiet ausgewählt.</li>';
+        } else {
+            validForm.territoryID = form.territoryID.id;
+        }
+        if (form.proclaimerID === undefined || form.proclaimerID === '' || form.proclaimerID === null) {
+            message += '<li>Kein Verkündiger ausgewählt.</li>';
+        } else {
+            validForm.proclaimerID = form.proclaimerID.id;
+        }
+        if (form.from === undefined || form.from === '' || form.from === null) {
+            message += '<li>Kein "Ausgeborgt am" - Datum ausgewählt.</li>';
+        } else {
+            validForm.from = form.from;
+        }
+        if (form.to === undefined || form.to === '' || form.to === null) {
+            message += '<li>Kein Rückgabe - Datum ausgewählt.</li>';
+        } else {
+            validForm.to = form.to;
+        }
+        message += '</ul>';
+        validForm.submitted = form.submitted || false;
+
+        return Promise.resolve({
+            valid: message === '<ul></ul>',
+            message,
+            validForm
+        });
+
 
     }
 }

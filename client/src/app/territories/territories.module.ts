@@ -17,6 +17,7 @@ import { TerritoriesRoutingModule } from './territories-routing.module';
 
 import { TerritoryService } from '../_services/territory.service';
 import { ProclaimerService } from '../_services/proclaimer.service';
+import { ProcessingDataService } from '../_services/processing-data.service';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { ProclaimerService } from '../_services/proclaimer.service';
   providers: [
     TerritoryService,
     ProclaimerService,
+    ProcessingDataService,
     { provide: ToastOptions, useClass: CustomToastOptions }
   ]
 })

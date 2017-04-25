@@ -21,14 +21,14 @@ module.exports = {
 
 function addProcessingData(req, res) {
     console.log("add new processing Territory Entry");
-    var fromDateArr = req.body.from.split('.');
-    var toDateArr = req.body.to.split('.');
+    var fromDate = req.body.from;
+    var toDate = req.body.to;
 
     var processingData = new ProcessingData({
         proclaimerID: req.body.proclaimerID,
         territoryID: req.body.territoryID,
-        from: new Date(fromDateArr[2], fromDateArr[1], fromDateArr[0]),
-        to: new Date(toDateArr[2], toDateArr[1], toDateArr[0]),
+        from: new Date(fromDate + ' 00:00'),
+        to: new Date(toDate + ' 00:00'),
         submitted: req.body.submitted
     });
 
