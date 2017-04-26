@@ -12,18 +12,20 @@
         <tr>
             <th>Gebiet-Nr.</th>
             <th>Bezeichnung</th>
+            <th>Kommentar</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let territory of territories |async">
+        <tr *ngFor="let territory of territories |async" (click)="infoModal.show(territory)">
             <td>{{territory.territoryNumber}}</td>
             <td>{{territory.name}}</td>
+            <td>{{territory.comment}}</td>
         </tr>
     </tbody>
 </table>
 
-<settings-territory-dialog #infoModal></settings-territory-dialog>
-<!--<ul class="pagination">
+<settings-territory-dialog #infoModal (territorySave)="save($event)"></settings-territory-dialog>
+<!--<ul class="pagination"> 
     <li class="page-item"><a class="page-link" href="#">Prev</a></li>
     <li class="page-item active">
         <a class="page-link" href="#">1</a>

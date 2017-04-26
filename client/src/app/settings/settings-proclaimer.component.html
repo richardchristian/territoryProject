@@ -16,13 +16,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let proclaimer of proclaimers |async">
+        <tr *ngFor="let proclaimer of proclaimers |async" (click)="infoModal.show(proclaimer)">
             <td>{{proclaimer.firstName}} {{proclaimer.lastName}}</td>
         </tr>
     </tbody>
 </table>
 
-<settings-proclaimer-dialog #infoModal></settings-proclaimer-dialog>
+<settings-proclaimer-dialog #infoModal (proclaimerSave)="save($event)">></settings-proclaimer-dialog>
 <!--<ul class="pagination">
     <li class="page-item"><a class="page-link" href="#">Prev</a></li>
     <li class="page-item active">

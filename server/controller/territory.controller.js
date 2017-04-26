@@ -16,7 +16,8 @@ function createTerritory(req, res) {
     console.log("create new Territory: (" + req.body.territoryNumber + ") " + req.body.name);
     var territory = new Territory({
         territoryNumber: req.body.territoryNumber,
-        name: req.body.name
+        name: req.body.name,
+        comment: req.body.comment
     });
 
     territory.save().then((doc) => {
@@ -72,7 +73,7 @@ function getSearchTerritories(req, res) {
 function updateTerritory(req, res) {
     var id = req.params.id;
 
-    if (!ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).send();
     }
 
@@ -90,7 +91,7 @@ function updateTerritory(req, res) {
 function deleteTerritory(req, res) {
     var territoryID = req.params.id;
 
-    if (!ObjectID.isValid(territoryID)) {
+    if (!mongoose.Types.ObjectId.isValid(territoryID)) {
         return res.status(404).send();
     }
 

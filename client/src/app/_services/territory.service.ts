@@ -68,9 +68,10 @@ export class TerritoryService {
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    update(territory: Territory): Observable<Response> {
+    update(territory: Territory): Observable<Territory> {
         return this.http
             .put(this.config.apiUrl + '/territories/' + territory._id, territory, { withCredentials: true })
+            .map(res => res.json().territory)
             .catch(err => this.handleError(err));
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }

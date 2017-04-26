@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
 
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
@@ -28,7 +30,10 @@ export class SettingsTerritoryComponent implements OnInit {
   private searchTerms = new BehaviorSubject<string>('');
   @ViewChild('infoModal') infoModal: SettingsTerritoryDialogComponent;
 
-  constructor(private territoryService: TerritoryService) { }
+  constructor(
+    private territoryService: TerritoryService,
+    private toastr: ToastsManager
+  ) { }
 
   search(term: string): void {
     this.searchTerms.next(term);
@@ -37,12 +42,38 @@ export class SettingsTerritoryComponent implements OnInit {
   ngOnInit(): void {
     this.territories = this.searchTerms
       .debounceTime(300)
-      .distinctUntilChanged()
       .switchMap(term => this.territoryService.search(term))
       .catch(error => {
         console.log(error);
         return Observable.of<Territory[]>([]);
       });
+  }
+
+  save(_territory: Territory) {
+    if (_territory._id === "") {
+      this.territoryService.create(_territory)
+        .subscribe(
+        data => {
+          this.searchTerms.next("");
+          this.toastr.success("Gebiet erfolgreich hinzugefügt", "(" + data.territoryNumber + ") " + data.name)
+        },
+        err => {
+          console.log(err);
+          this.toastr.error(err, "Fehler");
+        });
+    } else {
+      this.territoryService.update(_territory)
+        .subscribe(
+        data => {
+          console.log(data);
+          this.searchTerms.next("");
+          this.toastr.success("Gebiet erfolgreich bearbeitet", "(" + data.territoryNumber + ") " + data.name)
+        },
+        err => {
+          console.log(err);
+          this.toastr.error(err, "Fehler");
+        });
+    }
   }
 
 }

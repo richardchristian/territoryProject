@@ -2,17 +2,28 @@
     <div class="modal-dialog modal-info" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Modal title</h4>
+                <h4 class="modal-title"><i class="icon-people"></i> {{getFirstName()}} {{getLastName()}}</h4>
                 <button type="button" class="close" (click)="infoModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
-                <p>Add Proclaimer</p>
+                <div class="form-group">
+                    <label for="firstName">Vorname</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Max" [(ngModel)]="proclaimer.firstName" value="{{proclaimer.firstName}}"
+                        [readonly]="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Nachname</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Mustermann" [(ngModel)]="proclaimer.lastName" value="{{proclaimer.lastName}}"
+                        [readonly]="readonly">
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="infoModal.hide()">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" (click)="infoModal.hide()" [hidden]="!readonly">Schließen</button>
+                <button type="button" class="btn btn-secondary" (click)="cancel()" [hidden]="readonly">Abbrechen</button>
+                <button type="button" class="btn btn-primary" (click)="edit()" [hidden]="!readonly">Bearbeiten</button>
+                <button type="button" class="btn btn-primary" (click)="save()" [hidden]="readonly">Speichern</button>
             </div>
         </div>
         <!-- /.modal-content -->

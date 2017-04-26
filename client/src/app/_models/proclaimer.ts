@@ -1,5 +1,5 @@
 export class Proclaimer {
-    _id: number;
+    _id: string;
     firstName: string;
     lastName: string;
 }

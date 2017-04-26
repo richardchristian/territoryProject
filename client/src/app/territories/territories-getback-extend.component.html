@@ -7,21 +7,26 @@
                     <input #searchProcessingData type="text" id="search" name="search" class="form-control" (keyup)="search(searchProcessingData.value)">
                 </div>
             </div>
+            <button type="button" class="btn btn-outline-success" (click)="infoModal.show()"><i class="fa fa-plus"></i>&nbsp; Verkündiger hinzufügen</button>
+            <button type="button" class="btn btn-outline-success" (click)="infoModal.show()"><i class="fa fa-plus"></i>&nbsp; Verkündiger hinzufügen</button>
+            <button type="button" class="btn btn-outline-success" (click)="infoModal.show()"><i class="fa fa-plus"></i>&nbsp; Verkündiger hinzufügen</button>
         </div>
         <table class="table table-responsive table-hover table-outline mb-0 hidden-sm-down">
             <thead class="thead-default">
                 <tr>
+                    <th style="display:none;">ID</th>
                     <th>Gebiet-Nr.</th>
                     <th>Bezeichnung</th>
                     <th>Verkündiger</th>
                     <th>Ausgeborgt-Status</th>
                     <th>Ausgeborgt-Datum</th>
                     <th>Rückgabe-Datum</th>
-                    <th>Aktion</th>
+                    <!--<th>Aktion</th>-->
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let processing of processingData |async">
+                    <td style="display:none;">{{processing._id}}</td>
                     <td>
                         <div>{{processing.territoryID.territoryNumber}}</div>
                     </td>
@@ -52,7 +57,7 @@
                         <div class="small text-muted">bereits verlängert</div>
                         <div>{{processing.to| date: 'dd.MM.yyyy'}}</div>
                     </td>
-                    <td>
+                    <!--<td>
                         <div class="form-group row">
                             <div class="col-md-9">
                                 <select class="form-control" id="select" name="select">
@@ -64,7 +69,7 @@
                                 <button>Go</button>
                             </div>
                         </div>
-                    </td>
+                    </td>-->
                 </tr>
             </tbody>
         </table>

@@ -72,7 +72,7 @@ function getSearchProclaimers(req, res) {
 function updateProclaimer(req, res) {
     var id = req.params.id;
 
-    if (!ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).send();
     }
 
@@ -90,7 +90,7 @@ function updateProclaimer(req, res) {
 function deleteProclaimer(req, res) {
     var proclaimerID = req.params.id;
 
-    if (!ObjectID.isValid(proclaimerID)) {
+    if (!mongoose.Types.ObjectId.isValid(proclaimerID)) {
         return res.status(404).send();
     }
 
@@ -98,7 +98,6 @@ function deleteProclaimer(req, res) {
         if (!proclaimer) {
             return res.status(404).send();
         }
-
         res.send(proclaimer);
     }).catch((e) => {
         res.status(400).send();

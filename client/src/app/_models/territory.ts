@@ -1,5 +1,6 @@
 export class Territory {
-    _id: number;
-    territoryNumber: number;
+    _id: string;
+    territoryNumber: string;
     name: string;
+    comment: string;
 }

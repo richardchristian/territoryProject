@@ -2,17 +2,33 @@
     <div class="modal-dialog modal-info" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Modal title</h4>
+                <h4 class="modal-title"><i class="icon-map"></i> {{getTerritoryName}}</h4>
                 <button type="button" class="close" (click)="infoModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
-                <p>One fine body&hellip;</p>
+                <div class="form-group">
+                    <label for="territoryNumber">Gebiet Nr.</label>
+                    <input type="text" class="form-control" id="territoryNumber" placeholder="Gebiet Nummer" [(ngModel)]="territory.territoryNumber"
+                        value="{{territory.territoryNumber}}" [readonly]="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name" [(ngModel)]="territory.name" value="{{territory.name}}"
+                        [readonly]="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="comment">Kommentar</label>
+                    <input type="text" class="form-control" id="comment" placeholder="Kommentar" [(ngModel)]="territory.comment" value="{{territory.comment}}"
+                        [readonly]="readonly">
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="infoModal.hide()">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" (click)="infoModal.hide()" [hidden]="!readonly">Schließen</button>
+                <button type="button" class="btn btn-secondary" (click)="cancel()" [hidden]="readonly">Abbrechen</button>
+                <button type="button" class="btn btn-primary" (click)="edit()" [hidden]="!readonly">Bearbeiten</button>
+                <button type="button" class="btn btn-primary" (click)="save()" [hidden]="readonly">Speichern</button>
             </div>
         </div>
         <!-- /.modal-content -->

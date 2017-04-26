@@ -37,9 +37,10 @@ export class ProclaimerService {
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    update(proclaimer: Proclaimer): Observable<Response> {
+    update(proclaimer: Proclaimer): Observable<Proclaimer> {
         return this.http
             .put(this.config.apiUrl + '/proclaimers/' + proclaimer._id, proclaimer, { withCredentials: true })
+            .map(res => res.json().proclaimer)
             .catch(err => this.handleError(err));
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
