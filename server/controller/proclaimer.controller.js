@@ -48,11 +48,12 @@ function getProclaimerById(req, res) {
 }
 
 function getAllProclaimers(req, res) {
-    Proclaimer.find().then((proclaimers) => {
-        res.send({ proclaimers });
-    }, (e) => {
-        res.status(400).send(e);
-    });
+    Proclaimer.find()
+        .sort({ lastName: 'asc', firstName: 'asc' }).then((proclaimers) => {
+            res.send({ proclaimers });
+        }, (e) => {
+            res.status(400).send(e);
+        });
 }
 
 function getSearchProclaimers(req, res) {
@@ -62,11 +63,12 @@ function getSearchProclaimers(req, res) {
         { 'lastName': { $regex: searchTerm, $options: 'i' } }
     ];
 
-    Proclaimer.find({ $or: findArr }).then((proclaimers) => {
-        res.send({ proclaimers });
-    }, (e) => {
-        res.status(400).send(e);
-    });
+    Proclaimer.find({ $or: findArr })
+        .sort({ lastName: 'asc', firstName: 'asc' }).then((proclaimers) => {
+            res.send({ proclaimers });
+        }, (e) => {
+            res.status(400).send(e);
+        });
 }
 
 function updateProclaimer(req, res) {

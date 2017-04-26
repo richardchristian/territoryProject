@@ -49,11 +49,12 @@ function getTerritoryById(req, res) {
 }
 
 function getAllTerritories(req, res) {
-    Territory.find().then((territories) => {
-        res.send({ territories });
-    }, (e) => {
-        res.status(400).send(e);
-    });
+    Territory.find()
+        .sort({ territoryNumber: 'asc', name: 'asc' }).then((territories) => {
+            res.send({ territories });
+        }, (e) => {
+            res.status(400).send(e);
+        });
 }
 
 function getSearchTerritories(req, res) {
@@ -63,11 +64,12 @@ function getSearchTerritories(req, res) {
     if (!isNaN(searchTerm))
         findArr.push({ 'territoryNumber': { $regex: searchTerm, $options: 'i' } });
 
-    Territory.find({ $or: findArr }).then((territories) => {
-        res.send({ territories });
-    }, (e) => {
-        res.status(400).send(e);
-    });
+    Territory.find({ $or: findArr })
+        .sort({ territoryNumber: 'asc', name: 'asc' }).then((territories) => {
+            res.send({ territories });
+        }, (e) => {
+            res.status(400).send(e);
+        });
 }
 
 function updateTerritory(req, res) {
