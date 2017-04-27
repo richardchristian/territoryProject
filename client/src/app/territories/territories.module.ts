@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { DateValueAccessorModule } from 'angular-date-value-accessor';
+
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 // Toast
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { ToastOptions } from 'ng2-toastr';
@@ -10,8 +14,7 @@ import { CustomToastOptions } from '../custom-toast.options';
 import { SelectModule } from 'ng2-select';
 
 import { TerritoriesComponent } from './territories.component';
-import { TerritoriesLendComponent } from './territories-lend.component';
-import { TerritoriesGetbackExtendComponent } from './territories-getback-extend.component';
+import { TerritoriesDialogComponent } from './territories-dialog.component';
 
 import { TerritoriesRoutingModule } from './territories-routing.module';
 
@@ -24,13 +27,14 @@ import { ProcessingDataService } from '../_services/processing-data.service';
     CommonModule,
     FormsModule,
     TerritoriesRoutingModule,
+    ModalModule.forRoot(),
     ToastModule.forRoot(),
-    SelectModule
+    SelectModule,
+    DateValueAccessorModule
   ],
   declarations: [
     TerritoriesComponent,
-    TerritoriesLendComponent,
-    TerritoriesGetbackExtendComponent
+    TerritoriesDialogComponent,
   ],
   providers: [
     TerritoryService,

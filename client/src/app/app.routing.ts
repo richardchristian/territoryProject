@@ -51,7 +51,7 @@ export const routes: Routes = [
     path: 'settings',
     component: FullLayoutComponent,
     data: {
-      title: 'Settings'
+      title: 'Einstellungen'
     },
     children: [
       {

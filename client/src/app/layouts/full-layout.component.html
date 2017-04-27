@@ -1,6 +1,6 @@
 <header class="app-header navbar">
   <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button">&#9776;</button>
-  <a class="navbar-brand" href="#"></a>
+  <a class="navbar-brand" href="#"><i class="icon-map"></i> TerritoryUI</a>
   <ul class="nav navbar-nav d-md-down-none">
     <li class="nav-item">
       <a class="nav-link navbar-toggler sidebar-toggler" href="#">&#9776;</a>
@@ -9,17 +9,16 @@
       <a class="nav-link" href="#/dashboard">Home</a>
     </li>
     <li class="nav-item px-3">
-      <a class="nav-link" href="#/settings">Settings</a>
+      <a class="nav-link" href="#/settings">Einstellungen</a>
     </li>
     <li class="nav-item px-3">
-      <a class="nav-link" href="#/users">Users</a>
+      <a class="nav-link" href="#/users">Benutzer</a>
     </li>
 
   </ul>
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
       <a href class="nav-link dropdown-toggle" dropdownToggle (click)="false">
-        <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
         <span class="d-md-down-none">{{currentUser.firstName}} {{currentUser.lastName}}</span>
       </a>
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
@@ -37,26 +36,16 @@
   <div class="sidebar">
     <nav class="sidebar-nav">
       <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
-        </li>
-
-        <li class="divider"></li>
         <li class="nav-title">
           Menu
         </li>
-        <li class="nav-item nav-dropdown" routerLinkActive="open">
-          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Gebiete</a>
-          <ul class="nav-dropdown-items">
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/territories/lend']"><i class="icon-puzzle"></i> Ausgabe</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/territories/getback-extend']"><i class="icon-puzzle"></i> Rücknahme</a>
-            </li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard</a>
         </li>
-        <li class="nav-item nav-dropdown" routerLinkActive="open">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/territories']"><i class="icon-map"></i> Gebiet-Verwaltung</a>
+        </li>
+        <!--<li class="nav-item nav-dropdown" routerLinkActive="open">
           <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Berichte</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
@@ -66,7 +55,7 @@
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/territories/retraction']"><i class="icon-puzzle"></i> Rücknahme</a>
             </li>
           </ul>
-        </li>
+        </li>-->
         <li class="divider"></li>
         <li class="nav-title">
           UI Elements
@@ -138,13 +127,14 @@
     <ol class="breadcrumb" *ngIf='loggedIn'>
       <breadcrumbs></breadcrumbs>
       <!-- Breadcrumb Menu -->
-      <li class="breadcrumb-menu d-md-down-none">
+      <!--      
+        <li class="breadcrumb-menu d-md-down-none">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
           <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
           <a class="btn btn-secondary" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>
           <a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
         </div>
-      </li>
+      </li>-->
     </ol>
     <div class="container-fluid">
       <router-outlet></router-outlet>
@@ -152,7 +142,7 @@
     <!-- /.conainer-fluid -->
   </main>
 </div>
-<footer class="app-footer">
+<!--<footer class="app-footer">
   <a href="http://coreui.io">CoreUI</a> &copy; 2017 creativeLabs.
   <span class="float-right">Powered by <a href="http://coreui.io">CoreUI</a></span>
-</footer>
+</footer>-->

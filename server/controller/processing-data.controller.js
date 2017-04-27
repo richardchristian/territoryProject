@@ -16,7 +16,6 @@ module.exports = {
     getSearchProcessingTerritories,
     getSearchProcessingData,
     updateProcessingData,
-    setProcessingDataSubmitted,
     deleteProcessingData
 };
 
@@ -60,11 +59,13 @@ function getProcessingDataById(req, res) {
 }
 
 function getAllProcessingData(req, res) {
-    ProcessingData.find().then((processingTerritories) => {
-        res.send({ processingTerritories });
-    }, (e) => {
-        res.status(400).send(e);
-    });
+    ProcessingData.find()
+        .sort({ territoryNumber: 'asc', lastName: 'asc', firstName: 'asc' })
+        .then((processingTerritories) => {
+            res.send({ processingTerritories });
+        }, (e) => {
+            res.status(400).send(e);
+        });
 }
 
 function getAllNonProcessingTerritories(req, res) {
@@ -146,12 +147,14 @@ function getSearchProcessingTerritories(req, res) {
 
 function getSearchProcessingData(req, res) {
     var searchTerm = req.query.term;
+    var sortTerm = req.query.sort || 'territoryID.territoryNumber';
+    sort = sortTerm.split(",");
 
     ProcessingData.find({ submitted: false })
         .populate('territoryID')
         .populate('proclaimerID')
         .then(processingTerritories => {
-            var processingData = getSearchResult(processingTerritories, searchTerm);
+            var processingData = _.sortBy(getSearchResult(processingTerritories, searchTerm), sort);
             res.send({ processingData });
         }, (e) => {
             res.status(400).send(e);
@@ -183,13 +186,13 @@ function getSearchResult(data, searchTerm) {
 }
 
 function updateProcessingData(req, res) {
-    /*var id = req.params.id;
+    var id = req.params.id;
 
-    if (!ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).send();
     }
 
-    Territory.findByIdAndUpdate(id, { $set: req.body }, { new: true }).then((territory) => {
+    ProcessingData.findByIdAndUpdate(id, { $set: req.body }, { new: true }).then((territory) => {
         if (!territory) {
             return res.status(404).send();
         }
@@ -197,30 +200,8 @@ function updateProcessingData(req, res) {
         res.send({ territory });
     }).catch((e) => {
         res.status(400).send();
-    });*/
-}
-
-function setProcessingDataSubmitted(req, res) {
-    var processingTerritoryID = req.params.id;
-
-    if (!mongoose.Types.ObjectId.isValid(processingTerritoryID)) {
-        res.status(404).send();
-    }
-
-    ProcessingData.findByIdAndUpdate(processingTerritoryID, { $set: { 'submitted': true } }).then((processingTerritory) => {
-        if (!processingTerritory) {
-            res.status(404).send();
-        }
-        res.send({
-            success: true,
-            processingTerritory: processingTerritory
-        });
-    }).catch((e) => {
-        res.status(400).send();
     });
 }
-
-
 
 function deleteProcessingData(req, res) {
     /*var territoryID = req.params.id;
