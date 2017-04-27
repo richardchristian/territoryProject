@@ -42,9 +42,13 @@ export class TerritoriesComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.getSortedSearchResult('territoryID.territoryNumber');
+    }
+
+    getSortedSearchResult(sort: string): void {
         this.processingData = this.searchTerms
             .debounceTime(300)
-            .switchMap(term => this.processingDataService.search(term))
+            .switchMap(term => this.processingDataService.search(term, sort))
             .catch(error => {
                 console.log(error);
                 return Observable.of<ProcessingData[]>([]);

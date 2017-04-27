@@ -13,10 +13,10 @@
             <thead class="thead-default">
                 <tr>
                     <th style="display:none;">ID</th>
-                    <th>Gebiet-Nr.</th>
-                    <th>Bezeichnung</th>
-                    <th>Verkündiger</th>
-                    <th>Ausgeborgt-Status</th>
+                    <th (click)="getSortedSearchResult('territoryID.territoryNumber')">Gebiet-Nr.</th>
+                    <th (click)="getSortedSearchResult('territoryID.name')">Bezeichnung</th>
+                    <th (click)="getSortedSearchResult('proclaimerID.lastName,proclaimerID.firstName')">Verkündiger</th>
+                    <th (click)="getSortedSearchResult('percentage')">Ausgeborgt-Status</th>
                 </tr>
             </thead>
             <tbody>

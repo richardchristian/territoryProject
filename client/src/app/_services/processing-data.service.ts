@@ -57,9 +57,9 @@ export class ProcessingDataService {
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    search(term: string): Observable<ProcessingData[]> {
+    search(term: string, sort: string): Observable<ProcessingData[]> {
         return this.http
-            .get(this.config.apiUrl + '/processing/search?term=' + term, { withCredentials: true })
+            .get(this.config.apiUrl + '/processing/search?term=' + term + '&sort=' + sort, { withCredentials: true })
             .map((res) => res.json().processingData)
             .catch(err => this.handleError(err));
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
