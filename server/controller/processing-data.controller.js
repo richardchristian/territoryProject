@@ -148,8 +148,18 @@ function getSearchProcessingTerritories(req, res) {
 function getSearchProcessingData(req, res) {
     var searchTerm = req.query.term;
     var sortTerm = req.query.sort || 'territoryID.territoryNumber';
-    sort = sortTerm.split(",");
-
+    var sort;
+    if(sortTerm === 'percentage'){
+        sort = function(data){
+            var _from = moment(data.from);
+            var _to = moment(data.to);
+            var _now = moment();
+            return Math.round((_now.diff(_from) / _to.diff(_from)) * 100);
+        };
+    }else{
+        sort = sortTerm.split(",");
+    }
+    
     ProcessingData.find({ submitted: false })
         .populate('territoryID')
         .populate('proclaimerID')
