@@ -45,6 +45,14 @@
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/territories']"><i class="icon-map"></i> Gebiet-Verwaltung</a>
         </li>
+        <li class="nav-item nav-dropdown" routerLinkActive="open">
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Auswertungen</a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/reports/territorycard']"><i class="icon-puzzle"></i> Gebietskarten</a>
+            </li>
+          </ul>
+        </li>
         <!--<li class="nav-item nav-dropdown" routerLinkActive="open">
           <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Berichte</a>
           <ul class="nav-dropdown-items">

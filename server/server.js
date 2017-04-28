@@ -38,6 +38,7 @@ app.use('/users', require('./routes/user.route'));
 app.use('/proclaimers', require('./routes/proclaimer.route'));
 app.use('/territories', require('./routes/territory.route'));
 app.use('/processing', require('./routes/processing-data.route'));
+app.use('/reports', require('./routes/report.route'));
 
 app.listen(3000, () => {
     console.log('Started on port 3000');

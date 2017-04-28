@@ -1,0 +1,60 @@
+<div bsModal #infoModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="icon-map"></i> {{getProcessingDataName()}}</h4>
+                <button type="button" class="close" (click)="infoModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-md-3 form-control-label" for="text-input">Gebiet:</label>
+                    <div class="col-md-9">
+                        <ng-select #territoriesInput (selected)="selectTerritory($event)" (typed)="searchTerritories($event)" placeholder="Kein Gebiet ausgewählt."
+                            [disabled]="readonly">
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 form-control-label" for="text-input">Verkündiger/in:</label>
+                    <div class="col-md-9">
+                        <ng-select #proclaimersInput (selected)="selectProclaimer($event)" (typed)="searchProclaimers($event)" placeholder="Kein Verkündiger ausgewählt."
+                            [disabled]="readonly">
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 form-control-label" for="text-input">Ausgeborgt am:</label>
+                    <div class="col-md-9">
+                        <input type="date" class="form-control" name="from" placeholder="dd.mm.yyyy" required [(ngModel)]="processingDataParam.from"
+                            (ngModelChange)="inputFromChanged($event)" [readonly]="readonly" useValueAsDate>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 form-control-label" for="text-input">Rückgabe-datum:</label>
+                    <div class="col-md-9">
+                        <input type="date" class="form-control" name="to" placeholder="dd.mm.yyyy" required [(ngModel)]="processingDataParam.to"
+                            [readonly]="readonly" useValueAsDate />
+                    </div>
+                </div>
+                <div class="form-group row" [hidden]="!isNewEntry">
+                    <label class="col-md-3 form-control-label">Zurückgegeben</label>
+                    <div class="col-md-9 ">
+                        <input type="checkbox" id="inline-checkbox" name="submitted" value="option">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer ">
+                <button type="button " class="btn btn-secondary " (click)="hide() " [hidden]="!readonly ">Schließen</button>
+                <button type="button " class="btn btn-primary " (click)="extend() " [hidden]="!readonly ">Verlängern</button>
+                <button type="button " class="btn btn-primary " (click)="getback() " [hidden]="!readonly ">Zurückgeben</button>
+                <button type="button " class="btn btn-primary " (click)="edit() " [hidden]="!readonly ">Bearbeiten</button>
+
+                <button type="button " class="btn btn-secondary " (click)="cancel() " [hidden]="readonly ">Abbrechen</button>
+                <button type="button " class="btn btn-primary " (click)="save() " [hidden]="readonly ">Speichern</button>
+            </div>
+        </div>
+    </div>
+</div>

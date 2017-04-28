@@ -199,7 +199,7 @@ export class TerritoriesDialogComponent implements OnInit {
     }
     inputFromChanged(value: any) {
         if (this.processingDataParam.to === undefined || this.processingDataParam.to === null)
-            this.processingDataParam.to = moment(value).add(this.config.territory.standardTime, 'month').toDate();
+            this.processingDataParam.to = moment(value).add(6, 'month').toDate();
     }
 
     save() {

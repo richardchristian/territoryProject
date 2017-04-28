@@ -43,7 +43,11 @@ export const routes: Routes = [
       },
       {
         path: 'territories',
-        loadChildren: './territories/territories.module#TerritoriesModule',
+        loadChildren: './territories/territories.module#TerritoriesModule'
+      },
+      {
+        path: 'reports',
+        loadChildren: './reports/reports.module#ReportsModule'
       }
     ]
   },
