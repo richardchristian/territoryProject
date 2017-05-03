@@ -22,6 +22,12 @@ var ProcessingDataSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    extend: {
+        type: Date
+    },
+    submitDate: {
+        type: Date
+    },
     submitted:
     {
         type: Boolean

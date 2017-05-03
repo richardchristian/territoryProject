@@ -55,20 +55,20 @@ export class TerritoriesComponent implements OnInit {
             });
     }
 
-    public getPercentage(from, to) {
+    public getPercentage(from, to, extend) {
         var _from = moment(from);
-        var _to = moment(to);
+        var _to = extend === undefined ? moment(to) : moment(extend);
         var _now = moment();
 
         return Math.round((_now.diff(_from) / _to.diff(_from)) * 100);
     }
 
-    public setPercentageStyle(from, to) {
+    public setPercentageStyle(from, to, extend) {
         var styles = {
             'width': '',
             'background-color': "#4dbd74"
         };
-        var perc = this.getPercentage(from, to);
+        var perc = this.getPercentage(from, to, extend);
         styles.width = perc + '%';
 
         if (perc > 70)

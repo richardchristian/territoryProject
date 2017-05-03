@@ -15,6 +15,7 @@ import { SelectComponent } from 'ng2-select';
 import { SelectItem } from 'ng2-select';
 
 import * as moment from 'moment';
+import 'moment-timezone';
 import { AppConfig } from '../app.config';
 
 @Component({
@@ -55,20 +56,20 @@ export class TerritoriesDialogComponent implements OnInit {
 
         this.searchTerritories("", true);
         this.searchProclaimers("", true);
-
         this.processingDataParam = this.initParam(_processingData);
         if (this.processingDataParam._id !== null) {
             this.readonly = true;
             this.processingDataParam.from = new Date(_processingData.from);
             this.processingDataParam.to = new Date(_processingData.to);
+            this.processingDataParam.extend = _processingData.extend !== undefined ? new Date(_processingData.extend) : undefined;
 
             this.setSelectedTerritoryInput(this.processingDataParam.territoryID);
             this.setSelectedProclaimerInput(this.processingDataParam.proclaimerID);
-
         } else {
             this.readonly = false;
             this.reset();
         }
+        console.log(this.processingDataParam);
     }
 
     hide() {
@@ -84,6 +85,8 @@ export class TerritoriesDialogComponent implements OnInit {
                 territoryID: null,
                 from: null,
                 to: null,
+                extend: null,
+                submitDate: null,
                 submitted: null
             };
             this.isNewEntry = true;
@@ -97,6 +100,8 @@ export class TerritoriesDialogComponent implements OnInit {
                 territoryID: _processingData.territoryID,
                 from: new Date(_processingData.from),
                 to: new Date(_processingData.to),
+                extend: _processingData.extend !== undefined ? new Date(_processingData.extend) : undefined,
+                submitDate: _processingData.submitDate !== undefined ? new Date(_processingData.submitDate) : undefined,
                 submitted: _processingData.submitted
             };
         }
@@ -226,19 +231,23 @@ export class TerritoriesDialogComponent implements OnInit {
             this.setSelectedProclaimerInput(this.processingDataParam.proclaimerID);
             this.processingDataParam.from = this.origParamData.from;
             this.processingDataParam.to = this.origParamData.to;
+            this.processingDataParam.extend = this.origParamData.extend;
             this.processingDataParam.submitted = this.origParamData.submitted;
+            this.processingDataParam.submitDate = this.origParamData.submitDate;
         }
     }
 
     extend() {
+        this.edit();
         var momentToDate = moment(this.processingDataParam.to);
-        this.processingDataParam.to = momentToDate.add(this.config.territory.extendTime, 'month').toDate();
-        this.save();
+        this.processingDataParam.extend = momentToDate.add(this.config.territory.extendTime, 'month').toDate();
     }
 
     getback() {
+        this.edit();
         this.processingDataParam.submitted = true;
-        this.save();
+        this.processingDataParam.submitDate = new Date();
+        /*this.save();*/
     }
 
     reset() {
@@ -267,13 +276,24 @@ export class TerritoriesDialogComponent implements OnInit {
             message += '<li>Kein "Ausgeborgt am" - Datum ausgewählt.</li>';
         } else {
             validDataObj.from = this.processingDataParam.from;
+            validDataObj.from.setHours(2, 0, 0, 0); // set to 2 for time-issue
+            console.log(validDataObj.from);
         }
         if (this.processingDataParam.to === null) {
             message += '<li>Kein Rückgabe - Datum ausgewählt.</li>';
         } else {
             validDataObj.to = this.processingDataParam.to;
+            validDataObj.to.setHours(2, 0, 0, 0);
         }
         message += '</ul>';
+        if (this.processingDataParam.extend != undefined) {
+            validDataObj.extend = this.processingDataParam.extend;
+            validDataObj.extend.setHours(2, 0, 0, 0);
+        }
+        if (this.processingDataParam.submitDate != undefined) {
+            validDataObj.submitDate = this.processingDataParam.submitDate;
+            validDataObj.submitDate.setHours(2, 0, 0, 0);
+        }
         validDataObj.submitted = this.processingDataParam.submitted || false;
 
         return Promise.resolve({

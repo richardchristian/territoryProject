@@ -38,11 +38,17 @@
                             [readonly]="readonly" useValueAsDate />
                     </div>
                 </div>
-                <div class="form-group row" [hidden]="!isNewEntry">
-                    <label class="col-md-3 form-control-label">Zurückgegeben</label>
+                <div class="form-group row" [hidden]="isNewEntry || processingDataParam.extend===undefined">
+                    <label class="col-md-3 form-control-label">Verlängert bis:</label>
                     <div class="col-md-9 ">
-                        <input type="checkbox" id="inline-checkbox" name="submitted" value="option">
-                    </div>
+                        <input type="date" class="form-control" name="extend" placeholder="dd.mm.yyyy" [(ngModel)]="processingDataParam.extend" [readonly]="readonly"
+                            useValueAsDate /> </div>
+                </div>
+                <div class="form-group row" [hidden]="isNewEntry || processingDataParam.submitDate===undefined">
+                    <label class="col-md-3 form-control-label">Zurückgegeben am:</label>
+                    <div class="col-md-9 ">
+                        <input type="date" class="form-control" name="submitDate" placeholder="dd.mm.yyyy" [(ngModel)]="processingDataParam.submitDate"
+                            [readonly]="readonly" useValueAsDate /> </div>
                 </div>
             </div>
 

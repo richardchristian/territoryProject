@@ -17,7 +17,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let proclaimer of proclaimers |async" (click)="infoModal.show(proclaimer)">
-            <td>{{proclaimer.firstName}} {{proclaimer.lastName}}</td>
+            <td>{{proclaimer.lastName |uppercase}} {{proclaimer.firstName}}</td>
         </tr>
     </tbody>
 </table>

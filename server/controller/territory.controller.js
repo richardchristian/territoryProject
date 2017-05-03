@@ -1,5 +1,6 @@
 
 var mongoose = require('mongoose');
+var _ = require('lodash');
 //var mongodb = require('mongodb');
 var { Territory } = require('../models/territory.model');
 
@@ -50,7 +51,8 @@ function getTerritoryById(req, res) {
 
 function getAllTerritories(req, res) {
     Territory.find()
-        .sort({ territoryNumber: 'asc', name: 'asc' }).then((territories) => {
+        .then((territories) => {
+            territories = _.sortBy(territories, 'territoriyNumber');
             res.send({ territories });
         }, (e) => {
             res.status(400).send(e);
@@ -63,9 +65,9 @@ function getSearchTerritories(req, res) {
 
     if (!isNaN(searchTerm))
         findArr.push({ 'territoryNumber': { $regex: searchTerm, $options: 'i' } });
-
     Territory.find({ $or: findArr })
-        .sort({ territoryNumber: 'asc', name: 'asc' }).then((territories) => {
+        .then((territories) => {
+            territories = _.sortBy(territories, 'territoriyNumber');
             res.send({ territories });
         }, (e) => {
             res.status(400).send(e);

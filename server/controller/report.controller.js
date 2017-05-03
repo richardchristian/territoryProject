@@ -5,6 +5,8 @@ var moment = require('moment');
 var { ProcessingData } = require('../models/processing-data.model');
 var { Territory } = require('../models/territory.model');
 
+var TerritoryCardReport = require('./report/territorycard/territorycard.report.controller');
+
 module.exports = {
     getAllTerritoryCards,
     getTerritoryCardByID
@@ -51,7 +53,7 @@ function getAllTerritoryCards(req, res) {
                 }
             });
 
-            allTerritoryCards = _.sortBy(allTerritoryCards, ['territoryNumber'])
+            allTerritoryCards = _.sortBy(allTerritoryCards, ['territoryNumber']);
 
             var remaining = 10 - (allTerritoryCards.length % 10);
             if (remaining > 0)
@@ -63,7 +65,10 @@ function getAllTerritoryCards(req, res) {
                     });
                 }
 
-            res.send(allTerritoryCards);
+            var text = TerritoryCardReport.getTerritoryCardHTML(allTerritoryCards);
+
+            //res.send(allTerritoryCards);
+            res.send(text);
 
         }, (e) => {
             res.status(400).send(e);

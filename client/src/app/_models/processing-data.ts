@@ -4,5 +4,7 @@ export class ProcessingData {
     territoryID: any;
     from: Date;
     to: Date;
+    extend?: Date;
+    submitDate?: Date;
     submitted: boolean;
 }
