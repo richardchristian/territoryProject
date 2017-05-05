@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+var jsPDF = require('jspdf');
+
 import { AppConfig } from '../app.config';
 
 @Injectable()
@@ -21,7 +23,7 @@ export class ReportService {
         private toastr: ToastsManager
     ) { }
 
-    getAllTerritoryCards(): Observable<any[]> {
+    getAllTerritoryCards(): Observable<any> {
         return this.http
             .get(this.config.apiUrl + '/reports/territorycards', { withCredentials: true })
             .map(res => res.json())
@@ -34,6 +36,11 @@ export class ReportService {
             .get(this.config.apiUrl + '/reports/territorycards/' + id, { withCredentials: true })
             .catch(err => this.handleError(err));
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+    getPDFfromHTML(html: string) {
+        /*var doc = new jsPDF();*/
+        /*return doc;*/
     }
 
     private handleError(error: any): Observable<any> {

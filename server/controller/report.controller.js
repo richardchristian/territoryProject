@@ -12,67 +12,87 @@ module.exports = {
     getTerritoryCardByID
 };
 
-
-
 function getAllTerritoryCards(req, res) {
-    ProcessingData.find()
-        .populate('territoryID')
-        .populate('proclaimerID')
-        .then((processingTerritories) => {
-            var allTerritoryCards = [];
-            var emptyEntry = {
-                from: null,
-                to: null,
-                proclaimerID: {
-                    firstName: "",
-                    lastName: ""
-                }
-            };
-            _.forEach(processingTerritories, (cur) => {
-                var index = allTerritoryCards.map((e) => e._id).indexOf(cur.territoryID._id);
-                if (index < 0) {
-                    allTerritoryCards.push({
-                        _id: cur.territoryID._id,
-                        territoryNumber: cur.territoryID.territoryNumber,
-                        name: cur.territoryID.name,
-                        comment: cur.territoryID.comment,
-                        entries: []
-                    });
-                }
 
-                index = allTerritoryCards.map((e) => e._id).indexOf(cur.territoryID._id);
-                allTerritoryCards[index].entries.push(cur);
-            });
+    Territory.find().then((territories) => {
+        territories = _.sortBy(territories, 'territoriyNumber');
 
-            _.forEach(allTerritoryCards, (cur) => {
-                cur.entries = _.sortBy(cur.entries, ['from']).reverse().slice(0, 12);
-                if (cur.entries.length < 12) {
-                    var l = cur.entries.length;
-                    cur.entries.length = 12;
-                    cur.entries.fill(emptyEntry, l, 12);
-                }
-            });
-
-            allTerritoryCards = _.sortBy(allTerritoryCards, ['territoryNumber']);
-
-            var remaining = 10 - (allTerritoryCards.length % 10);
-            if (remaining > 0)
-                for (var i = 0; i < remaining; i++) {
-                    allTerritoryCards.push({
-                        territoryNumber: "",
-                        name: "",
-                        entries: new Array(12).fill(emptyEntry, 0, 12)
-                    });
-                }
-
-            var text = TerritoryCardReport.getTerritoryCardHTML(allTerritoryCards);
-
-            //res.send(allTerritoryCards);
-            res.send(text);
-
-        }, (e) => {
-            res.status(400).send(e);
+        var procData = territories.map((territory) => {
+            return ProcessingData.find({ 'territoryID': territory._id })
+                .sort('-from')
+                .limit(12)
+                .sort('from')
+                .populate('proclaimerID');
         });
+        Promise.all(procData).then(values => {
+            values = values.filter(item => item.length > 0);
+
+            territories = getRoundedNumTerritories(territories);
+
+            var allTerritoryCards = territories.map((territory, id) => {
+                return {
+                    _id: territory._id,
+                    name: territory.name,
+                    territoryNumber: territory.territoryNumber,
+                    entries: getTerritoryEntries(territory, values)
+                };
+            });
+
+            var territoryCardReport = TerritoryCardReport.getTerritoryCardHTML(allTerritoryCards);
+
+            res.send({
+                'html': territoryCardReport.html,
+                'table': territoryCardReport.table,
+                'style': territoryCardReport.style
+            });
+
+            //res.send(territoryCardReport);
+            /* res.send(JSON.parse({
+                 'title': 'TerritoryCardReport',
+                 'page': territoryCardReport
+             }));*/
+            /*pdf.create(territoryCardReport, config).toBuffer(function (err, buffer) {
+                res.type('pdf');
+                res.send(buffer);
+            });*/
+
+
+        });
+    });
+}
+
+function getTerritoryEntries(territory, values) {
+    var emptyEntry = {
+        from: null,
+        to: null,
+        extend: null,
+        submitDate: null,
+        proclaimerID: {
+            firstName: "",
+            lastName: ""
+        }
+    };
+    var cur_entries = _.find(values, item => item[0].territoryID.toString() == territory._id.toString()) || [];
+    if (cur_entries.length < 12) {
+        var l = cur_entries.length;
+        cur_entries.length = 12;
+        cur_entries.fill(emptyEntry, l, 12);
+    }
+    return cur_entries;
+}
+
+function getRoundedNumTerritories(territories) {
+    var remaining = 10 - (territories.length % 10);
+    if (remaining > 0)
+        for (var i = 0; i < remaining; i++) {
+            territories.push({
+                _id: "",
+                territoryNumber: "",
+                name: "",
+                entries: []
+            });
+        }
+    return territories;
 }
 
 function getTerritoryCardByID(req, res) {
