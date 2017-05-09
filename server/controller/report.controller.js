@@ -119,7 +119,13 @@ function getTerritoryStatistics(req, res) {
             return !_.some(processedTerritories, o => o.territoryID._id.toString() == item._id.toString());
         });
 
-        res.send(notProcessedTerritories);
+        res.send({
+            assignedTerritories,
+            processedTerritories,
+            notAssignedTerritories,
+            notProcessedTerritories,
+            allTerritories
+        });
     });
 
 

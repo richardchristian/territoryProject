@@ -16,6 +16,7 @@ import { TerritoryService } from '../_services/territory.service';
 import { ProclaimerService } from '../_services/proclaimer.service';
 import { ProcessingDataService } from '../_services/processing-data.service';
 import { ReportService } from '../_services/report.service';
+import { ColorService } from '../_services/color.service';
 
 @NgModule({
   imports: [
@@ -27,13 +28,13 @@ import { ReportService } from '../_services/report.service';
   declarations: [
     ReportsComponent,
     ReportsTerritoryCardComponent
-    // TerritoriesDialogComponent,
   ],
   providers: [
     TerritoryService,
     ProclaimerService,
     ProcessingDataService,
     ReportService,
+    ColorService,
     { provide: ToastOptions, useClass: CustomToastOptions }
   ]
 })

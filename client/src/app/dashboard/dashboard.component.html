@@ -1,3 +1,38 @@
-<h1>Overview</h1>
+<div class="card">
+  <div class="card-header">
+    <h5 style="margin-bottom:0px"><i class="icon-speedometer"></i> Übersicht</h5>
+    <div class="card-actions">
+      <a href="javascript:void(0)" (click)="print();" class="btn-print"><i class="icon-printer"></i></a>
+    </div>
+  </div>
+  <div class="card-block">
+    <div #dataContainer id="print-section">
+      <div class="col-sm-6 col-lg-2">
+        <select [(ngModel)]="selectedValue" (ngModelChange)="getData($event)" id="select" name="select" class="form-control form-control-lg"
+          style="margin-left: 0px; padding-left: 0px; border: 0; outline: 0; background: transparent; border-bottom: 1px solid #8B9FA9;">
+          <option *ngFor="let t of dashboardTimesection" [ngValue]="t.id">{{t.name}}</option>
+        </select>
+      </div>
+      <br/>
+      <div class="animated fadeIn">
+        <div class="row" *ngIf="isDataAvailable">
+          <div class="col-sm-6 col-lg-3">
+            <dashboard-doughnut title="Aktuell Zugeteilt" color="blue" [data]="doughnutData['assigned']"></dashboard-doughnut>
+          </div>
+          <div class="col-sm-6 col-lg-3">
 
-<dashboard-doughnut [title]="Zugeteilt"></dashboard-doughnut>
+            <dashboard-doughnut title="Aktuell Nicht Zugeteilt" color="orange" [data]="doughnutData['notAssigned']"></dashboard-doughnut>
+          </div>
+
+          <div class="col-sm-6 col-lg-3">
+            <dashboard-doughnut title="Bearbeitet" color="green" [data]="doughnutData['processed']"></dashboard-doughnut>
+          </div>
+
+          <div class="col-sm-6 col-lg-3">
+            <dashboard-doughnut title="Unbearbeitet" color="purple" [data]="doughnutData['notProcessed']"></dashboard-doughnut>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

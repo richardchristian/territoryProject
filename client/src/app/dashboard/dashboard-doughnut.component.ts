@@ -1,10 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ColorService } from '../_services/color.service';
 
 declare var Chart: any;
 
 Chart.pluginService.register({
     afterUpdate: function (chart) {
+        console.log(chart);
         if (chart.config.options.elements.center) {
             var helpers = Chart.helpers;
             var centerConfig = chart.config.options.elements.center;
@@ -58,7 +60,9 @@ Chart.pluginService.register({
             ctx.textBaseline = 'middle';
             var centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
             var centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
-            ctx.fillText(centerConfig.text, centerX, centerY);
+
+            var text = chart.config.data.datasets[0].data[0];
+            ctx.fillText(text, centerX, centerY);
             ctx.restore();
         }
     },
@@ -70,35 +74,39 @@ Chart.pluginService.register({
 })
 export class DashboardDoughnutComponent implements OnInit {
 
-    ngOnInit(): void {
+    @Input() title: string;
+    @Input() data: number[];
+    @Input() color: any;
+    public doughnutChartColors: Array<any>;
+    public doughnutChartOption: any;
 
+    constructor(private colorService: ColorService) {
     }
 
-    public doughnutChartData: number[] = [60, 40];
-    public doughnutChartType: string = 'doughnut';
-    public doughnutChartColors: Array<any> = [{
-        backgroundColor: ['#50B3DD', '#C4E1EE']
-    }];
+    ngOnInit(): void {
+        this.doughnutChartColors = [{
+            backgroundColor: [
+                this.colorService.getColor(this.color, '500'),
+                this.colorService.getColor(this.color, '100')
+            ]
+        }];
 
-    public doughnutChartOption: any = {
-        cutoutPercentage: 60,
-        responsive: true,
-        maintainAspectRatio: false,
-        tooltips: { enabled: false },
-        elements: {
-            center: {
-                // the longest text that could appear in the center
-                maxText: '100%',
-                text: '90%',
-                fontColor: '#36A2EB',
-                fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-                fontStyle: 'normal',
-                // fontSize: 12,
-                // if a fontSize is NOT specified, we will scale (within the below limits) maxText to take up the maximum space in the center
-                // if these are not specified either, we default to 1 and 256
-                minFontSize: 1,
-                maxFontSize: 256,
+        this.doughnutChartOption = {
+            cutoutPercentage: 60,
+            responsive: true,
+            maintainAspectRatio: false,
+            tooltips: { enabled: false },
+            elements: {
+                center: {
+                    maxText: '100%',
+                    text: this.data,
+                    fontColor: this.colorService.getColor(this.color, '400'),
+                    fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                    fontStyle: 'normal',
+                    minFontSize: 1,
+                    maxFontSize: 256,
+                }
             }
-        }
-    };
+        };
+    }
 }
