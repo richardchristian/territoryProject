@@ -143,21 +143,21 @@ function getTerritoryCardTerritoriesHeader(territories) {
                 <td colspan=2 class=xl8228767 width=150 style='border-right:1.0pt solid black;
                     border-left:none;width:112pt'>${territories[1].name}</td>
                 <td colspan=2 class=xl8228767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>${territories[2].name}</td>
+                    border-left:none; width:112pt'>${territories[2].name}</td>
                 <td colspan=2 class=xl8228767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>${territories[3].name}</td>
+                    border-left:none; width:112pt'>${territories[3].name}</td>
                 <td colspan=2 class=xl8228767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>${territories[4].name}</td>
+                    border-left:none; width:112pt'>${territories[4].name}</td>
                 <td colspan=2 class=xl8228767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>${territories[5].name}</td>
+                    border-left:none; width:112pt'>${territories[5].name}</td>
                 <td colspan=2 class=xl8228767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>${territories[6].name}</td>
+                    border-left:none; width:112pt'>${territories[6].name}</td>
                 <td colspan=2 class=xl8228767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>${territories[7].name}</td>
+                    border-left:none; width:112pt'>${territories[7].name}</td>
                 <td colspan=2 class=xl8228767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>${territories[8].name}</td>
+                    border-left:none; width:112pt'>${territories[8].name}</td>
                 <td colspan=2 class=xl8228767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>${territories[9].name}</td>
+                    border-left:none; width:112pt'>${territories[9].name}</td>
             </tr>
             <tr height=33 style='height:25pt'>
                 <td height=33 class=xl7528767 width=75 style='height:25pt;width:56pt'>Nr.</td>
@@ -194,35 +194,35 @@ function getTerritoryCardTerritoryEntries(territories, index) {
                     ${territories[1].entries[index].proclaimerID.lastName.toUpperCase()} ${territories[1].entries[index].proclaimerID.firstName} 
                 </td>
                 <td colspan=2 class=xl8028767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>
+                    border-left:none; width:112pt'>
                     ${territories[2].entries[index].proclaimerID.lastName.toUpperCase()} ${territories[2].entries[index].proclaimerID.firstName} 
                 </td>
                 <td colspan=2 class=xl8028767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>
+                    border-left:none; width:112pt'>
                     ${territories[3].entries[index].proclaimerID.lastName.toUpperCase()} ${territories[3].entries[index].proclaimerID.firstName} 
                 </td>
                 <td colspan=2 class=xl8028767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>
+                    border-left:none; width:112pt'>
                     ${territories[4].entries[index].proclaimerID.lastName.toUpperCase()} ${territories[4].entries[index].proclaimerID.firstName} 
                 </td>
                 <td colspan=2 class=xl8028767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>
+                    border-left:none; width:112pt'>
                     ${territories[5].entries[index].proclaimerID.lastName.toUpperCase()} ${territories[5].entries[index].proclaimerID.firstName} 
                 </td>
                 <td colspan=2 class=xl8028767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>
+                    border-left:none; width:112pt'>
                     ${territories[6].entries[index].proclaimerID.lastName.toUpperCase()} ${territories[6].entries[index].proclaimerID.firstName} 
                 </td>
                 <td colspan=2 class=xl8028767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>
+                    border-left:none; width:112pt'>
                     ${territories[7].entries[index].proclaimerID.lastName.toUpperCase()} ${territories[7].entries[index].proclaimerID.firstName} 
                 </td>
                 <td colspan=2 class=xl8028767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>
+                    border-left:none; width:112pt'>
                     ${territories[8].entries[index].proclaimerID.lastName.toUpperCase()} ${territories[8].entries[index].proclaimerID.firstName} 
                 </td>
                 <td colspan=2 class=xl8028767 width=150 style='border-right:1.0pt solid black;
-                    border-left:none; width: 112pt'>
+                    border-left:none; width:112pt'>
                     ${territories[9].entries[index].proclaimerID.lastName.toUpperCase()} ${territories[9].entries[index].proclaimerID.firstName} 
                 </td>
             </tr>
@@ -236,75 +236,75 @@ function getTerritoryCardTerritoryEntries(territories, index) {
             moment(territories[0].entries[index].submitDate).isValid() ?
             moment(territories[0].entries[index].submitDate).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7028767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[1].entries[index].from !== undefined &&
+                    width:56pt'>${territories[1].entries[index].from !== undefined &&
             moment(territories[1].entries[index].from).isValid() ?
             moment(territories[1].entries[index].from).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7128767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[1].entries[index].submitDate !== undefined &&
+                    width:56pt'>${territories[1].entries[index].submitDate !== undefined &&
             moment(territories[1].entries[index].submitDate).isValid() ?
             moment(territories[1].entries[index].submitDate).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7028767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[2].entries[index].from !== undefined &&
+                    width:56pt'>${territories[2].entries[index].from !== undefined &&
             moment(territories[2].entries[index].from).isValid() ?
             moment(territories[2].entries[index].from).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7128767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[2].entries[index].submitDate !== undefined &&
+                    width:56pt'>${territories[2].entries[index].submitDate !== undefined &&
             moment(territories[2].entries[index].submitDate).isValid() ?
             moment(territories[2].entries[index].submitDate).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7028767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[3].entries[index].from !== undefined &&
+                    width:56pt'>${territories[3].entries[index].from !== undefined &&
             moment(territories[3].entries[index].from).isValid() ?
             moment(territories[3].entries[index].from).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7128767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[3].entries[index].submitDate !== undefined &&
+                    width:56pt'>${territories[3].entries[index].submitDate !== undefined &&
             moment(territories[3].entries[index].submitDate).isValid() ?
             moment(territories[3].entries[index].submitDate).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7028767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[4].entries[index].from !== undefined &&
+                    width:56pt'>${territories[4].entries[index].from !== undefined &&
             moment(territories[4].entries[index].from).isValid() ?
             moment(territories[4].entries[index].from).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7128767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[4].entries[index].submitDate !== undefined &&
+                    width:56pt'>${territories[4].entries[index].submitDate !== undefined &&
             moment(territories[4].entries[index].submitDate).isValid() ?
             moment(territories[4].entries[index].submitDate).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7028767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[5].entries[index].from !== undefined &&
+                    width:56pt'>${territories[5].entries[index].from !== undefined &&
             moment(territories[5].entries[index].from).isValid() ?
             moment(territories[5].entries[index].from).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7128767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[5].entries[index].submitDate !== undefined &&
+                    width:56pt'>${territories[5].entries[index].submitDate !== undefined &&
             moment(territories[5].entries[index].submitDate).isValid() ?
             moment(territories[5].entries[index].submitDate).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7028767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[6].entries[index].from !== undefined &&
+                    width:56pt'>${territories[6].entries[index].from !== undefined &&
             moment(territories[6].entries[index].from).isValid() ?
             moment(territories[6].entries[index].from).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7128767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[6].entries[index].submitDate !== undefined &&
+                    width:56pt'>${territories[6].entries[index].submitDate !== undefined &&
             moment(territories[6].entries[index].submitDate).isValid() ?
             moment(territories[6].entries[index].submitDate).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7028767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[7].entries[index].from !== undefined &&
+                    width:56pt'>${territories[7].entries[index].from !== undefined &&
             moment(territories[7].entries[index].from).isValid() ?
             moment(territories[7].entries[index].from).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7128767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[7].entries[index].submitDate !== undefined &&
+                    width:56pt'>${territories[7].entries[index].submitDate !== undefined &&
             moment(territories[7].entries[index].submitDate).isValid() ?
             moment(territories[7].entries[index].submitDate).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7028767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[8].entries[index].from !== undefined &&
+                    width:56pt'>${territories[8].entries[index].from !== undefined &&
             moment(territories[8].entries[index].from).isValid() ?
             moment(territories[8].entries[index].from).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7128767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[8].entries[index].submitDate !== undefined &&
+                    width:56pt'>${territories[8].entries[index].submitDate !== undefined &&
             moment(territories[8].entries[index].submitDate).isValid() ?
             moment(territories[8].entries[index].submitDate).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7028767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[9].entries[index].from !== undefined &&
+                    width:56pt'>${territories[9].entries[index].from !== undefined &&
             moment(territories[9].entries[index].from).isValid() ?
             moment(territories[9].entries[index].from).format('DD.MM.YYYY') : ""}</td>
                 <td class=xl7128767 width=75 style='border-top:none;border-left:none;
-                    width: 56pt'>${territories[9].entries[index].submitDate !== undefined &&
+                    width:56pt'>${territories[9].entries[index].submitDate !== undefined &&
             moment(territories[9].entries[index].submitDate).isValid() ?
             moment(territories[9].entries[index].submitDate).format('DD.MM.YYYY') : ""}</td>
             </tr>`;

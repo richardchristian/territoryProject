@@ -8,7 +8,7 @@ import { ReportService } from '../_services/report.service';
 })
 export class DashboardComponent implements OnInit {
   public isDataAvailable: boolean = false;
-  public dataArr: number[];
+  public dataArr: any[];
   public doughnutData: any;
   public dashboardTimesection: Array<Object> = [
     { id: "OneMonth", name: "1 Monat" },
@@ -41,7 +41,8 @@ export class DashboardComponent implements OnInit {
           'notAssigned': [data.notAssignedTerritories.length, data.assignedTerritories.length],
           'processed': [data.processedTerritories.length, data.notProcessedTerritories.length],
           'notProcessed': [data.notProcessedTerritories.length, data.processedTerritories.length]
-        }
+        };
+        this.dataArr = data;
         this.isDataAvailable = true;
       });
   }

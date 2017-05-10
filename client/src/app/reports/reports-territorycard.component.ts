@@ -28,7 +28,11 @@ export class ReportsTerritoryCardComponent implements OnInit {
     }
 
     loadData(data) {
-        this.dataContainer.nativeElement.innerHTML = data;
+        var responsiveData = data.replace(/width:56pt/g, 'width:5%');
+        responsiveData = responsiveData.replace(/width:112pt/g, 'width:10%');
+        responsiveData = responsiveData.replace(/width:280pt/g, 'width:25%');
+        responsiveData = responsiveData.replace(/width:1120pt/g, 'width:100%');
+        this.dataContainer.nativeElement.innerHTML = responsiveData;
     }
 
     print(): void {
@@ -40,14 +44,13 @@ export class ReportsTerritoryCardComponent implements OnInit {
       <html>
         <head>
           <title>Gebietskarten</title>
-          ${this.territoryCards.style}</style>
+          ${this.territoryCards.style}
         </head>
-        <body onload="window.print();window.close()">${printContents}</body>
+        <body onload="window.print();window.close()">${this.territoryCards.table}</body>
       </html>`
         );
         popupWin.document.close();
     }
-
 }
 
 
