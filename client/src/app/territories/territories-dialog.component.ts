@@ -61,7 +61,7 @@ export class TerritoriesDialogComponent implements OnInit {
             this.readonly = true;
             this.processingDataParam.from = new Date(_processingData.from);
             this.processingDataParam.to = new Date(_processingData.to);
-            this.processingDataParam.extend = _processingData.extend !== undefined ? new Date(_processingData.extend) : undefined;
+            this.processingDataParam.extend = (_processingData.extend !== undefined && _processingData.extend !== null) ? new Date(_processingData.extend) : undefined;
 
             this.setSelectedTerritoryInput(this.processingDataParam.territoryID);
             this.setSelectedProclaimerInput(this.processingDataParam.proclaimerID);
@@ -204,7 +204,7 @@ export class TerritoriesDialogComponent implements OnInit {
     }
     inputFromChanged(value: any) {
         if (this.processingDataParam.to === undefined || this.processingDataParam.to === null)
-            this.processingDataParam.to = moment(value).add(this.config.territory.standardTime, 'month').toDate();
+            this.processingDataParam.to = moment.utc(value).add(this.config.territory.standardTime, 'month').toDate();
     }
 
     save() {
@@ -239,7 +239,7 @@ export class TerritoriesDialogComponent implements OnInit {
 
     extend() {
         this.edit();
-        var momentToDate = moment(this.processingDataParam.to);
+        var momentToDate = moment.utc(this.processingDataParam.to);
         this.processingDataParam.extend = momentToDate.add(this.config.territory.extendTime, 'month').toDate();
     }
 

@@ -1,0 +1,2022 @@
+[
+    {
+        "TerritoryNumber": 1,
+        "name": "Ebreichsdorf",
+        "proclaimer": "AUTHERIT Antonia",
+        "from": "28.02.2016",
+        "to": "28.06.2016",
+        "extend": null,
+        "submitDate": "23.06.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 1,
+        "name": "Ebreichsdorf",
+        "proclaimer": "MISAR Simon",
+        "from": "11.03.2017",
+        "to": "11.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 2,
+        "name": "Ebreichsdorf",
+        "proclaimer": "MISAR Simon",
+        "from": "24.09.2015",
+        "to": "24.01.2016",
+        "extend": null,
+        "submitDate": "31.03.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 2,
+        "name": "Ebreichsdorf",
+        "proclaimer": "SLAVICEK Nina",
+        "from": "10.12.2016",
+        "to": "10.04.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 3,
+        "name": "Ebreichsdorf",
+        "proclaimer": "MISAR Simon",
+        "from": "17.03.2016",
+        "to": "17.07.2016",
+        "extend": null,
+        "submitDate": "31.03.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 3,
+        "name": "Ebreichsdorf",
+        "proclaimer": "SOLLINGER Irene",
+        "from": "05.01.2017",
+        "to": "05.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 4,
+        "name": "Ebreichsdorf",
+        "proclaimer": "SLAVICEK Nina",
+        "from": "12.11.2016",
+        "to": "12.03.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 5,
+        "name": "Ebreichsdorf",
+        "proclaimer": "HIRSCHBIGL Peter",
+        "from": "10.12.2016",
+        "to": "10.04.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 5,
+        "name": "Ebreichsdorf",
+        "proclaimer": "TRAXLER Lukas",
+        "from": "22.01.2017",
+        "to": "22.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 6,
+        "name": "Ebreichsdorf",
+        "proclaimer": "KRUCKY Thomas",
+        "from": "19.06.2016",
+        "to": "19.10.2016",
+        "extend": "28.02.2017",
+        "submitDate": "09.02.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 7,
+        "name": "Ebreichsdorf",
+        "proclaimer": "LESER Alexander",
+        "from": "17.10.2015",
+        "to": "17.02.2016",
+        "extend": null,
+        "submitDate": "20.02.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 7,
+        "name": "Ebreichsdorf",
+        "proclaimer": "KMONICEK Fritz",
+        "from": "27.10.2016",
+        "to": "27.02.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 8,
+        "name": "Ebreichsdorf",
+        "proclaimer": "AUTHERIT Antonia",
+        "from": "04.03.2017",
+        "to": "04.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 9,
+        "name": "Ebreichsdorf",
+        "proclaimer": "LESER Alexander",
+        "from": "20.08.2016",
+        "to": "20.12.2016",
+        "extend": null,
+        "submitDate": "01.09.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 10,
+        "name": "Ebreichsdorf",
+        "proclaimer": "MÜHLHOFER Herbert",
+        "from": "15.12.2016",
+        "to": "15.04.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 11,
+        "name": "Ebreichsdorf",
+        "proclaimer": "MISAR Mimi",
+        "from": "24.03.2016",
+        "to": "24.07.2016",
+        "extend": null,
+        "submitDate": "04.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 12,
+        "name": "Ebreichsdorf",
+        "proclaimer": "AUTHERIT Antonia",
+        "from": "28.02.2016",
+        "to": "28.06.2016",
+        "extend": null,
+        "submitDate": "23.06.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 12,
+        "name": "Ebreichsdorf",
+        "proclaimer": "GABRIEL Robert",
+        "from": "28.02.2017",
+        "to": "28.06.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 13,
+        "name": "Ebreichsdorf",
+        "proclaimer": "SCHMIDT Andreas",
+        "from": "21.08.2016",
+        "to": "21.12.2016",
+        "extend": null,
+        "submitDate": "12.02.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 14,
+        "name": "Ebreichsdorf",
+        "proclaimer": "SOLDERER Roland",
+        "from": "14.08.2016",
+        "to": "14.12.2016",
+        "extend": null,
+        "submitDate": "21.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 15,
+        "name": "Ebreichsdorf",
+        "proclaimer": "AUTHERIT Antonia",
+        "from": "05.11.2015",
+        "to": "05.03.2016",
+        "extend": null,
+        "submitDate": "23.06.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 16,
+        "name": "Ebreichsdorf",
+        "proclaimer": "BOCKENAUER Anton",
+        "from": "20.08.2016",
+        "to": "20.12.2016",
+        "extend": null,
+        "submitDate": "15.09.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 17,
+        "name": "Ebreichsdorf",
+        "proclaimer": "KMONICEK Fritz",
+        "from": "17.03.2016",
+        "to": "17.07.2016",
+        "extend": null,
+        "submitDate": "28.04.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 17,
+        "name": "Ebreichsdorf",
+        "proclaimer": "MISAR Simon",
+        "from": "26.01.2017",
+        "to": "26.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 18,
+        "name": "Ebreichsdorf",
+        "proclaimer": "MISAR Simon",
+        "from": "03.09.2016",
+        "to": "03.01.2017",
+        "extend": null,
+        "submitDate": "28.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 19,
+        "name": "Ebreichsdorf",
+        "proclaimer": "LESER Alexander",
+        "from": "28.09.2016",
+        "to": "28.01.2017",
+        "extend": null,
+        "submitDate": "14.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 20,
+        "name": "Ebreichsdorf",
+        "proclaimer": "AUTHERIT Antonia",
+        "from": "23.06.2016",
+        "to": "23.10.2016",
+        "extend": null,
+        "submitDate": "26.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 21,
+        "name": "Ebreichsdorf",
+        "proclaimer": "GABRIEL Robert",
+        "from": "07.07.2016",
+        "to": "07.11.2016",
+        "extend": null,
+        "submitDate": "17.11.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 22,
+        "name": "Ebreichsdorf",
+        "proclaimer": "KOCHER Alexander",
+        "from": "04.09.2015",
+        "to": "04.01.2016",
+        "extend": null,
+        "submitDate": "04.02.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 22,
+        "name": "Ebreichsdorf",
+        "proclaimer": "AUTHERIT Antonia",
+        "from": "04.03.2017",
+        "to": "04.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 23,
+        "name": "Weigelsdorf",
+        "proclaimer": "LOIBL Christoph",
+        "from": "31.12.2015",
+        "to": "30.04.2016",
+        "extend": null,
+        "submitDate": "23.06.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 24,
+        "name": "Weigelsdorf",
+        "proclaimer": "GRUBER Elisabeth",
+        "from": "28.05.2016",
+        "to": "28.09.2016",
+        "extend": null,
+        "submitDate": "09.02.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 25,
+        "name": "Weigelsdorf",
+        "proclaimer": "JINDRA Michael",
+        "from": "04.08.2016",
+        "to": "04.12.2016",
+        "extend": null,
+        "submitDate": "28.02.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 26,
+        "name": "Weigelsdorf",
+        "proclaimer": "ALLARD Manfred",
+        "from": "01.11.2015",
+        "to": "01.03.2016",
+        "extend": null,
+        "submitDate": "05.05.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 26,
+        "name": "Weigelsdorf",
+        "proclaimer": "ION Tsinar",
+        "from": "28.01.2017",
+        "to": "28.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 27,
+        "name": "Weigelsdorf",
+        "proclaimer": "KERESE Peter",
+        "from": "20.08.2016",
+        "to": "20.12.2016",
+        "extend": null,
+        "submitDate": "01.09.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 27,
+        "name": "Weigelsdorf",
+        "proclaimer": "HIRSCHBIGL Peter",
+        "from": "21.01.2017",
+        "to": "21.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 28,
+        "name": "Weigelsdorf",
+        "proclaimer": "LESER Alexander",
+        "from": "04.01.2016",
+        "to": "04.05.2016",
+        "extend": null,
+        "submitDate": "20.02.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 28,
+        "name": "Weigelsdorf",
+        "proclaimer": "LESER Olivia",
+        "from": "19.08.2016",
+        "to": "19.12.2016",
+        "extend": null,
+        "submitDate": "14.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 29,
+        "name": "Weigelsdorf",
+        "proclaimer": "SOLDERER Roland",
+        "from": "20.02.2016",
+        "to": "20.06.2016",
+        "extend": null,
+        "submitDate": "21.02.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 29,
+        "name": "Weigelsdorf",
+        "proclaimer": "TRAXLER Eunike",
+        "from": "06.10.2016",
+        "to": "06.02.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 30,
+        "name": "Weigelsdorf",
+        "proclaimer": "BOCKENAUER Anton",
+        "from": "06.03.2016",
+        "to": "06.07.2016",
+        "extend": null,
+        "submitDate": "17.03.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 30,
+        "name": "Weigelsdorf",
+        "proclaimer": "HIRSCHBIGL Karin",
+        "from": "16.10.2016",
+        "to": "16.02.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 31,
+        "name": "Weigelsdorf",
+        "proclaimer": "GRUBER Hans",
+        "from": "20.02.2016",
+        "to": "20.06.2016",
+        "extend": null,
+        "submitDate": "11.09.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 32,
+        "name": "Weigelsdorf",
+        "proclaimer": "TRAXLER Lukas",
+        "from": "09.07.2016",
+        "to": "09.11.2016",
+        "extend": null,
+        "submitDate": "01.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 33,
+        "name": "Weigelsdorf",
+        "proclaimer": "JINDRA Denise",
+        "from": "02.02.2017",
+        "to": "02.06.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 34,
+        "name": "Weigelsdorf",
+        "proclaimer": "TRAXLER Lukas",
+        "from": "11.06.2016",
+        "to": "11.10.2016",
+        "extend": null,
+        "submitDate": "30.06.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 35,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "HIRSCHBIGL Karin",
+        "from": "23.06.2016",
+        "to": "23.10.2016",
+        "extend": null,
+        "submitDate": "21.07.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 35,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "SOLDERER Roland",
+        "from": "01.03.2017",
+        "to": "01.07.2017",
+        "extend": null,
+        "submitDate": "05.03.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 36,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "JINDRA Denise",
+        "from": "10.09.2015",
+        "to": "10.01.2016",
+        "extend": null,
+        "submitDate": "05.05.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 37,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "EBENRITTER Inge",
+        "from": "17.01.2016",
+        "to": "17.05.2016",
+        "extend": null,
+        "submitDate": "11.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 37,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "HIRSCHBIGL Karin",
+        "from": "11.03.2017",
+        "to": "11.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 38,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "LESER Alexander",
+        "from": "04.08.2016",
+        "to": "04.12.2016",
+        "extend": null,
+        "submitDate": "01.09.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 39,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "HIRSCHBIGL Peter",
+        "from": "28.05.2016",
+        "to": "28.09.2016",
+        "extend": null,
+        "submitDate": "21.07.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 39,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "BOCKENAUER Helga",
+        "from": "26.01.2017",
+        "to": "26.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 40,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "HIRSCHBIGL Peter",
+        "from": "28.05.2016",
+        "to": "28.09.2016",
+        "extend": null,
+        "submitDate": "21.07.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 40,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "GABRIEL Robert",
+        "from": "26.03.2017",
+        "to": "26.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 41,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "LESER Alexander",
+        "from": "14.01.2017",
+        "to": "14.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 42,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "FRANK Anita",
+        "from": "21.05.2016",
+        "to": "21.09.2016",
+        "extend": null,
+        "submitDate": "14.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 43,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "LESER Alexander",
+        "from": "14.11.2015",
+        "to": "14.03.2016",
+        "extend": null,
+        "submitDate": "02.06.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 44,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "KELLNER Tanja",
+        "from": "31.07.2016",
+        "to": "30.11.2016",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 45,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "KURZREITER Werner",
+        "from": "19.11.2015",
+        "to": "19.03.2016",
+        "extend": null,
+        "submitDate": "23.06.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 45,
+        "name": "Unterwaltersdorf",
+        "proclaimer": "SOLDERER Roland",
+        "from": "01.03.2017",
+        "to": "01.07.2017",
+        "extend": null,
+        "submitDate": "05.03.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 46,
+        "name": "Schranawand",
+        "proclaimer": "ION Tsinar",
+        "from": "17.01.2016",
+        "to": "17.05.2016",
+        "extend": null,
+        "submitDate": "11.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 47,
+        "name": "Deutsch Brodersdorf",
+        "proclaimer": "GABRIEL Gerti",
+        "from": "01.10.2015",
+        "to": "01.02.2016",
+        "extend": null,
+        "submitDate": "19.05.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 47,
+        "name": "Deutsch Brodersdorf",
+        "proclaimer": "KELLNER Siegfried",
+        "from": "17.11.2016",
+        "to": "17.03.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 48,
+        "name": "Deutsch Brodersdorf",
+        "proclaimer": "JINDRA Jael",
+        "from": "05.03.2016",
+        "to": "05.07.2016",
+        "extend": null,
+        "submitDate": "26.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 49,
+        "name": "Deutsch Brodersdorf",
+        "proclaimer": "SLAVICEK Nina",
+        "from": "19.06.2016",
+        "to": "19.10.2016",
+        "extend": null,
+        "submitDate": "13.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 49,
+        "name": "Deutsch Brodersdorf",
+        "proclaimer": "LESER Olivia",
+        "from": "18.03.2017",
+        "to": "18.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 50,
+        "name": "Deutsch Brodersdorf",
+        "proclaimer": "MISAR Simon",
+        "from": "24.09.2015",
+        "to": "24.01.2016",
+        "extend": null,
+        "submitDate": "11.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 50,
+        "name": "Deutsch Brodersdorf",
+        "proclaimer": "LESER Olivia",
+        "from": "14.01.2017",
+        "to": "14.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 51,
+        "name": "Deutsch Brodersdorf",
+        "proclaimer": "KLIMA Paul",
+        "from": "12.12.2015",
+        "to": "12.04.2016",
+        "extend": null,
+        "submitDate": "07.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 51,
+        "name": "Deutsch Brodersdorf",
+        "proclaimer": "SLAVICEK Nina",
+        "from": "11.03.2017",
+        "to": "11.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 52,
+        "name": "Mitterndorf a.d.F.",
+        "proclaimer": "LESER Alexander",
+        "from": "18.06.2016",
+        "to": "18.10.2016",
+        "extend": null,
+        "submitDate": "14.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 53,
+        "name": "Mitterndorf a.d.F.",
+        "proclaimer": "HIRSCHBIGL Peter",
+        "from": "11.09.2016",
+        "to": "11.01.2017",
+        "extend": null,
+        "submitDate": "22.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 55,
+        "name": "Mitterndorf a.d.F.",
+        "proclaimer": "GABRIEL Gerti",
+        "from": "02.02.2017",
+        "to": "02.06.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 56,
+        "name": "Mitterndorf a.d.F.",
+        "proclaimer": "LOIBL Lusine",
+        "from": "01.09.2016",
+        "to": "01.01.2017",
+        "extend": null,
+        "submitDate": "30.11.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 57,
+        "name": "Mitterndorf a.d.F.",
+        "proclaimer": "GABRIEL Robert",
+        "from": "17.03.2016",
+        "to": "17.07.2016",
+        "extend": null,
+        "submitDate": "14.07.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 57,
+        "name": "Mitterndorf a.d.F.",
+        "proclaimer": "LESER Alexander",
+        "from": "11.03.2017",
+        "to": "11.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 58,
+        "name": "Mitterndorf a.d.F.",
+        "proclaimer": "LESER Alexander",
+        "from": "11.03.2017",
+        "to": "11.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 59,
+        "name": "Mitterndorf a.d.F.",
+        "proclaimer": "BRODKORB Andreas",
+        "from": "16.08.2016",
+        "to": "16.12.2016",
+        "extend": null,
+        "submitDate": "12.02.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 60,
+        "name": "Mitterndorf a.d.F.",
+        "proclaimer": "LOIBL Lusine",
+        "from": "26.03.2016",
+        "to": "26.07.2016",
+        "extend": null,
+        "submitDate": "24.07.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 61,
+        "name": "Leithaprodersdorf",
+        "proclaimer": "BOCKENAUER Petra",
+        "from": "14.02.2016",
+        "to": "14.06.2016",
+        "extend": null,
+        "submitDate": "17.11.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 62,
+        "name": "Leithaprodersdorf",
+        "proclaimer": "SLAVICEK Nina",
+        "from": "05.11.2016",
+        "to": "05.03.2017",
+        "extend": null,
+        "submitDate": "11.03.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 63,
+        "name": "Leithaprodersdorf",
+        "proclaimer": "BOCKENAUER Andreas",
+        "from": "06.02.2016",
+        "to": "06.06.2016",
+        "extend": null,
+        "submitDate": "01.09.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 63,
+        "name": "Leithaprodersdorf",
+        "proclaimer": "LESER Gisela",
+        "from": "05.01.2017",
+        "to": "05.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 64,
+        "name": "Leithaprodersdorf",
+        "proclaimer": "JINDRA Jael",
+        "from": "19.03.2017",
+        "to": "19.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 65,
+        "name": "Leithaprodersdorf",
+        "proclaimer": "BOCKENAUER Anton",
+        "from": "30.06.2016",
+        "to": "30.10.2016",
+        "extend": null,
+        "submitDate": "08.09.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 66,
+        "name": "Moosbrunn",
+        "proclaimer": "LESER Gisela",
+        "from": "04.08.2016",
+        "to": "04.12.2016",
+        "extend": null,
+        "submitDate": "15.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 67,
+        "name": "Moosbrunn",
+        "proclaimer": "SLAVICEK Nina",
+        "from": "22.10.2015",
+        "to": "22.02.2016",
+        "extend": null,
+        "submitDate": "28.05.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 67,
+        "name": "Moosbrunn",
+        "proclaimer": "JEITLER Hermine",
+        "from": "01.10.2016",
+        "to": "01.02.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 68,
+        "name": "Moosbrunn",
+        "proclaimer": "EBENRITTER Inge",
+        "from": "22.09.2016",
+        "to": "22.01.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 69,
+        "name": "Moosbrunn",
+        "proclaimer": "MISAR Simon",
+        "from": "17.03.2016",
+        "to": "17.07.2016",
+        "extend": null,
+        "submitDate": "14.05.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 69,
+        "name": "Moosbrunn",
+        "proclaimer": "JURCIZAK Susanne",
+        "from": "05.02.2017",
+        "to": "05.06.2017",
+        "extend": null,
+        "submitDate": "04.03.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 70,
+        "name": "Moosbrunn",
+        "proclaimer": "SOLLINGER Irene",
+        "from": "27.03.2016",
+        "to": "27.07.2016",
+        "extend": null,
+        "submitDate": "01.09.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 70,
+        "name": "Moosbrunn",
+        "proclaimer": "CHRISTIAN Karin",
+        "from": "19.03.2017",
+        "to": "19.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 71,
+        "name": "Moosbrunn",
+        "proclaimer": "KELLNER Siegfried",
+        "from": "26.03.2016",
+        "to": "26.07.2016",
+        "extend": null,
+        "submitDate": "21.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 72,
+        "name": "Moosbrunn",
+        "proclaimer": "SLAVICEK Nina",
+        "from": "22.10.2015",
+        "to": "22.02.2016",
+        "extend": null,
+        "submitDate": "14.05.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 72,
+        "name": "Moosbrunn",
+        "proclaimer": "BOCKENAUER Petra",
+        "from": "17.11.2016",
+        "to": "17.03.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 73,
+        "name": "Kienersee",
+        "proclaimer": "AUTHERIT Antonia",
+        "from": "05.11.2015",
+        "to": "05.03.2016",
+        "extend": null,
+        "submitDate": "23.06.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 74,
+        "name": "Dürrsee",
+        "proclaimer": "BOCKENAUER Anton",
+        "from": "17.03.2016",
+        "to": "17.07.2016",
+        "extend": null,
+        "submitDate": "27.03.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 74,
+        "name": "Dürrsee",
+        "proclaimer": "GABRIEL Uschi",
+        "from": "19.03.2017",
+        "to": "19.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 75,
+        "name": "Schneidergrabensee",
+        "proclaimer": "KURZREITER Werner",
+        "from": "01.03.2017",
+        "to": "01.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 76,
+        "name": "Birkensee",
+        "proclaimer": "LESER Olivia",
+        "from": "03.06.2016",
+        "to": "03.10.2016",
+        "extend": null,
+        "submitDate": "05.11.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 77,
+        "name": "G.Gemeindesee",
+        "proclaimer": "BOCKENAUER Andreas",
+        "from": "15.09.2016",
+        "to": "15.01.2017",
+        "extend": null,
+        "submitDate": "10.12.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 78,
+        "name": "Babenbergersee",
+        "proclaimer": "BOCKENAUER Anton",
+        "from": "17.03.2016",
+        "to": "17.07.2016",
+        "extend": null,
+        "submitDate": "27.03.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 79,
+        "name": "Blaha,Bauer,Fasansee",
+        "proclaimer": "BOCKENAUER Anton",
+        "from": "08.10.2016",
+        "to": "08.02.2017",
+        "extend": null,
+        "submitDate": "03.11.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 80,
+        "name": "Neuhofsee",
+        "proclaimer": "MISAR Simon",
+        "from": "01.10.2015",
+        "to": "01.02.2016",
+        "extend": null,
+        "submitDate": "28.01.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 81,
+        "name": "Seibersdorf",
+        "proclaimer": "LESER Gisela",
+        "from": "25.02.2016",
+        "to": "25.06.2016",
+        "extend": null,
+        "submitDate": "04.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 81,
+        "name": "Seibersdorf",
+        "proclaimer": "GRUBER Elisabeth",
+        "from": "12.03.2017",
+        "to": "12.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 82,
+        "name": "Seibersdorf",
+        "proclaimer": "LESER Olivia",
+        "from": "25.02.2016",
+        "to": "25.06.2016",
+        "extend": null,
+        "submitDate": "04.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 83,
+        "name": "Gramatneusiedl",
+        "proclaimer": "GABRIEL Gerti",
+        "from": "05.06.2016",
+        "to": "05.10.2016",
+        "extend": null,
+        "submitDate": "15.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 84,
+        "name": "Gramatneusiedl",
+        "proclaimer": "CHRISTIAN Melanie",
+        "from": "03.03.2016",
+        "to": "03.07.2016",
+        "extend": null,
+        "submitDate": "05.11.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 85,
+        "name": "Gramatneusiedl",
+        "proclaimer": "GABRIEL Robert",
+        "from": "17.01.2016",
+        "to": "17.05.2016",
+        "extend": null,
+        "submitDate": "19.05.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 85,
+        "name": "Gramatneusiedl",
+        "proclaimer": "MISAR Simon",
+        "from": "11.03.2017",
+        "to": "11.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 86,
+        "name": "Gramatneusiedl",
+        "proclaimer": "HIRSCHBIGL Peter",
+        "from": "21.07.2016",
+        "to": "21.11.2016",
+        "extend": null,
+        "submitDate": "22.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 87,
+        "name": "Gramatneusiedl",
+        "proclaimer": "BOCKENAUER Anton",
+        "from": "07.08.2016",
+        "to": "07.12.2016",
+        "extend": null,
+        "submitDate": "15.09.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 87,
+        "name": "Gramatneusiedl",
+        "proclaimer": "CHRISTIAN Karin",
+        "from": "19.03.2017",
+        "to": "19.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 88,
+        "name": "Gramatneusiedl",
+        "proclaimer": "PAUSWANG Eva",
+        "from": "23.02.2017",
+        "to": "23.06.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 89,
+        "name": "Gramatneusiedl",
+        "proclaimer": "HIRSCHBIGL Peter",
+        "from": "21.07.2016",
+        "to": "21.11.2016",
+        "extend": null,
+        "submitDate": "16.10.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 90,
+        "name": "Gramatneusiedl",
+        "proclaimer": "MISAR Simon",
+        "from": "28.04.2016",
+        "to": "28.08.2016",
+        "extend": null,
+        "submitDate": "20.10.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 91,
+        "name": "Gramatneusiedl",
+        "proclaimer": "KMONICEK Fritz",
+        "from": "14.05.2016",
+        "to": "14.09.2016",
+        "extend": null,
+        "submitDate": "27.10.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 92,
+        "name": "Gramatneusiedl",
+        "proclaimer": "CHRISTIAN Cornelia",
+        "from": "16.02.2016",
+        "to": "16.06.2016",
+        "extend": null,
+        "submitDate": "17.11.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 93,
+        "name": "Gramatneusiedl",
+        "proclaimer": "JINDRA Denise",
+        "from": "07.07.2016",
+        "to": "07.11.2016",
+        "extend": null,
+        "submitDate": "04.03.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 94,
+        "name": "Gramatneusiedl",
+        "proclaimer": "BOCKENAUER Helga",
+        "from": "11.02.2016",
+        "to": "11.06.2016",
+        "extend": null,
+        "submitDate": "26.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 95,
+        "name": "Gramatneusiedl",
+        "proclaimer": "KURZREITER Werner",
+        "from": "07.07.2016",
+        "to": "07.11.2016",
+        "extend": null,
+        "submitDate": "26.02.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 96,
+        "name": "Gramatneusiedl",
+        "proclaimer": "MAYER Cornelia",
+        "from": "20.08.2016",
+        "to": "20.12.2016",
+        "extend": null,
+        "submitDate": "12.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 97,
+        "name": "Velm",
+        "proclaimer": "SLAVICEK Nina",
+        "from": "14.05.2016",
+        "to": "14.09.2016",
+        "extend": null,
+        "submitDate": "12.11.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 98,
+        "name": "Velm",
+        "proclaimer": "GRUBER Hans",
+        "from": "12.03.2016",
+        "to": "12.07.2016",
+        "extend": null,
+        "submitDate": "23.03.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 98,
+        "name": "Velm",
+        "proclaimer": "FRANK Anita",
+        "from": "14.01.2017",
+        "to": "14.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 99,
+        "name": "Velm",
+        "proclaimer": "BOCKENAUER Anton",
+        "from": "03.03.2016",
+        "to": "03.07.2016",
+        "extend": null,
+        "submitDate": "13.03.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 100,
+        "name": "Velm",
+        "proclaimer": "LESER Alexander",
+        "from": "20.08.2016",
+        "to": "20.12.2016",
+        "extend": null,
+        "submitDate": "01.09.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 101,
+        "name": "Velm",
+        "proclaimer": "MÜLLER Erich",
+        "from": "20.02.2016",
+        "to": "20.06.2016",
+        "extend": null,
+        "submitDate": "08.10.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 102,
+        "name": "Reisenberg",
+        "proclaimer": "BRODKORB Alina",
+        "from": "08.05.2016",
+        "to": "08.09.2016",
+        "extend": null,
+        "submitDate": "05.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 103,
+        "name": "Reisenberg",
+        "proclaimer": "SOLLINGER Irene",
+        "from": "01.09.2016",
+        "to": "01.01.2017",
+        "extend": null,
+        "submitDate": "05.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 104,
+        "name": "Reisenberg",
+        "proclaimer": "JURCIZAK Susanne",
+        "from": "28.02.2016",
+        "to": "28.06.2016",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 105,
+        "name": "Reisenberg",
+        "proclaimer": "GUTTMANN Hannelore",
+        "from": "07.08.2016",
+        "to": "07.12.2016",
+        "extend": null,
+        "submitDate": "23.02.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 106,
+        "name": "Reisenberg",
+        "proclaimer": "CHRISTIAN Karin",
+        "from": "12.03.2016",
+        "to": "12.07.2016",
+        "extend": null,
+        "submitDate": "05.12.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 107,
+        "name": "Reisenberg",
+        "proclaimer": "LESER Olivia",
+        "from": "28.07.2016",
+        "to": "28.11.2016",
+        "extend": null,
+        "submitDate": "22.10.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 107,
+        "name": "Reisenberg",
+        "proclaimer": "JURCIZAK Susanne",
+        "from": "04.03.2017",
+        "to": "04.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 108,
+        "name": "Reisenberg",
+        "proclaimer": "TRAXLER Lukas",
+        "from": "14.02.2016",
+        "to": "14.06.2016",
+        "extend": null,
+        "submitDate": "24.03.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 108,
+        "name": "Reisenberg",
+        "proclaimer": "BRODKORB Alina",
+        "from": "05.01.2017",
+        "to": "05.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 109,
+        "name": "Loretto",
+        "proclaimer": "SLAVICEK Nina",
+        "from": "13.08.2016",
+        "to": "13.12.2016",
+        "extend": null,
+        "submitDate": "14.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 110,
+        "name": "Loretto",
+        "proclaimer": "AUTHERIT Antonia",
+        "from": "23.06.2016",
+        "to": "23.10.2016",
+        "extend": null,
+        "submitDate": "26.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 111,
+        "name": "Loretto",
+        "proclaimer": "SCHMIDT Andreas",
+        "from": "14.11.2015",
+        "to": "14.03.2016",
+        "extend": null,
+        "submitDate": "04.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 111,
+        "name": "Loretto",
+        "proclaimer": "BOCKENAUER Andreas",
+        "from": "10.12.2016",
+        "to": "10.04.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 112,
+        "name": "Wasenbruck",
+        "proclaimer": "SLAVICEK Nina",
+        "from": "30.06.2016",
+        "to": "30.10.2016",
+        "extend": null,
+        "submitDate": "05.11.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 113,
+        "name": "Wasenbruck",
+        "proclaimer": "EBENRITTER Heinz",
+        "from": "11.09.2016",
+        "to": "11.01.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 114,
+        "name": "Wasenbruck",
+        "proclaimer": "JURCIZAK Susanne",
+        "from": "10.12.2015",
+        "to": "10.04.2016",
+        "extend": null,
+        "submitDate": "07.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 114,
+        "name": "Wasenbruck",
+        "proclaimer": "GRUBER Hans",
+        "from": "18.03.2017",
+        "to": "18.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 115,
+        "name": "Stotzing",
+        "proclaimer": "MÜHLHOFER Eva",
+        "from": "28.01.2016",
+        "to": "28.05.2016",
+        "extend": null,
+        "submitDate": "19.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 116,
+        "name": "Stotzing",
+        "proclaimer": "VOJNICSEK Sanny",
+        "from": "28.01.2016",
+        "to": "28.05.2016",
+        "extend": null,
+        "submitDate": "11.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 117,
+        "name": "Stotzing",
+        "proclaimer": "JINDRA Denise",
+        "from": "05.11.2016",
+        "to": "05.03.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 118,
+        "name": "Stotzing",
+        "proclaimer": "GRUBER Elisabeth",
+        "from": "04.10.2015",
+        "to": "04.02.2016",
+        "extend": null,
+        "submitDate": "28.05.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 118,
+        "name": "Stotzing",
+        "proclaimer": "SCHMIDT Rebekka",
+        "from": "15.01.2017",
+        "to": "15.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 119,
+        "name": "Au am Leithageb.",
+        "proclaimer": "AUTHERIT Luis",
+        "from": "26.01.2017",
+        "to": "26.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 120,
+        "name": "Au am Leithageb.",
+        "proclaimer": "MISAR Mimi",
+        "from": "28.07.2016",
+        "to": "28.11.2016",
+        "extend": null,
+        "submitDate": "29.12.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 121,
+        "name": "Au am Leithageb.",
+        "proclaimer": "CHRISTIAN Richard",
+        "from": "14.05.2016",
+        "to": "14.09.2016",
+        "extend": null,
+        "submitDate": "08.10.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 121,
+        "name": "Au am Leithageb.",
+        "proclaimer": "CHRISTIAN Melanie",
+        "from": "10.11.2016",
+        "to": "10.03.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 122,
+        "name": "Au am Leithageb.",
+        "proclaimer": "CHRISTIAN Karin",
+        "from": "27.09.2015",
+        "to": "27.01.2016",
+        "extend": null,
+        "submitDate": "20.03.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 122,
+        "name": "Au am Leithageb.",
+        "proclaimer": "TRAXLER Lukas",
+        "from": "01.01.2017",
+        "to": "01.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 123,
+        "name": "Au am Leithageb.",
+        "proclaimer": "EBENRITTER Heinz",
+        "from": "24.03.2016",
+        "to": "24.07.2016",
+        "extend": null,
+        "submitDate": "01.09.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 124,
+        "name": "Ebergassing",
+        "proclaimer": "GABRIEL Uschi",
+        "from": "08.10.2015",
+        "to": "08.02.2016",
+        "extend": null,
+        "submitDate": "28.04.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 124,
+        "name": "Ebergassing",
+        "proclaimer": "MAYER Cornelia",
+        "from": "12.01.2017",
+        "to": "12.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 125,
+        "name": "Ebergassing",
+        "proclaimer": "MAYER Cornelia",
+        "from": "05.11.2016",
+        "to": "05.03.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 126,
+        "name": "Ebergassing",
+        "proclaimer": "RANFTL Franz",
+        "from": "11.08.2016",
+        "to": "11.12.2016",
+        "extend": null,
+        "submitDate": "23.02.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 127,
+        "name": "Ebergassing",
+        "proclaimer": "Kellner Tanja",
+        "from": "10.10.2015",
+        "to": "10.02.2016",
+        "extend": null,
+        "submitDate": "31.07.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 128,
+        "name": "Ebergassing",
+        "proclaimer": "MAYER Cornelia",
+        "from": "12.01.2017",
+        "to": "12.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 129,
+        "name": "Ebergassing",
+        "proclaimer": "TRAXLER Lukas",
+        "from": "10.09.2016",
+        "to": "10.01.2017",
+        "extend": null,
+        "submitDate": "01.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 130,
+        "name": "Ebergassing",
+        "proclaimer": "MISAR Simon",
+        "from": "27.10.2016",
+        "to": "27.02.2017",
+        "extend": null,
+        "submitDate": "28.02.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 131,
+        "name": "Ebergassing",
+        "proclaimer": "Krucky Thomas",
+        "from": "01.11.2015",
+        "to": "01.03.2016",
+        "extend": null,
+        "submitDate": "02.02.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 131,
+        "name": "Ebergassing",
+        "proclaimer": "HIRSCHBIGL Karin",
+        "from": "22.09.2016",
+        "to": "22.01.2017",
+        "extend": null,
+        "submitDate": "22.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 132,
+        "name": "Ebergassing",
+        "proclaimer": "CHRISTIAN Cornelia",
+        "from": "20.09.2015",
+        "to": "20.01.2016",
+        "extend": null,
+        "submitDate": "02.06.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 133,
+        "name": "Ebergassing",
+        "proclaimer": "LESER Alexander",
+        "from": "20.02.2016",
+        "to": "20.06.2016",
+        "extend": null,
+        "submitDate": "01.09.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 133,
+        "name": "Ebergassing",
+        "proclaimer": "HIRSCHBIGL Peter",
+        "from": "23.03.2017",
+        "to": "23.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 134,
+        "name": "Ebergassing",
+        "proclaimer": "SCHMIDT Andreas",
+        "from": "01.03.2017",
+        "to": "01.07.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 135,
+        "name": "Ebergassing",
+        "proclaimer": "KOCHER Alexander",
+        "from": "24.09.2015",
+        "to": "24.01.2016",
+        "extend": null,
+        "submitDate": "28.01.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 135,
+        "name": "Ebergassing",
+        "proclaimer": "KERESE Peter",
+        "from": "03.09.2016",
+        "to": "03.01.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 136,
+        "name": "Ebergassing",
+        "proclaimer": "GABRIEL Robert",
+        "from": "17.11.2016",
+        "to": "17.03.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 137,
+        "name": "Ebergassing",
+        "proclaimer": "MAYER Cornelia",
+        "from": "08.05.2016",
+        "to": "08.09.2016",
+        "extend": null,
+        "submitDate": "12.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 138,
+        "name": "Hof am Leithageb.",
+        "proclaimer": "TRAXLER Lukas",
+        "from": "05.05.2016",
+        "to": "05.09.2016",
+        "extend": null,
+        "submitDate": "10.11.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 139,
+        "name": "Hof am Leithageb.",
+        "proclaimer": "SCHMIDT Rebekka",
+        "from": "25.02.2016",
+        "to": "25.06.2016",
+        "extend": null,
+        "submitDate": "15.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 140,
+        "name": "Hof am Leithageb.",
+        "proclaimer": "CHRISTIAN Karin",
+        "from": "14.02.2016",
+        "to": "14.06.2016",
+        "extend": null,
+        "submitDate": "20.03.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 140,
+        "name": "Hof am Leithageb.",
+        "proclaimer": "CHRISTIAN Karin",
+        "from": "03.11.2016",
+        "to": "03.03.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 141,
+        "name": "Hof am Leithageb.",
+        "proclaimer": "HIRSCHBIGL Karin",
+        "from": "01.09.2016",
+        "to": "01.01.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 142,
+        "name": "Hof am Leithageb.",
+        "proclaimer": "BRODKORB Andreas",
+        "from": "01.10.2016",
+        "to": "01.02.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 143,
+        "name": "Hof am Leithageb.",
+        "proclaimer": "PAUSWANG Eva",
+        "from": "28.04.2016",
+        "to": "28.08.2016",
+        "extend": null,
+        "submitDate": "01.12.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 144,
+        "name": "Hof am Leithageb.",
+        "proclaimer": "KOCHER Alexander",
+        "from": "18.06.2016",
+        "to": "18.10.2016",
+        "extend": null,
+        "submitDate": "05.01.2017",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 145,
+        "name": "Götzendorf",
+        "proclaimer": "MAYER Cornelia",
+        "from": "08.05.2016",
+        "to": "08.09.2016",
+        "extend": null,
+        "submitDate": "05.11.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 146,
+        "name": "Götzendorf",
+        "proclaimer": "MISAR Mimi",
+        "from": "29.12.2016",
+        "to": "29.04.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 147,
+        "name": "Götzendorf",
+        "proclaimer": "BOCKENAUER Anton",
+        "from": "28.04.2016",
+        "to": "28.08.2016",
+        "extend": null,
+        "submitDate": "22.05.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 147,
+        "name": "Götzendorf",
+        "proclaimer": "RANFTL Franz",
+        "from": "23.02.2017",
+        "to": "23.06.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 148,
+        "name": "Götzendorf",
+        "proclaimer": "GUTTMANN Hannelore",
+        "from": "05.03.2016",
+        "to": "05.07.2016",
+        "extend": null,
+        "submitDate": "04.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 149,
+        "name": "Götzendorf",
+        "proclaimer": "KOCHER Alexander",
+        "from": "24.09.2015",
+        "to": "24.01.2016",
+        "extend": null,
+        "submitDate": "28.01.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 149,
+        "name": "Götzendorf",
+        "proclaimer": "BOCKENAUER Anton",
+        "from": "03.11.2016",
+        "to": "03.03.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 150,
+        "name": "Götzendorf",
+        "proclaimer": "BRODKORB Alina",
+        "from": "11.10.2015",
+        "to": "11.02.2016",
+        "extend": null,
+        "submitDate": "08.05.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 150,
+        "name": "Götzendorf",
+        "proclaimer": "GUTTMANN Hannelore",
+        "from": "23.02.2017",
+        "to": "23.06.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    },
+    {
+        "TerritoryNumber": 151,
+        "name": "Götzendorf",
+        "proclaimer": "MÜHLHOFER Herbert",
+        "from": "19.08.2016",
+        "to": "19.12.2016",
+        "extend": null,
+        "submitDate": "01.12.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 152,
+        "name": "Götzendorf",
+        "proclaimer": "LESER Alexander",
+        "from": "13.08.2016",
+        "to": "13.12.2016",
+        "extend": null,
+        "submitDate": "21.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 153,
+        "name": "Götzendorf",
+        "proclaimer": "SOLDATITS Eva",
+        "from": "05.03.2016",
+        "to": "05.07.2016",
+        "extend": null,
+        "submitDate": "24.11.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 154,
+        "name": "Götzendorf",
+        "proclaimer": "KERESE Peter",
+        "from": "14.12.2015",
+        "to": "14.04.2016",
+        "extend": null,
+        "submitDate": "11.08.2016",
+        "submitted": true
+    },
+    {
+        "TerritoryNumber": 154,
+        "name": "Götzendorf",
+        "proclaimer": "BRODKORB Alina",
+        "from": "05.01.2017",
+        "to": "05.05.2017",
+        "extend": null,
+        "submitDate": null,
+        "submitted": false
+    }
+]

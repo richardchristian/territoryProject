@@ -38,13 +38,13 @@
                             [readonly]="readonly" useValueAsDate />
                     </div>
                 </div>
-                <div class="form-group row" [hidden]="isNewEntry || processingDataParam.extend===undefined">
+                <div class="form-group row" [hidden]="isNewEntry || (processingDataParam.extend===undefined || processingDataParam.extend===null)">
                     <label class="col-md-3 form-control-label">Verlängert bis:</label>
                     <div class="col-md-9 ">
                         <input type="date" class="form-control" name="extend" placeholder="dd.mm.yyyy" [(ngModel)]="processingDataParam.extend" [readonly]="readonly"
                             useValueAsDate /> </div>
                 </div>
-                <div class="form-group row" [hidden]="isNewEntry || processingDataParam.submitDate===undefined">
+                <div class="form-group row" [hidden]="isNewEntry || (processingDataParam.submitDate===undefined || processingDataParam.submitDate===null)">
                     <label class="col-md-3 form-control-label">Zurückgegeben am:</label>
                     <div class="col-md-9 ">
                         <input type="date" class="form-control" name="submitDate" placeholder="dd.mm.yyyy" [(ngModel)]="processingDataParam.submitDate"

@@ -29,6 +29,8 @@ export class TerritoriesComponent implements OnInit {
     processingData: Observable<ProcessingData[]>;
     private searchTerms = new BehaviorSubject<string>('');
     @ViewChild('infoModal') infoModal: TerritoriesDialogComponent;
+    public sort = '';
+    public direction = 'asc';
 
     constructor(
         public toastr: ToastsManager,
@@ -46,9 +48,15 @@ export class TerritoriesComponent implements OnInit {
     }
 
     getSortedSearchResult(sort: string): void {
+        var direction: string = 'asc';
+        if (sort === this.sort) {
+            direction = this.direction == 'desc' ? 'asc' : 'desc';
+            this.direction = direction;
+        }
+        this.sort = sort;
         this.processingData = this.searchTerms
             .debounceTime(300)
-            .switchMap(term => this.processingDataService.search(term, sort))
+            .switchMap(term => this.processingDataService.search(term, sort, direction))
             .catch(error => {
                 console.log(error);
                 return Observable.of<ProcessingData[]>([]);
@@ -56,9 +64,9 @@ export class TerritoriesComponent implements OnInit {
     }
 
     public getPercentage(from, to, extend) {
-        var _from = moment(from);
-        var _to = extend === undefined ? moment(to) : moment(extend);
-        var _now = moment();
+        var _from = moment.utc(from);
+        var _to = (extend === undefined || extend === null) ? moment.utc(to) : moment.utc(extend);
+        var _now = moment.utc();
 
         return Math.round((_now.diff(_from) / _to.diff(_from)) * 100);
     }

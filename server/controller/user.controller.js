@@ -1,6 +1,7 @@
 
 var mongoose = require('mongoose');
 //var mongodb = require('mongodb');
+var _ = require('lodash');
 var User = require('../models/user.model');
 var passport = require('passport');
 
@@ -117,5 +118,4 @@ function updateUser(req, res) {
         res.status(400).send();
     });
 }
-
 

@@ -1,6 +1,6 @@
 db.proclaimers.insert(
     [{ "lastName": "Slavicek", "firstName": "Nina" },
-    { "lastName": "Solinger", "firstName": "Irene" },
+    { "lastName": "Sollinger", "firstName": "Irene" },
     { "lastName": "Traxler", "firstName": "Lukas" },
     { "lastName": "Krucky", "firstName": "Thomas" },
     { "lastName": "Kmonicek", "firstName": "Fritz" },
@@ -56,5 +56,7 @@ db.proclaimers.insert(
     { "lastName": "Ranftl", "firstName": "Franz" },
     { "lastName": "Kerese", "firstName": "Peter" },
     { "lastName": "Kocher", "firstName": "Alexander" },
-    { "lastName": "Soldatits", "firstName": "Eva" }
+    { "lastName": "Soldatits", "firstName": "Eva" },
+    { "lastName": "Klima", "firstName": "Paul" },
+    { "lastName": "Christian", "firstName": "Richard" },
     ]);

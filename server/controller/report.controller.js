@@ -140,29 +140,29 @@ function getTerritoryStatistics(req, res) {
                 from = from.subtract(6, 'months').startOf('month');
                 break;
             case 'Year':
-                from = from.subtract(1, 'years').startOf('month');
+                from = from.subtract(1, 'year').startOf('month');
                 break;
             case 'TwoYear':
-                from = from.subtract(2, 'years').startOf('month');
+                from = from.subtract(2, 'year').startOf('month');
                 break;
             case 'ThreeYear':
-                from = from.subtract(3, 'years').startOf('month');
+                from = from.subtract(3, 'year').startOf('month');
                 break;
             case 'FourYear':
-                from = from.subtract(4, 'years').startOf('month');
+                from = from.subtract(4, 'year').startOf('month');
                 break;
             case 'FiveYear':
-                from = from.subtract(5, 'years').startOf('month');
+                from = from.subtract(5, 'year').startOf('month');
                 break;
             case 'AllTime':
                 return "";
             case 'CurrentServiceYear':
-                from = moment().subtract('year', 1).month('September').startOf('month');
+                from = moment().subtract(1, 'year').month('September').startOf('month');
                 to = moment().month('August').endOf('month');
                 break;
             case 'PreviousServiceYear':
-                from = moment().subtract('year', 2).month('September').startOf('month');
-                to = moment().subtract('year', 1).month('August').startOf('month');
+                from = moment().subtract(2, 'year').month('September').startOf('month');
+                to = moment().subtract(1, 'year').month('August').startOf('month');
                 break;
         }
 

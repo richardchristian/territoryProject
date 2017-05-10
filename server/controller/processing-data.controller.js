@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 var _ = require('lodash');
 var moment = require('moment');
 var { ProcessingData } = require('../models/processing-data.model');
-
 var { Territory } = require('../models/territory.model');
+var { Proclaimer } = require('../models/proclaimer.model');
 
 module.exports = {
     addProcessingData,
@@ -16,7 +16,8 @@ module.exports = {
     getSearchProcessingTerritories,
     getSearchProcessingData,
     updateProcessingData,
-    deleteProcessingData
+    deleteProcessingData,
+    importData
 };
 
 function addProcessingData(req, res) {
@@ -148,23 +149,29 @@ function getSearchProcessingTerritories(req, res) {
 function getSearchProcessingData(req, res) {
     var searchTerm = req.query.term;
     var sortTerm = req.query.sort || 'territoryID.territoryNumber';
+    var direction = req.query.direction || 'asc';
     var sort;
-    if(sortTerm === 'percentage'){
-        sort = function(data){
-            var _from = moment(data.from);
-            var _to = moment(data.to);
-            var _now = moment();
+    if (sortTerm === 'percentage') {
+        sort = (data) => {
+            var _from = moment.utc(data.from);
+            var _to = moment.utc(data.to);
+            var _now = moment.utc();
             return Math.round((_now.diff(_from) / _to.diff(_from)) * 100);
         };
-    }else{
+    } else if (sortTerm === 'territoryID.territoryNumber') {
+        sort = (data) => {
+            return parseInt(data.territoryID.territoryNumber);
+        };
+    } else {
         sort = sortTerm.split(",");
     }
-    
+
     ProcessingData.find({ submitted: false })
         .populate('territoryID')
         .populate('proclaimerID')
         .then(processingTerritories => {
             var processingData = _.sortBy(getSearchResult(processingTerritories, searchTerm), sort);
+            processingData = direction == 'asc' ? processingData : processingData.reverse();
             res.send({ processingData });
         }, (e) => {
             res.status(400).send(e);
@@ -173,9 +180,8 @@ function getSearchProcessingData(req, res) {
 
 function getSearchResult(data, searchTerm) {
     return _.filter(data, entry => {
-
-        var from = moment(entry.from).format('DD.MM.YYYY');
-        var to = moment(entry.to).format('DD.MM.YYYY');
+        var from = moment.utc(entry.from).format('DD.MM.YYYY');
+        var to = moment.utc(entry.to).format('DD.MM.YYYY');
 
         var pattern = new RegExp(searchTerm, 'i');
         if (pattern.test(entry.proclaimerID.firstName))
@@ -229,4 +235,47 @@ function deleteProcessingData(req, res) {
     }).catch((e) => {
         res.status(400).send();
     });*/
+}
+
+function importData(req, res) {
+    var data = require('../db/processing-data_db_insert.json');
+    var promiseArr = [];
+    promiseArr.push(Territory.find());
+    promiseArr.push(Proclaimer.find());
+
+    Promise.all(promiseArr).then(values => {
+
+        var importArr = data.map(obj => {
+            var proclaimerId;
+            var territoryId;
+            for (var i = 0; i < values[0].length; i++) {
+                if (values[0][i].territoryNumber == obj.TerritoryNumber)
+                    territoryId = values[0][i]._id;
+            }
+
+            var name = obj.proclaimer.split(' ');
+            for (var j = 0; j < values[1].length; j++) {
+                if (values[1][j].lastName.toLowerCase() == name[0].toLowerCase()) {
+                    if (values[1][j].firstName.toLowerCase() == name[1].toLowerCase())
+                        proclaimerId = values[1][j]._id;
+                }
+            }
+
+            return {
+                'proclaimerID': proclaimerId,
+                'territoryID': territoryId,
+                'from': moment.utc(obj.from, 'DD.MM.YYYY').toDate(),
+                'to': moment.utc(obj.to, 'DD.MM.YYYY').toDate(),
+                'submitted': obj.submitted,
+                'extend': obj.extend !== null ? moment(obj.extend, 'DD.MM.YYYY').toDate() : null,
+                'submitDate': obj.submitDate !== null ? moment(obj.submitDate, 'DD.MM.YYYY').toDate() : null
+            };
+        });
+        //res.send(importArr);
+
+        ProcessingData.insertMany(importArr).then(result => {
+            res.send(result);
+        });
+    });
+
 }
