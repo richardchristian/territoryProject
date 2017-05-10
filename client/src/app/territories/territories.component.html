@@ -37,7 +37,10 @@
                                 <strong>{{getPercentage(processing.from, processing.to, processing.extend)}}%</strong>
                             </div>
                             <div class="float-right ">
-                                <small class="text-muted ">{{processing.from| date: 'dd.MM.yyyy'}} - {{processing.to| date: 'dd.MM.yyyy'}}</small>
+                                <small class="text-muted ">
+                                    {{processing.from| date: 'dd.MM.yyyy'}} - {{processing.to| date: 'dd.MM.yyyy'}} 
+                                    <span *ngIf="processing.extend!==null">- {{processing.extend | date: 'dd.MM.yyyy'}}</span>
+                                </small>
                             </div>
                         </div>
                         <div class="progress progress-xs ">

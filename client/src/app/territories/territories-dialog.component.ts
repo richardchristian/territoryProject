@@ -100,8 +100,8 @@ export class TerritoriesDialogComponent implements OnInit {
                 territoryID: _processingData.territoryID,
                 from: new Date(_processingData.from),
                 to: new Date(_processingData.to),
-                extend: _processingData.extend !== undefined ? new Date(_processingData.extend) : undefined,
-                submitDate: _processingData.submitDate !== undefined ? new Date(_processingData.submitDate) : undefined,
+                extend: (_processingData.extend !== undefined && _processingData.extend !== null) ? new Date(_processingData.extend) : undefined,
+                submitDate: (_processingData.submitDate !== undefined && _processingData.submitDate !== null) ? new Date(_processingData.submitDate) : undefined,
                 submitted: _processingData.submitted
             };
         }
@@ -154,7 +154,7 @@ export class TerritoriesDialogComponent implements OnInit {
             data => {
 
                 this.proclaimersInput.items = data.map(result => {
-                    return { id: result._id, text: [result.firstName, result.lastName].join(' ') };
+                    return { id: result._id, text: [result.lastName.toUpperCase(), result.firstName].join(' ') };
                 });
                 if (!init)
                     (<any>this.proclaimersInput).open();
