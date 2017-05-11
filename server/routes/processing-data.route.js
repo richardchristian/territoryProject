@@ -16,7 +16,7 @@ router.get('/territories/search', auth.isAuthenticated, processingDataController
 
 router.get('/search', auth.isAuthenticated, processingDataController.getSearchProcessingData);
 
-router.get('/import', processingDataController.importData);
+/*router.get('/import', processingDataController.importData);*/
 
 router.get('/:id', auth.isAuthenticated, processingDataController.getProcessingDataById);
 
