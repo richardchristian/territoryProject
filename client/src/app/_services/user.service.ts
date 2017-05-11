@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -13,42 +15,58 @@ export class UserService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
-    constructor(private http: Http, private config: AppConfig) { }
+    constructor(
+        private http: Http,
+        private config: AppConfig,
+        private router: Router,
+        private toastr: ToastsManager
+    ) { }
 
     getAll(): Observable<User[]> {
         return this.http
             .get(this.config.apiUrl + '/users', { withCredentials: true })
             .map((res) => {
-                return res.json()
-            }
-            )
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-
+                return res.json().users;
+            })
+            .catch(err => this.handleError(err));
     }
 
     getById(id: string): Observable<User> {
         return this.http
             .get(this.config.apiUrl + '/users/' + id, { withCredentials: true })
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+            .catch(err => this.handleError(err));
     }
 
-    update(user: User): Observable<Response> {
+    update(user: User): Observable<User> {
         return this.http
-            .put(this.config.apiUrl + '/users/' + user.id, user, { withCredentials: true })
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+            .put(this.config.apiUrl + '/users/' + user._id, user, { withCredentials: true })
+            .catch(err => this.handleError(err));
 
     }
 
     create(user: User): Observable<User> {
         return this.http
-            .post(this.config.apiUrl + '/users/register', user, { withCredentials: true })
-            .map(res => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+            .post(this.config.apiUrl + '/register', user, { withCredentials: true })
+            .map(res => res.json().user)
+            .catch(err => this.handleError(err));
     }
 
     delete(id: number): Observable<Response> {
         return this.http
             .delete(this.config.apiUrl + '/users/' + id, { withCredentials: true })
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+            .catch(err => this.handleError(err));
     }
+
+    private handleError(error: any): Observable<any> {
+        console.log('an error occures', error);
+        if (error.status === 401) {
+            this.toastr.error('<b>Redirect to Login-Page</b>', 'Unautherized').then(() => {
+                setTimeout(() => { this.router.navigate(['/pages/login'], { queryParams: { returnUrl: this.router.url } }) }, 3000);
+            });
+        }
+        return Observable.of([]);
+
+        //Observable.throw(error.json().error || 'Server error')
+    }
+
 }

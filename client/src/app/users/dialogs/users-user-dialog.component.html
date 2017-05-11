@@ -1,0 +1,42 @@
+<div bsModal #infoModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="icon-people"></i> {{getEmail()}}</h4>
+                <button type="button" class="close" (click)="infoModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="email">Benutzername/Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="max@mustermann.com" [(ngModel)]="user.email" value="{{user.email}}"
+                        [readonly]="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="firstName">Vorname</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Max" [(ngModel)]="user.firstName" value="{{user.firstName}}"
+                        [readonly]="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Nachname</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Mustermann" [(ngModel)]="user.lastName" value="{{user.lastName}}"
+                        [readonly]="readonly">
+                </div>
+                <div class="form-group" [hidden]="readonly">
+                    <label for="password">Passwort</label>
+                    <input type="password" class="form-control" id="password" placeholder="Passwort" [(ngModel)]="user.password" value="{{user.password}}"
+                        [readonly]="readonly">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="infoModal.hide()" [hidden]="!readonly">Schließen</button>
+                <button type="button" class="btn btn-secondary" (click)="cancel()" [hidden]="readonly">Abbrechen</button>
+                <button type="button" class="btn btn-primary" (click)="edit()" [hidden]="!readonly">Bearbeiten</button>
+                <button type="button" class="btn btn-primary" (click)="save()" [hidden]="readonly">Speichern</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

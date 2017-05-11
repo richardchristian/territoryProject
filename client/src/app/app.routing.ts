@@ -65,6 +65,19 @@ export const routes: Routes = [
     ]
   },
   {
+    path: 'users',
+    component: FullLayoutComponent,
+    data: {
+      title: 'Benutzer'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: './users/users.module#UsersModule',
+      }
+    ]
+  },
+  {
     path: 'pages',
     component: SimpleLayoutComponent,
     data: {

@@ -86,7 +86,7 @@ function getAllUser(req, res) {
 function deleteUser(req, res) {
     var userID = req.params.id;
 
-    if (!ObjectID.isValid(userID)) {
+    if (!mongoose.Types.ObjectId.isValid(userID)) {
         return res.status(404).send();
     }
 
@@ -104,7 +104,7 @@ function deleteUser(req, res) {
 function updateUser(req, res) {
     var id = req.params.id;
 
-    if (!ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).send();
     }
 
@@ -113,7 +113,14 @@ function updateUser(req, res) {
             return res.status(404).send();
         }
 
-        res.send({ user });
+        if (req.body.password) {
+            user.setPassword(req.body.password, () => {
+                user.save();
+                res.send({ user });
+            });
+        } else {
+            res.send({ user });
+        }
     }).catch((e) => {
         res.status(400).send();
     });
