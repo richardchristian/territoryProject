@@ -42,64 +42,193 @@
 </div>
 <div class="row">
   <div class="col-sm-6">
-    <div class="card">
-      <div class="card-header">
-        <h5 style="margin-bottom:0px"><i class="icon-speedometer"></i> Übersicht</h5>
-        <div class="card-actions">
-          <a href="javascript:void(0)" (click)="print();" class="btn-print"><i class="icon-printer"></i></a>
-        </div>
+    <div class="card" *ngIf="isDataAvailable">
+      <div class="card-header" [ngStyle]="changeBackgroundColor('blue')">
+        Aktuell Zugeteilt
+        <span class="badge badge-pill badge-danger float-right">{{dataArr['assigned'].data.length}}</span>
       </div>
       <div class="card-block">
-        <div #dataContainer id="print-section">
-          <div class="col-sm-6 col-lg-2">
-            <select [(ngModel)]="selectedValue" (ngModelChange)="getData($event)" id="select" name="select" class="form-control form-control-lg"
-              style="margin-left: 0px; padding-left: 0px; border: 0; outline: 0; background: transparent; border-bottom: 1px solid #8B9FA9;">
-              <option *ngFor="let t of dashboardTimesection" [ngValue]="t.id">{{t.name}}</option>
-            </select>
-          </div>
-          <br/>
-          <div class="animated fadeIn">
-            <div class="row" *ngIf="isDataAvailable">
-              <div class="col-sm-6 col-lg-3">
-                <dashboard-doughnut title="Aktuell Zugeteilt" color="blue" [data]="doughnutData['assigned']"></dashboard-doughnut>
-              </div>
-              <div class="col-sm-6 col-lg-3">
-                <dashboard-doughnut title="Aktuell Nicht Zugeteilt" color="orange" [data]="doughnutData['notAssigned']"></dashboard-doughnut>
-              </div>
-            </div>
-          </div>
-        </div>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Gebiet-Nr</th>
+              <th>Gebiet</th>
+              <th>Verkündiger</th>
+              <th>Von</th>
+              <th>Bis/Verlängert</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let assigned of dataArr['assigned'].display">
+              <td>{{assigned.territoryID.territoryNumber}}</td>
+              <td>{{assigned.territoryID.name}}</td>
+              <td>{{assigned.proclaimerID.lastName |uppercase}} {{assigned.proclaimerID.firstName}}</td>
+              <td>{{assigned.from | date: 'dd.MM.yyyy'}}</td>
+              <td *ngIf="assigned.extend==null">{{assigned.to | date: 'dd.MM.yyyy'}}</td>
+              <td *ngIf="assigned.extend!=null">{{assigned.extend | date: 'dd.MM.yyyy'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pagination" *ngIf="dataArr['assigned'].allPages>1">
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('assigned', '1')">
+              <<</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('assigned', '-1')">
+              <</a>
+          </li>
+          <li [ngClass]="{ 'page-item': true, 'active': dataArr['assigned'].current==i}" *ngFor="let i of dataArr[
+              'assigned'].pages">
+            <a class="page-link" (click)="setPageDisplayData('assigned', i)" href="javascript:void(0)">{{i}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="setPageDisplayData('assigned', '+1')" href="javascript:void(0)">></a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('assigned', dataArr['assigned'].allPages)">>></a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-header">
-        <h5 style="margin-bottom:0px"><i class="icon-speedometer"></i> Übersicht</h5>
-        <div class="card-actions">
-          <a href="javascript:void(0)" (click)="print();" class="btn-print"><i class="icon-printer"></i></a>
-        </div>
+  <div class="col-sm-6 ">
+    <div class="card" *ngIf="isDataAvailable">
+      <div class="card-header " [ngStyle]="changeBackgroundColor('orange') ">
+        Aktuell Nicht Zugeteilt
+        <span class="badge badge-pill badge-danger float-right">{{dataArr['notAssigned'].data.length}}</span>
       </div>
-      <div class="card-block">
-        <div #dataContainer id="print-section">
-          <div class="col-sm-6 col-lg-2">
-            <select [(ngModel)]="selectedValue" (ngModelChange)="getData($event)" id="select" name="select" class="form-control form-control-lg"
-              style="margin-left: 0px; padding-left: 0px; border: 0; outline: 0; background: transparent; border-bottom: 1px solid #8B9FA9;">
-              <option *ngFor="let t of dashboardTimesection" [ngValue]="t.id">{{t.name}}</option>
-            </select>
-          </div>
-          <br/>
-          <div class="animated fadeIn">
-            <div class="row" *ngIf="isDataAvailable">
-              <div class="col-sm-6 col-lg-3">
-                <dashboard-doughnut title="Aktuell Zugeteilt" color="blue" [data]="doughnutData['assigned']"></dashboard-doughnut>
-              </div>
-              <div class="col-sm-6 col-lg-3">
-                <dashboard-doughnut title="Aktuell Nicht Zugeteilt" color="orange" [data]="doughnutData['notAssigned']"></dashboard-doughnut>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="card-block ">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Gebiet-Nr</th>
+              <th>Gebiet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let notAssigned of dataArr['notAssigned'].display">
+              <td>{{notAssigned.territoryNumber}}</td>
+              <td>{{notAssigned.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pagination" *ngIf="dataArr['notAssigned'].allPages>1">
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('notAssigned', '1')">
+              <<</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('notAssigned', '-1')">
+              <</a>
+          </li>
+          <li [ngClass]="{ 'page-item': true, 'active': dataArr['notAssigned'].current==i}" *ngFor="let i of dataArr[
+              'notAssigned'].pages">
+            <a class="page-link" (click)="setPageDisplayData('notAssigned', i)" href="javascript:void(0)">{{i}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="setPageDisplayData('notAssigned', '+1')" href="javascript:void(0)">></a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('notAssigned', dataArr['notAssigned'].allPages)">>></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row ">
+  <div class="col-sm-6 ">
+    <div class="card" *ngIf="isDataAvailable">
+      <div class="card-header " [ngStyle]="changeBackgroundColor('green') ">
+        Bearbeitet
+        <span class="badge badge-pill badge-danger float-right">{{dataArr['processed'].data.length}}</span>
+      </div>
+      <div class="card-block ">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Gebiet-Nr</th>
+              <th>Gebiet</th>
+              <th>Verkündiger</th>
+              <th>Von</th>
+              <th>Bis/Verlängert</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let processed of dataArr['processed'].display">
+              <td>{{processed.territoryID.territoryNumber}}</td>
+              <td>{{processed.territoryID.name}}</td>
+              <td>{{processed.proclaimerID.lastName |uppercase}} {{processed.proclaimerID.firstName}}</td>
+              <td>{{processed.from | date: 'dd.MM.yyyy'}}</td>
+              <td *ngIf="processed.extend==null">{{processed.to | date: 'dd.MM.yyyy'}}</td>
+              <td *ngIf="processed.extend!=null">{{processed.extend | date: 'dd.MM.yyyy'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pagination" *ngIf="dataArr['processed'].allPages>1">
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('processed', '1')">
+              <<</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('processed', '-1')">
+              <</a>
+          </li>
+          <li [ngClass]="{ 'page-item': true, 'active': dataArr['processed'].current==i}" *ngFor="let i of dataArr['processed'].pages">
+            <a class="page-link" (click)="setPageDisplayData('processed', i)" href="javascript:void(0)">{{i}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="setPageDisplayData('processed', '+1')" href="javascript:void(0)">></a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('processed', dataArr['processed'].allPages)">>></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 ">
+    <div class="card" *ngIf="isDataAvailable">
+      <div class="card-header " [ngStyle]="changeBackgroundColor('purple') ">
+        Unbearbeitet
+        <span class="badge badge-pill badge-danger float-right">{{dataArr['notProcessed'].data.length}}</span>
+      </div>
+      <div class="card-block ">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Gebiet-Nr</th>
+              <th>Gebiet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let notProcessed of dataArr['notProcessed'].display">
+              <td>{{notProcessed.territoryNumber}}</td>
+              <td>{{notProcessed.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pagination" *ngIf="dataArr['notProcessed'].allPages>1">
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('notProcessed', '1')">
+              <<</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('notProcessed', '-1')">
+              <</a>
+          </li>
+          <li [ngClass]="{ 'page-item': true, 'active': dataArr['notProcessed'].current==i}" *ngFor="let i of dataArr[
+              'notProcessed'].pages">
+            <a class="page-link" (click)="setPageDisplayData('notProcessed', i)" href="javascript:void(0)">{{i}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="setPageDisplayData('notProcessed', '+1')" href="javascript:void(0)">></a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('notProcessed', dataArr['notProcessed'].allPages)">>></a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
