@@ -65,7 +65,6 @@ export class SettingsTerritoryComponent implements OnInit {
       this.territoryService.update(_territory)
         .subscribe(
         data => {
-          console.log(data);
           this.searchTerms.next("");
           this.toastr.success("Gebiet erfolgreich bearbeitet", "(" + data.territoryNumber + ") " + data.name)
         },

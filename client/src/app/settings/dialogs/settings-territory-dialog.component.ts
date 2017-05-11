@@ -24,7 +24,6 @@ export class SettingsTerritoryDialogComponent {
         this.territoryOrig = param ?
             { _id: param._id, territoryNumber: param.territoryNumber, name: param.name, comment: param.comment } :
             { _id: "", territoryNumber: "", name: "", comment: "" };
-        console.log(this.territoryOrig);
         var dialog = this.infoModal.show();
     }
 

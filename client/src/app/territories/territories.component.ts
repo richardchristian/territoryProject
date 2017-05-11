@@ -88,7 +88,6 @@ export class TerritoriesComponent implements OnInit {
     }
 
     save(_processingData: ProcessingData) {
-        console.log(_processingData);
         if (_processingData._id === "" || _processingData._id === null) {
             this.processingDataService.create(_processingData)
                 .subscribe(

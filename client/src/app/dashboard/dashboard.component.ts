@@ -81,7 +81,6 @@ export class DashboardComponent implements OnInit {
             new Array(Math.ceil(data.notProcessedTerritories.length / 10)).fill(0).map((v, i) => (i + 1) + ''),
         };
         this.isDataAvailable = true;
-        console.log(this.dataArr);
       });
   }
 

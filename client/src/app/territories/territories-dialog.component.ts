@@ -69,7 +69,6 @@ export class TerritoriesDialogComponent implements OnInit {
             this.readonly = false;
             this.reset();
         }
-        console.log(this.processingDataParam);
     }
 
     hide() {
@@ -277,7 +276,6 @@ export class TerritoriesDialogComponent implements OnInit {
         } else {
             validDataObj.from = this.processingDataParam.from;
             validDataObj.from.setHours(2, 0, 0, 0); // set to 2 for time-issue
-            console.log(validDataObj.from);
         }
         if (this.processingDataParam.to === null) {
             message += '<li>Kein Rückgabe - Datum ausgewählt.</li>';

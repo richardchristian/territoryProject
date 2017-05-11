@@ -6,7 +6,6 @@ declare var Chart: any;
 
 Chart.pluginService.register({
     afterUpdate: function (chart) {
-        console.log(chart);
         if (chart.config.options.elements.center) {
             var helpers = Chart.helpers;
             var centerConfig = chart.config.options.elements.center;

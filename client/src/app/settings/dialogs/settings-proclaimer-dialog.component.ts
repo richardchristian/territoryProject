@@ -23,7 +23,6 @@ export class SettingsProclaimerDialogComponent {
         this.proclaimerOrig = param ?
             { _id: param._id, firstName: param.firstName, lastName: param.lastName } :
             { _id: "", firstName: "", lastName: "" };
-        console.log(this.proclaimerOrig);
         var dialog = this.infoModal.show();
     }
 
@@ -55,7 +54,6 @@ export class SettingsProclaimerDialogComponent {
         if (this.proclaimer._id == "")
             this.hide();
 
-        console.log(this.proclaimerOrig);
         this.readonly = true;
         this.proclaimer.firstName = this.proclaimerOrig.firstName;
         this.proclaimer.lastName = this.proclaimerOrig.lastName;

@@ -19,7 +19,6 @@ export class UserService {
         return this.http
             .get(this.config.apiUrl + '/users', { withCredentials: true })
             .map((res) => {
-                console.log(res);
                 return res.json()
             }
             )
