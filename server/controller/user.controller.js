@@ -46,7 +46,6 @@ function login(req, res) {
 }
 
 function logout(req, res) {
-    console.log(req.user);
     req.logout();
     return res.send({
         success: true

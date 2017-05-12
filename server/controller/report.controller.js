@@ -169,8 +169,7 @@ function getTerritoryStatistics(req, res) {
                 to = moment().subtract(1, 'year').month('August').startOf('month');
                 break;
         }
-        console.log(from);
-        console.log(to);
+
         return { 'submitDate': { $gt: from, $lt: to } };
     }
 }
