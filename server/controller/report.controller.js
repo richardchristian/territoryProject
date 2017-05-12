@@ -83,8 +83,12 @@ function getAllTerritoryCards(req, res) {
     }
 }
 
+function getCurrentOverview(req, res) {
+
+}
+
 function getTerritoryStatistics(req, res) {
-    var fromFilterObj = getStatisticsFilter(req.params.type);
+    var submitDateFilterObj = getStatisticsFilter(req.params.type);
     var promiseArr = [];
     promiseArr.push(
         ProcessingData
@@ -96,8 +100,8 @@ function getTerritoryStatistics(req, res) {
 
     promiseArr.push(
         ProcessingData
-            .find(fromFilterObj)
-            .sort('from')
+            .find(submitDateFilterObj)
+            .sort('-submitDate')
             .populate('territoryID')
             .populate('proclaimerID')
     );
@@ -120,7 +124,7 @@ function getTerritoryStatistics(req, res) {
         });
 
         res.send({
-            assignedTerritories,
+            'assignedTerritories': _.sortBy(assignedTerritories, (o) => parseInt(o.territoryID.territoryNumber)),
             processedTerritories,
             notAssignedTerritories,
             notProcessedTerritories,
@@ -130,29 +134,29 @@ function getTerritoryStatistics(req, res) {
 
 
     function getStatisticsFilter(type) {
-        var to = moment();
-        var from = moment();
+        var to = moment.utc();
+        var from = moment.utc();
         switch (type) {
             case 'OneMonth':
-                from = from.subtract(1, 'months').startOf('month');
+                from = from.subtract(1, 'months');//.startOf('month');
                 break;
             case 'SixMonths':
-                from = from.subtract(6, 'months').startOf('month');
+                from = from.subtract(6, 'months');//.startOf('month');
                 break;
             case 'Year':
-                from = from.subtract(1, 'year').startOf('month');
+                from = from.subtract(1, 'year');//.startOf('month');
                 break;
             case 'TwoYear':
-                from = from.subtract(2, 'year').startOf('month');
+                from = from.subtract(2, 'year');//.startOf('month');
                 break;
             case 'ThreeYear':
-                from = from.subtract(3, 'year').startOf('month');
+                from = from.subtract(3, 'year');//.startOf('month');
                 break;
             case 'FourYear':
-                from = from.subtract(4, 'year').startOf('month');
+                from = from.subtract(4, 'year');//.startOf('month');
                 break;
             case 'FiveYear':
-                from = from.subtract(5, 'year').startOf('month');
+                from = from.subtract(5, 'year');//.startOf('month');
                 break;
             case 'AllTime':
                 return "";
@@ -165,7 +169,8 @@ function getTerritoryStatistics(req, res) {
                 to = moment().subtract(1, 'year').month('August').startOf('month');
                 break;
         }
-
-        return { "from": { $gt: from.toDate(), $lt: to.toDate() } };
+        console.log(from);
+        console.log(to);
+        return { 'submitDate': { $gt: from, $lt: to } };
     }
 }

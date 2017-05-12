@@ -249,7 +249,7 @@ function importData(req, res) {
             var proclaimerId;
             var territoryId;
             for (var i = 0; i < values[0].length; i++) {
-                if (values[0][i].territoryNumber == obj.TerritoryNumber)
+                if (values[0][i].territoryNumber == obj.territoryNumber)
                     territoryId = values[0][i]._id;
             }
 
@@ -260,6 +260,8 @@ function importData(req, res) {
                         proclaimerId = values[1][j]._id;
                 }
             }
+            if (!proclaimerId)
+                console.log(obj.proclaimer);
 
             return {
                 'proclaimerID': proclaimerId,
@@ -267,8 +269,8 @@ function importData(req, res) {
                 'from': moment.utc(obj.from, 'DD.MM.YYYY').toDate(),
                 'to': moment.utc(obj.to, 'DD.MM.YYYY').toDate(),
                 'submitted': obj.submitted,
-                'extend': obj.extend !== null ? moment(obj.extend, 'DD.MM.YYYY').toDate() : null,
-                'submitDate': obj.submitDate !== null ? moment(obj.submitDate, 'DD.MM.YYYY').toDate() : null
+                'extend': obj.extend !== null ? moment.utc(obj.extend, 'DD.MM.YYYY').toDate() : null,
+                'submitDate': obj.submitDate !== null ? moment.utc(obj.submitDate, 'DD.MM.YYYY').toDate() : null
             };
         });
         //res.send(importArr);

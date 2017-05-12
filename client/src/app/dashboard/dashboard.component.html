@@ -136,7 +136,7 @@
               <th>Gebiet</th>
               <th>Verkündiger</th>
               <th>Von</th>
-              <th>Bis/Verlängert</th>
+              <th>Zurückgegeben</th>
             </tr>
           </thead>
           <tbody>
@@ -145,8 +145,7 @@
               <td>{{processed.territoryID.name}}</td>
               <td>{{processed.proclaimerID.lastName |uppercase}} {{processed.proclaimerID.firstName}}</td>
               <td>{{processed.from | date: 'dd.MM.yyyy'}}</td>
-              <td *ngIf="processed.extend==null">{{processed.to | date: 'dd.MM.yyyy'}}</td>
-              <td *ngIf="processed.extend!=null">{{processed.extend | date: 'dd.MM.yyyy'}}</td>
+              <td>{{processed.submitDate | date: 'dd.MM.yyyy'}}</td>
             </tr>
           </tbody>
         </table>
