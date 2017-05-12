@@ -107,13 +107,27 @@ function getTerritoryStatistics(req, res) {
     );
 
     promiseArr.push(
+        ProcessingData
+            .find({
+                'submitDate': {
+                    $gt: moment.utc().subtract(1, 'year'),
+                    $lt: moment.utc()
+                }
+            })
+            .sort('-submitDate')
+            .populate('territoryID')
+            .populate('proclaimerID')
+    );
+
+    promiseArr.push(
         Territory.find().sort('terrtoryNumber')
     );
 
     Promise.all(promiseArr).then(result => {
         var assignedTerritories = result[0];
         var processedTerritories = result[1];
-        var allTerritories = result[2];
+        var oneYearProcessed = result[2];
+        var allTerritories = result[3];
 
         var notAssignedTerritories = allTerritories.filter(item => {
             return !_.some(assignedTerritories, o => o.territoryID._id.toString() == item._id.toString());
@@ -123,12 +137,45 @@ function getTerritoryStatistics(req, res) {
             return !_.some(processedTerritories, o => o.territoryID._id.toString() == item._id.toString());
         });
 
+        var oneYearNotProcessed = allTerritories.filter(item => {
+            return !_.some(oneYearProcessed, o => o.territoryID._id.toString() == item._id.toString());
+        });
+        var oneYearNotProcessedData = oneYearNotProcessed.map((item) => {
+            var index = _.findIndex(assignedTerritories, o => o.territoryID._id.toString() == item._id.toString());
+            if (index > -1)
+                return assignedTerritories[index];
+            return item;
+        });
+
+        var moreThanOneYearProcessing = assignedTerritories.filter(item => {
+            return moment.utc().diff(item.from, 'years') >= 1;
+        });
+
+        var moreThanSixMonthsProcessing = assignedTerritories.filter(item => {
+            if (moreThanOneYearProcessing.indexOf(item) >= 0)
+                return false;
+            return moment.utc().diff(item.from, 'months') >= 6;
+        });
+
+        var remindBringBack = assignedTerritories.filter(item => {
+            if (moreThanOneYearProcessing.indexOf(item) >= 0)
+                return false;
+            if (moreThanSixMonthsProcessing.indexOf(item) >= 0)
+                return false;
+            return moment.utc().diff(item.from, 'months') >= 4;
+        });
+
         res.send({
             'assignedTerritories': _.sortBy(assignedTerritories, (o) => parseInt(o.territoryID.territoryNumber)),
             processedTerritories,
             notAssignedTerritories,
             notProcessedTerritories,
-            allTerritories
+            allTerritories,
+            oneYearNotProcessedData,
+            'moreThanOneYearProcessing': _.sortBy(moreThanOneYearProcessing, (o) => parseInt(o.territoryID.territoryNumber)),
+            'moreThanSixMonthsProcessing': _.sortBy(moreThanSixMonthsProcessing, (o) => parseInt(o.territoryID.territoryNumber)),
+            'remindBringBack': _.sortBy(remindBringBack, (o) => parseInt(o.territoryID.territoryNumber))
+
         });
     });
 
@@ -161,12 +208,12 @@ function getTerritoryStatistics(req, res) {
             case 'AllTime':
                 return "";
             case 'CurrentServiceYear':
-                from = moment().subtract(1, 'year').month('September').startOf('month');
-                to = moment().month('August').endOf('month');
+                from = moment.utc().subtract(1, 'year').month('September').startOf('month');
+                to = moment.utc().month('August').endOf('month');
                 break;
             case 'PreviousServiceYear':
-                from = moment().subtract(2, 'year').month('September').startOf('month');
-                to = moment().subtract(1, 'year').month('August').startOf('month');
+                from = moment.utc().subtract(2, 'year').month('September').startOf('month');
+                to = moment.utc().subtract(1, 'year').month('August').startOf('month');
                 break;
         }
 
