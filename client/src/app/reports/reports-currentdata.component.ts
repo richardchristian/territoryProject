@@ -91,6 +91,7 @@ export class ReportsCurrentdataComponent implements OnInit {
                     padding-left:10px;
                 }
                 .table {
+                    font-size: 8px;
                     width: 100%;
                     max-width: 100%;
                     margin-bottom: 0px;
@@ -102,13 +103,16 @@ export class ReportsCurrentdataComponent implements OnInit {
                 .table-bordered {
                     border: 1px solid #cfd8dc;
                 }
+                .table-bordered th, .table-bordered td {
+                    border: 1px solid #cfd8dc;
+                }
                 .table thead th {
                     vertical-align: bottom;
                     border-bottom: 2px solid #cfd8dc;
                 }
                 .table-sm th, .table-sm td {
-                    padding: 2px;
-                    height: 17px;
+                    padding: 1px;
+                    height: 10px;
                 }
 
                 .table th, .table td {
@@ -154,11 +158,10 @@ export class ReportsCurrentdataComponent implements OnInit {
                 }
           </style>
         </head>
-        <body >${printContents}</body>
+        <body onload="window.print();window.close()" >${printContents}</body>
       </html>`
         );
         popupWin.document.close();
-        // onload="window.print();window.close()" 
     }
 
 }
