@@ -1,5 +1,6 @@
 <div class="chart-wrapper px-3" style="height: 150px;">
-    <canvas baseChart class="chart" [data]="data" chartType="doughnut" [options]="doughnutChartOption" [legend]="false" [colors]="doughnutChartColors"></canvas>
+    <canvas baseChart class="chart" [data]="data" chartType="doughnut" [options]="doughnutChartOption" [legend]="false" [colors]="doughnutChartColors"
+        [labels]="label"></canvas>
 </div>
 <div style="margin-top: 10px; height:40px; line-height:40px; text-align:center;">
     <h5>{{title}}</h5>

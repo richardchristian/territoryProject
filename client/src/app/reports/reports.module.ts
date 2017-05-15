@@ -8,6 +8,7 @@ import { ToastOptions } from 'ng2-toastr';
 import { CustomToastOptions } from '../custom-toast.options';
 
 import { ReportsComponent } from './reports.component';
+import { ReportsCurrentdataComponent } from './reports-currentdata.component';
 import { ReportsTerritoryCardComponent } from './reports-territorycard.component';
 
 import { ReportsRoutingModule } from './reports-routing.module';
@@ -27,7 +28,8 @@ import { ColorService } from '../_services/color.service';
   ],
   declarations: [
     ReportsComponent,
-    ReportsTerritoryCardComponent
+    ReportsCurrentdataComponent,
+    ReportsTerritoryCardComponent,
   ],
   providers: [
     TerritoryService,

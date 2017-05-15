@@ -3,9 +3,20 @@
     <div class="card">
       <div class="card-header">
         <h5 style="margin-bottom:0px"><i class="icon-speedometer"></i> Übersicht</h5>
+        <div class="card-actions">
+          <a href="javascript:void(0)" (click)="toggleExtendDoughnut();" class="btn-minimize">
+            <i [ngClass]="{ 'icon-arrow-up': extendDoughnut, 'icon-arrow-down': !extendDoughnut}"></i>
+          </a>
+          <a href="javascript:void(0)" (click)="print();" class="btn-print">
+            <i class="icon-printer"></i>
+          </a>
+          <!--<a href="javascript:void(0)" (click)="print();" class="btn-setting">
+            <i class="icon-settings"></i>
+          </a>-->
+        </div>
       </div>
       <div class="card-block">
-        <div #dataContainer id="print-section">
+        <div #dataContainer>
           <div class="col-sm-6 col-lg-2">
             <select [(ngModel)]="selectedValue" (ngModelChange)="getData($event)" id="select" name="select" class="form-control form-control-lg"
               style="margin-left: 0px; padding-left: 0px; border: 0; outline: 0; background: transparent; border-bottom: 1px solid #8B9FA9;">
@@ -17,19 +28,42 @@
             <!--class="animated fadeIn">-->
             <div class="row" *ngIf="isDataAvailable">
               <div class="col-sm-6 col-lg-3">
-                <dashboard-doughnut title="Aktuell Zugeteilt" color="blue" [data]="doughnutData['assigned']"></dashboard-doughnut>
+                <dashboard-doughnut [title]="doughnutData['assigned']['title']" color="blue" [data]="doughnutData['assigned']['data']" [label]="doughnutData['assigned']['label']"></dashboard-doughnut>
               </div>
               <div class="col-sm-6 col-lg-3">
 
-                <dashboard-doughnut title="Aktuell Nicht Zugeteilt" color="orange" [data]="doughnutData['notAssigned']"></dashboard-doughnut>
+                <dashboard-doughnut [title]="doughnutData['notAssigned']['title']" color="orange" [data]="doughnutData['notAssigned']['data']"
+                  [label]="doughnutData['notAssigned']['label']"></dashboard-doughnut>
               </div>
 
               <div class="col-sm-6 col-lg-3">
-                <dashboard-doughnut title="Bearbeitet" color="green" [data]="doughnutData['processed']"></dashboard-doughnut>
+                <dashboard-doughnut [title]="doughnutData['processed']['title']" color="blue-grey" [data]="doughnutData['processed']['data']"
+                  [label]="doughnutData['processed']['label']"></dashboard-doughnut>
               </div>
 
               <div class="col-sm-6 col-lg-3">
-                <dashboard-doughnut title="Unbearbeitet" color="purple" [data]="doughnutData['notProcessed']"></dashboard-doughnut>
+                <dashboard-doughnut [title]="doughnutData['notProcessed']['title']" color="purple" [data]="doughnutData['notProcessed']['data']"
+                  [label]="doughnutData['notProcessed']['label']"></dashboard-doughnut>
+              </div>
+
+              <div class="col-sm-6 col-lg-3" [hidden]="!extendDoughnut">
+                <dashboard-doughnut [title]="doughnutData['moreThanOneYearProcessing']['title']" color="red" [data]="doughnutData['moreThanOneYearProcessing']['data']"
+                  [label]="doughnutData['moreThanOneYearProcessing']['label']"></dashboard-doughnut>
+              </div>
+
+              <div class="col-sm-6 col-lg-3" [hidden]="!extendDoughnut">
+                <dashboard-doughnut [title]="doughnutData['moreThanSixMonthsProcessing']['title']" color="amber" [data]="doughnutData['moreThanSixMonthsProcessing']['data']"
+                  [label]="doughnutData['moreThanSixMonthsProcessing']['label']"></dashboard-doughnut>
+              </div>
+
+              <div class="col-sm-6 col-lg-3" [hidden]="!extendDoughnut">
+                <dashboard-doughnut [title]="doughnutData['remindBringBack']['title']" color="light-green" [data]="doughnutData['remindBringBack']['data']"
+                  [label]="doughnutData['remindBringBack']['label']"></dashboard-doughnut>
+              </div>
+
+              <div class="col-sm-6 col-lg-3" [hidden]="!extendDoughnut">
+                <dashboard-doughnut [title]="doughnutData['oneYearNotProcessedData']['title']" color="deep-purple" [data]="doughnutData['oneYearNotProcessedData']['data']"
+                  [label]="doughnutData['oneYearNotProcessedData']['label']"></dashboard-doughnut>
               </div>
             </div>
           </div>
@@ -124,7 +158,7 @@
 <div class="row ">
   <div class="col-lg-6">
     <div class="card" *ngIf="isDataAvailable">
-      <div class="card-header " [ngStyle]="changeBackgroundColor('green') ">
+      <div class="card-header " [ngStyle]="changeBackgroundColor('blue-grey') ">
         Bearbeitet
         <span class="badge badge-pill badge-danger float-right">{{dataArr['processed'].data.length}}</span>
       </div>
@@ -201,4 +235,193 @@
       </div>
     </div>
   </div>
+</div>
+<div class="row" [hidden]="!extendDoughnut">
+  <div class="col-lg-6">
+    <div class="card" *ngIf="isDataAvailable">
+      <div class="card-header " [ngStyle]="changeBackgroundColor('indigo') ">
+        Länger als 1 Jahr nicht bearbeitet
+        <span class="badge badge-pill badge-danger float-right">{{dataArr['oneYearNotProcessedData'].data.length}}</span>
+      </div>
+      <div class="card-block ">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Gebiet-Nr</th>
+              <th>Gebiet</th>
+              <th>Verkündiger</th>
+              <th>Von</th>
+              <th>Bis/Verlängert</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let yearNotProcessed of dataArr['oneYearNotProcessedData'].display">
+              <!-- If processing data exists -->
+              <td *ngIf="yearNotProcessed.territoryID!=undefined">{{yearNotProcessed.territoryID.territoryNumber}}</td>
+              <td *ngIf="yearNotProcessed.territoryID!=undefined">{{yearNotProcessed.territoryID.name}}</td>
+              <td *ngIf="yearNotProcessed.proclaimerID!=undefined">{{yearNotProcessed.proclaimerID.lastName |uppercase}} {{yearNotProcessed.proclaimerID.firstName}}</td>
+              <td *ngIf="yearNotProcessed.from!=undefined">{{yearNotProcessed.from | date: 'dd.MM.yyyy'}}</td>
+              <td *ngIf="(yearNotProcessed.extend==null || yearNotProcessed.extend==undefined) && yearNotProcessed.to!=undefined">{{yearNotProcessed.to | date: 'dd.MM.yyyy'}}</td>
+              <!-- else display territory data -->
+              <td *ngIf="yearNotProcessed.territoryID==undefined">{{yearNotProcessed.territoryNumber}}</td>
+              <td *ngIf="yearNotProcessed.territoryID==undefined">{{yearNotProcessed.name}}</td>
+              <td *ngIf="yearNotProcessed.extend!=null && yearNotProcessed.extend!=undefined">{{yearNotProcessed.extend | date: 'dd.MM.yyyy'}}</td>
+              <td *ngIf="yearNotProcessed.proclaimerID==undefined"></td>
+              <td *ngIf="yearNotProcessed.from==undefined"></td>
+              <td *ngIf="yearNotProcessed.to==undefined"></td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pagination" *ngIf="dataArr['oneYearNotProcessedData'].allPages>1">
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('oneYearNotProcessedData', '1')">
+              <<</a>
+          </li>
+          <li [ngClass]="{ 'page-item': true, 'active': dataArr['oneYearNotProcessedData'].current==i}" *ngFor="let i of dataArr[
+              'oneYearNotProcessedData'].pages">
+            <a class="page-link" (click)="setPageDisplayData('oneYearNotProcessedData', i)" href="javascript:void(0)">{{i}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('oneYearNotProcessedData', dataArr['oneYearNotProcessedData'].allPages)">>></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card" *ngIf="isDataAvailable">
+      <div class="card-header " [ngStyle]="changeBackgroundColor('red') ">
+        Länger als 1 Jahr zugeteilt
+        <span class="badge badge-pill badge-danger float-right">{{dataArr['moreThanOneYearProcessing'].data.length}}</span>
+      </div>
+      <div class="card-block ">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Gebiet-Nr</th>
+              <th>Gebiet</th>
+              <th>Verkündiger</th>
+              <th>Von</th>
+              <th>Bis/Verlängert</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let yearProcessing of dataArr['moreThanOneYearProcessing'].display">
+              <td>{{yearProcessing.territoryID.territoryNumber}}</td>
+              <td>{{yearProcessing.territoryID.name}}</td>
+              <td>{{yearProcessing.proclaimerID.lastName |uppercase}} {{yearProcessing.proclaimerID.firstName}}</td>
+              <td>{{yearProcessing.from | date: 'dd.MM.yyyy'}}</td>
+              <td *ngIf="yearProcessing.extend==null">{{yearProcessing.to | date: 'dd.MM.yyyy'}}</td>
+              <td *ngIf="yearProcessing.extend!=null">{{yearProcessing.extend | date: 'dd.MM.yyyy'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pagination" *ngIf="dataArr['moreThanOneYearProcessing'].allPages>1">
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('moreThanOneYearProcessing', '1')">
+              <<</a>
+          </li>
+          <li [ngClass]="{ 'page-item': true, 'active': dataArr['moreThanOneYearProcessing'].current==i}" *ngFor="let i of dataArr[
+              'moreThanOneYearProcessing'].pages">
+            <a class="page-link" (click)="setPageDisplayData('moreThanOneYearProcessing', i)" href="javascript:void(0)">{{i}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('moreThanOneYearProcessing', dataArr['moreThanOneYearProcessing'].allPages)">>></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" [hidden]="!extendDoughnut">
+  <div class="col-lg-6">
+    <div class="card" *ngIf="isDataAvailable">
+      <div class="card-header " [ngStyle]="changeBackgroundColor('amber') ">
+        Länger als 6 Monate zugeteilt
+        <span class="badge badge-pill badge-danger float-right">{{dataArr['moreThanSixMonthsProcessing'].data.length}}</span>
+      </div>
+      <div class="card-block ">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Gebiet-Nr</th>
+              <th>Gebiet</th>
+              <th>Verkündiger</th>
+              <th>Von</th>
+              <th>Bis/Verlängert</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sixMonthsProcessing of dataArr['moreThanSixMonthsProcessing'].display">
+              <td>{{sixMonthsProcessing.territoryID.territoryNumber}}</td>
+              <td>{{sixMonthsProcessing.territoryID.name}}</td>
+              <td>{{sixMonthsProcessing.proclaimerID.lastName |uppercase}} {{sixMonthsProcessing.proclaimerID.firstName}}</td>
+              <td>{{sixMonthsProcessing.from | date: 'dd.MM.yyyy'}}</td>
+              <td *ngIf="sixMonthsProcessing.extend==null">{{sixMonthsProcessing.to | date: 'dd.MM.yyyy'}}</td>
+              <td *ngIf="sixMonthsProcessing.extend!=null">{{sixMonthsProcessing.extend | date: 'dd.MM.yyyy'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pagination" *ngIf="dataArr['moreThanSixMonthsProcessing'].allPages>1">
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('moreThanSixMonthsProcessing', '1')">
+              <<</a>
+          </li>
+          <li [ngClass]="{ 'page-item': true, 'active': dataArr['moreThanSixMonthsProcessing'].current==i}" *ngFor="let i of dataArr[
+              'moreThanSixMonthsProcessing'].pages">
+            <a class="page-link" (click)="setPageDisplayData('moreThanSixMonthsProcessing', i)" href="javascript:void(0)">{{i}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('moreThanSixMonthsProcessing', dataArr['moreThanSixMonthsProcessing'].allPages)">>></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card" *ngIf="isDataAvailable">
+      <div class="card-header " [ngStyle]="changeBackgroundColor('light-green') ">
+        Erinnerung - Gebiete zurückgeben
+        <span class="badge badge-pill badge-danger float-right">{{dataArr['remindBringBack'].data.length}}</span>
+      </div>
+      <div class="card-block ">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Gebiet-Nr</th>
+              <th>Gebiet</th>
+              <th>Verkündiger</th>
+              <th>Von</th>
+              <th>Bis/Verlängert</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reminder of dataArr['remindBringBack'].display">
+              <td>{{reminder.territoryID.territoryNumber}}</td>
+              <td>{{reminder.territoryID.name}}</td>
+              <td>{{reminder.proclaimerID.lastName |uppercase}} {{reminder.proclaimerID.firstName}}</td>
+              <td>{{reminder.from | date: 'dd.MM.yyyy'}}</td>
+              <td *ngIf="reminder.extend==null">{{reminder.to | date: 'dd.MM.yyyy'}}</td>
+              <td *ngIf="reminder.extend!=null">{{reminder.extend | date: 'dd.MM.yyyy'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pagination" *ngIf="dataArr['remindBringBack'].allPages>1">
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('remindBringBack', '1')">
+              <<</a>
+          </li>
+          <li [ngClass]="{ 'page-item': true, 'active': dataArr['remindBringBack'].current==i}" *ngFor="let i of dataArr[
+              'remindBringBack'].pages">
+            <a class="page-link" (click)="setPageDisplayData('remindBringBack', i)" href="javascript:void(0)">{{i}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0)" (click)="setPageDisplayData('remindBringBack', dataArr['remindBringBack'].allPages)">>></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
 </div>

@@ -8,4 +8,6 @@ router.get('/territorycards', auth.isAuthenticated, reportController.getAllTerri
 
 router.get('/statistics/:type', auth.isAuthenticated, reportController.getTerritoryStatistics);
 
+router.get('/statistics', /*auth.isAuthenticated, */reportController.getTerritoryStatistics);
+
 module.exports = router;

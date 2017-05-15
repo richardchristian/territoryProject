@@ -38,12 +38,12 @@ export class ReportService {
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    getTerritoryTimeSectionStatistics(timeSection: string): Observable<any> {
+    getTerritoryStatistics(timeSection?: string): Observable<any> {
+        timeSection = timeSection || '';
         return this.http
             .get(this.config.apiUrl + '/reports/statistics/' + timeSection, { withCredentials: true })
             .map(res => res.json())
             .catch(err => this.handleError(err));
-
     }
 
     getPDFfromHTML(html: string) {

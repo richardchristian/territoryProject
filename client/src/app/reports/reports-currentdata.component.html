@@ -1,0 +1,169 @@
+<div class="card">
+    <div class="card-header">
+        &nbsp;
+        <div class="card-actions">
+            <a href="javascript:void(0)" (click)="print();" class="btn-print"><i class="icon-printer"></i></a>
+        </div>
+    </div>
+    <div class="card-block" id="print-section">
+        <div class="row">
+            <div class="col-sx-6 col-sm-6">
+                <div class="card" *ngIf="isDataAvailable">
+                    <div class="card-header " [ngStyle]="changeBackgroundColor('red') ">
+                        Länger als 1 Jahr zugeteilt
+                        <span class="badge badge-pill badge-danger float-right">{{dataArr['moreThanOneYearProcessing'].length}}</span>
+                    </div>
+                    <div class="card-block">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Gebiet-Nr</th>
+                                    <th>Gebiet</th>
+                                    <th>Verkündiger</th>
+                                    <th>Von</th>
+                                    <th>Bis/Verlängert</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let yearProcessing of dataArr['moreThanOneYearProcessing']">
+                                    <td>{{yearProcessing.territoryID.territoryNumber}}</td>
+                                    <td>{{yearProcessing.territoryID.name}}</td>
+                                    <td>{{yearProcessing.proclaimerID.lastName |uppercase}} {{yearProcessing.proclaimerID.firstName}}</td>
+                                    <td>{{yearProcessing.from | date: 'dd.MM.yyyy'}}</td>
+                                    <td *ngIf="yearProcessing.extend==null">{{yearProcessing.to | date: 'dd.MM.yyyy'}}</td>
+                                    <td *ngIf="yearProcessing.extend!=null">{{yearProcessing.extend | date: 'dd.MM.yyyy'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sx-6 col-sm-6">
+                <div class="card" *ngIf="isDataAvailable">
+                    <div class="card-block">
+                        <table class="table table-bordered table-sm">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Gebiete - länger als 1 Jahr unbearbeitet</th>
+                                    <th class="text-center">Zugeteilte Gebiete</th>
+                                    <th class="text-center">Verfügbare Gebiete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">{{dataArr['oneYearNotProcessedData'].length}}</td>
+                                    <td class="text-center">{{dataArr['assignedTerritories'].length}}</td>
+                                    <td class="text-center">{{dataArr['notAssignedTerritories'].length}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sx-6 col-sm-6">
+                <div class="card" *ngIf="isDataAvailable">
+                    <div class="card-header " [ngStyle]="changeBackgroundColor('red') ">
+                        Länger als 1 Jahr nicht bearbeitet
+                        <span class="badge badge-pill badge-danger float-right">{{dataArr['oneYearNotProcessedData'].length}}</span>
+                    </div>
+                    <div class="card-block ">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Gebiet-Nr</th>
+                                    <th>Gebiet</th>
+                                    <th>Verkündiger</th>
+                                    <th>Von</th>
+                                    <th>Bis/Verlängert</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let yearNotProcessed of dataArr['oneYearNotProcessedData']">
+                                    <!-- If processing data exists -->
+                                    <td *ngIf="yearNotProcessed.territoryID!=undefined">{{yearNotProcessed.territoryID.territoryNumber}}</td>
+                                    <td *ngIf="yearNotProcessed.territoryID!=undefined">{{yearNotProcessed.territoryID.name}}</td>
+                                    <td *ngIf="yearNotProcessed.proclaimerID!=undefined">{{yearNotProcessed.proclaimerID.lastName |uppercase}} {{yearNotProcessed.proclaimerID.firstName}}</td>
+                                    <td *ngIf="yearNotProcessed.from!=undefined">{{yearNotProcessed.from | date: 'dd.MM.yyyy'}}</td>
+                                    <td *ngIf="(yearNotProcessed.extend==null || yearNotProcessed.extend==undefined) && yearNotProcessed.to!=undefined">{{yearNotProcessed.to | date: 'dd.MM.yyyy'}}</td>
+                                    <!-- else display territory data -->
+                                    <td *ngIf="yearNotProcessed.territoryID==undefined">{{yearNotProcessed.territoryNumber}}</td>
+                                    <td *ngIf="yearNotProcessed.territoryID==undefined">{{yearNotProcessed.name}}</td>
+                                    <td *ngIf="yearNotProcessed.extend!=null && yearNotProcessed.extend!=undefined">{{yearNotProcessed.extend | date: 'dd.MM.yyyy'}}</td>
+                                    <td *ngIf="yearNotProcessed.proclaimerID==undefined"></td>
+                                    <td *ngIf="yearNotProcessed.from==undefined"></td>
+                                    <td *ngIf="yearNotProcessed.to==undefined"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sx-6 col-sm-6">
+                <div class="card" *ngIf="isDataAvailable">
+                    <div class="card-header " [ngStyle]="changeBackgroundColor('light-green') ">
+                        Erinnerung - Gebiete zurückgeben
+                        <span class="badge badge-pill badge-danger float-right">{{dataArr['remindBringBack'].length}}</span>
+                    </div>
+                    <div class="card-block ">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Gebiet-Nr</th>
+                                    <th>Gebiet</th>
+                                    <th>Verkündiger</th>
+                                    <th>Von</th>
+                                    <th>Bis/Verlängert</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let reminder of dataArr['remindBringBack']">
+                                    <td>{{reminder.territoryID.territoryNumber}}</td>
+                                    <td>{{reminder.territoryID.name}}</td>
+                                    <td>{{reminder.proclaimerID.lastName |uppercase}} {{reminder.proclaimerID.firstName}}</td>
+                                    <td>{{reminder.from | date: 'dd.MM.yyyy'}}</td>
+                                    <td *ngIf="reminder.extend==null">{{reminder.to | date: 'dd.MM.yyyy'}}</td>
+                                    <td *ngIf="reminder.extend!=null">{{reminder.extend | date: 'dd.MM.yyyy'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sx-6 col-sm-6">
+                <div class="card" *ngIf="isDataAvailable">
+                    <div class="card-header " [ngStyle]="changeBackgroundColor('amber') ">
+                        Länger als 6 Monate zugeteilt
+                        <span class="badge badge-pill badge-danger float-right">{{dataArr['moreThanSixMonthsProcessing'].length}}</span>
+                    </div>
+                    <div class="card-block ">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Gebiet-Nr</th>
+                                    <th>Gebiet</th>
+                                    <th>Verkündiger</th>
+                                    <th>Von</th>
+                                    <th>Bis/Verlängert</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let sixMonthsProcessing of dataArr['moreThanSixMonthsProcessing']">
+                                    <td>{{sixMonthsProcessing.territoryID.territoryNumber}}</td>
+                                    <td>{{sixMonthsProcessing.territoryID.name}}</td>
+                                    <td>{{sixMonthsProcessing.proclaimerID.lastName |uppercase}} {{sixMonthsProcessing.proclaimerID.firstName}}</td>
+                                    <td>{{sixMonthsProcessing.from | date: 'dd.MM.yyyy'}}</td>
+                                    <td *ngIf="sixMonthsProcessing.extend==null">{{sixMonthsProcessing.to | date: 'dd.MM.yyyy'}}</td>
+                                    <td *ngIf="sixMonthsProcessing.extend!=null">{{sixMonthsProcessing.extend | date: 'dd.MM.yyyy'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

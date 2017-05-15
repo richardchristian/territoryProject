@@ -47,7 +47,7 @@ Chart.pluginService.register({
             };
         }
     },
-    afterDraw: function (chart) {
+    beforeDraw: function (chart) {
         if (chart.center) {
             var centerConfig = chart.config.options.elements.center;
             var ctx = chart.chart.ctx;
@@ -78,6 +78,7 @@ export class DashboardDoughnutComponent implements OnInit {
     @Input() color: any;
     public doughnutChartColors: Array<any>;
     public doughnutChartOption: any;
+    @Input() label: Array<string>;
 
     constructor(private colorService: ColorService) {
     }
@@ -94,7 +95,7 @@ export class DashboardDoughnutComponent implements OnInit {
             cutoutPercentage: 60,
             responsive: true,
             maintainAspectRatio: false,
-            tooltips: { enabled: false },
+            //tooltips: { enabled: false },
             elements: {
                 center: {
                     maxText: '100%',

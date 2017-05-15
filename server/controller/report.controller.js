@@ -83,13 +83,13 @@ function getAllTerritoryCards(req, res) {
     }
 }
 
-function getCurrentOverview(req, res) {
-
-}
-
 function getTerritoryStatistics(req, res) {
-    var submitDateFilterObj = getStatisticsFilter(req.params.type);
     var promiseArr = [];
+
+    promiseArr.push(
+        Territory.find().sort('terrtoryNumber')
+    );
+
     promiseArr.push(
         ProcessingData
             .find({ "submitted": false })
@@ -98,13 +98,6 @@ function getTerritoryStatistics(req, res) {
             .populate('proclaimerID')
     );
 
-    promiseArr.push(
-        ProcessingData
-            .find(submitDateFilterObj)
-            .sort('-submitDate')
-            .populate('territoryID')
-            .populate('proclaimerID')
-    );
 
     promiseArr.push(
         ProcessingData
@@ -119,22 +112,25 @@ function getTerritoryStatistics(req, res) {
             .populate('proclaimerID')
     );
 
-    promiseArr.push(
-        Territory.find().sort('terrtoryNumber')
-    );
+    if (req.params.type !== undefined) {
+        var submitDateFilterObj = getStatisticsFilter(req.params.type);
+        promiseArr.push(
+            ProcessingData
+                .find(submitDateFilterObj)
+                .sort('-submitDate')
+                .populate('territoryID')
+                .populate('proclaimerID')
+        );
+    }
+
 
     Promise.all(promiseArr).then(result => {
-        var assignedTerritories = result[0];
-        var processedTerritories = result[1];
+        var allTerritories = result[0];
+        var assignedTerritories = result[1];
         var oneYearProcessed = result[2];
-        var allTerritories = result[3];
 
         var notAssignedTerritories = allTerritories.filter(item => {
             return !_.some(assignedTerritories, o => o.territoryID._id.toString() == item._id.toString());
-        });
-
-        var notProcessedTerritories = allTerritories.filter(item => {
-            return !_.some(processedTerritories, o => o.territoryID._id.toString() == item._id.toString());
         });
 
         var oneYearNotProcessed = allTerritories.filter(item => {
@@ -165,18 +161,27 @@ function getTerritoryStatistics(req, res) {
             return moment.utc().diff(item.from, 'months') >= 4;
         });
 
-        res.send({
+        var ret = {
             'assignedTerritories': _.sortBy(assignedTerritories, (o) => parseInt(o.territoryID.territoryNumber)),
-            processedTerritories,
             notAssignedTerritories,
-            notProcessedTerritories,
             allTerritories,
             oneYearNotProcessedData,
             'moreThanOneYearProcessing': _.sortBy(moreThanOneYearProcessing, (o) => parseInt(o.territoryID.territoryNumber)),
             'moreThanSixMonthsProcessing': _.sortBy(moreThanSixMonthsProcessing, (o) => parseInt(o.territoryID.territoryNumber)),
             'remindBringBack': _.sortBy(remindBringBack, (o) => parseInt(o.territoryID.territoryNumber))
+        };
 
-        });
+        if (result.length == 4) {
+            var processedTerritories = result[3];
+            var notProcessedTerritories = allTerritories.filter(item => {
+                return !_.some(processedTerritories, o => o.territoryID._id.toString() == item._id.toString());
+            });
+
+            ret.processedTerritories = processedTerritories;
+            ret.notProcessedTerritories = notProcessedTerritories;
+        }
+
+        res.send(ret);
     });
 
 

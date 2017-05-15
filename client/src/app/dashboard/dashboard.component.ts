@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ReportService } from '../_services/report.service';
 import { ColorService } from '../_services/color.service';
 
+import { AppConfig } from '../app.config';
+
 @Component({
   templateUrl: 'dashboard.component.html'
 })
@@ -12,6 +14,7 @@ export class DashboardComponent implements OnInit {
   public dataArr: any[] = [];
   public doughnutData: any;
   public pages: number = 5;
+  public extendDoughnut: boolean = false;
   public dashboardTimesection: Array<Object> = [
     { id: "OneMonth", name: "1 Monat" },
     { id: "SixMonths", name: "6 Monate" },
@@ -24,12 +27,13 @@ export class DashboardComponent implements OnInit {
     { id: "CurrentServiceYear", name: "Aktuelles Dienstjahr" },
     { id: "PreviousServiceYear", name: "Vorheriges Dienstjahr" }
   ];
-  selectedValue = "SixMonths";
+  selectedValue = this.config.dashboard.display;
 
 
   constructor(
     private reportService: ReportService,
-    private colorService: ColorService
+    private colorService: ColorService,
+    private config: AppConfig
   ) { }
 
   ngOnInit(): void {
@@ -37,50 +41,11 @@ export class DashboardComponent implements OnInit {
   }
 
   getData(timeSection: string) {
-    this.reportService.getTerritoryTimeSectionStatistics(timeSection)
+    this.reportService.getTerritoryStatistics(timeSection)
       .subscribe(data => {
-        this.doughnutData = {
-          'assigned': [data.assignedTerritories.length, data.notAssignedTerritories.length],
-          'notAssigned': [data.notAssignedTerritories.length, data.assignedTerritories.length],
-          'processed': [data.processedTerritories.length, data.notProcessedTerritories.length],
-          'notProcessed': [data.notProcessedTerritories.length, data.processedTerritories.length]
-        };
-        this.dataArr['assigned'] = {
-          'current': 1,
-          'data': data.assignedTerritories,
-          'display': data.assignedTerritories.slice(0, 10),
-          'allPages': Math.ceil(data.assignedTerritories.length / 10),
-          'pages': Math.ceil(data.assignedTerritories.length / 10) > this.pages ?
-            new Array(this.pages).fill(0).map((v, i) => (i + 1) + '') :
-            new Array(Math.ceil(data.assignedTerritories.length / 10)).fill(0).map((v, i) => (i + 1) + ''),
-        };
-        this.dataArr['notAssigned'] = {
-          'current': 1,
-          'data': data.notAssignedTerritories,
-          'display': data.notAssignedTerritories.slice(0, 10),
-          'allPages': Math.ceil(data.notAssignedTerritories.length / 10),
-          'pages': Math.ceil(data.notAssignedTerritories.length / 10) > this.pages ?
-            new Array(this.pages).fill(0).map((v, i) => (i + 1) + '') :
-            new Array(Math.ceil(data.notAssignedTerritories.length / 10)).fill(0).map((v, i) => (i + 1) + ''),
-        };
-        this.dataArr['processed'] = {
-          'current': 1,
-          'data': data.processedTerritories,
-          'display': data.processedTerritories.slice(0, 10),
-          'allPages': Math.ceil(data.processedTerritories.length / 10),
-          'pages': Math.ceil(data.processedTerritories.length / 10) > this.pages ?
-            new Array(this.pages).fill(0).map((v, i) => (i + 1) + '') :
-            new Array(Math.ceil(data.processedTerritories.length / 10)).fill(0).map((v, i) => (i + 1) + ''),
-        };
-        this.dataArr['notProcessed'] = {
-          'current': 1,
-          'data': data.notProcessedTerritories,
-          'display': data.notProcessedTerritories.slice(0, 10),
-          'allPages': Math.ceil(data.notProcessedTerritories.length / 10),
-          'pages': Math.ceil(data.notProcessedTerritories.length / 10) > this.pages ?
-            new Array(this.pages).fill(0).map((v, i) => (i + 1) + '') :
-            new Array(Math.ceil(data.notProcessedTerritories.length / 10)).fill(0).map((v, i) => (i + 1) + ''),
-        };
+        this.buildDoughnutDataArr(data);
+        this.buildGridDataArr(data);
+
         this.isDataAvailable = true;
       });
   }
@@ -131,5 +96,97 @@ export class DashboardComponent implements OnInit {
 
   changeBackgroundColor(color: string): any {
     return { 'background-color': this.colorService.getColor(color, '500'), 'color': '#FFFFFF' };
+  }
+
+  toggleExtendDoughnut(): void {
+    this.extendDoughnut = !this.extendDoughnut;
+  }
+
+  print(): void {
+    let printContents, popupWin;
+    printContents = document.getElementById('print-section').innerHTML;
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin.document.open();
+    popupWin.document.write(`
+      <html>
+        <head>
+          <title>Gebietskarten</title>
+          
+        </head>
+        <body onload="window.print();window.close()">${printContents}</body>
+      </html>`
+    );
+    popupWin.document.close();
+  }
+
+  buildDoughnutDataArr(data: any): void {
+    this.doughnutData = {
+      'assigned': {
+        'data': [data.assignedTerritories.length, data.notAssignedTerritories.length],
+        'label': ['Aktuell Zugeteilt', 'Aktuell Nicht Zugeteilt'],
+        'title': 'Aktuell Zugeteilt'
+      },
+      'notAssigned': {
+        'data': [data.notAssignedTerritories.length, data.assignedTerritories.length],
+        'label': ['Aktuell Nicht Zugeteilt', 'Aktuell Zugeteilt'],
+        'title': 'Aktuell Nicht Zugeteilt'
+      },
+      'processed': {
+        'data': [data.processedTerritories.length, data.notProcessedTerritories.length],
+        'label': ['Bearbeitet', 'Unbearbeitet'],
+        'title': 'Bearbeitet'
+      },
+      'notProcessed': {
+        'data': [data.notProcessedTerritories.length, data.processedTerritories.length],
+        'label': ['Unbearbeitet', 'Bearbeitet'],
+        'title': 'Unbearbeitet'
+      },
+      'moreThanOneYearProcessing': {
+        'data': [data.moreThanOneYearProcessing.length, (data.assignedTerritories.length - data.moreThanOneYearProcessing.length)],
+        'label': ['> 1 Jahr zugeteilt', '< 1 Jahr zugeteilt'],
+        'title': '> 1 Jahr Zugeteilt'
+      },
+      'moreThanSixMonthsProcessing': {
+        'data': [data.moreThanSixMonthsProcessing.length, (data.assignedTerritories.length - data.moreThanSixMonthsProcessing.length)],
+        'label': ['> 6 Monate zugeteilt', '< 6 Monate zugeteilt'],
+        'title': '> 6 Monate Zugeteilt'
+      },
+      'remindBringBack': {
+        'data': [data.remindBringBack.length, (data.allTerritories.length - data.oneYearNotProcessedData.length)],
+        'label': ['> ' + this.config.territory.standardTime + ' Monate zugeteilt', '< ' + this.config.territory.standardTime + ' Monate zugeteilt'],
+        'title': '> ' + this.config.territory.standardTime + ' Monate zugeteilt'
+      },
+      'oneYearNotProcessedData': {
+        'data': [data.oneYearNotProcessedData.length, (data.allTerritories.length - data.oneYearNotProcessedData.length)],
+        'label': ['> 1 Jahr unbearbeitet', '< 1 Jahr nicht bearbeitet'],
+        'title': '> 1 Jahr Unbearbeitet'
+      },
+    };
+  }
+
+  buildGridDataArr(data: any): void {
+    this.dataArr['assigned'] = this.getGridDataDisplayArr(data.assignedTerritories);
+    this.dataArr['notAssigned'] = this.getGridDataDisplayArr(data.notAssignedTerritories);
+    this.dataArr['processed'] = this.getGridDataDisplayArr(data.processedTerritories);
+    this.dataArr['notProcessed'] = this.getGridDataDisplayArr(data.notProcessedTerritories);
+    this.dataArr['moreThanOneYearProcessing'] = this.getGridDataDisplayArr(data.moreThanOneYearProcessing);
+    this.dataArr['moreThanSixMonthsProcessing'] = this.getGridDataDisplayArr(data.moreThanSixMonthsProcessing);
+    this.dataArr['oneYearNotProcessedData'] = this.getGridDataDisplayArr(data.oneYearNotProcessedData);
+    this.dataArr['remindBringBack'] = this.getGridDataDisplayArr(data.remindBringBack);
+
+
+
+  }
+
+  getGridDataDisplayArr(territoriesArr: any): any {
+    return {
+      'current': 1,
+      'data': territoriesArr,
+      'display': territoriesArr.slice(0, 10),
+      'allPages': Math.ceil(territoriesArr.length / 10),
+      'pages': Math.ceil(territoriesArr.length / 10) > this.pages ?
+        new Array(this.pages).fill(0).map((v, i) => (i + 1) + '') :
+        new Array(Math.ceil(territoriesArr.length / 10)).fill(0).map((v, i) => (i + 1) + ''),
+    };
   }
 }

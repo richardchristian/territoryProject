@@ -3,5 +3,9 @@ export class AppConfig {
     public readonly territory = {
         standardTime: 4,
         extendTime: 1
+    };
+    public readonly dashboard = {
+        display: "SixMonths",
+
     }
 };
