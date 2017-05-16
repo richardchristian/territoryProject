@@ -11,6 +11,7 @@ import { ReportService } from '../_services/report.service';
 export class ReportsCurrentdataComponent implements OnInit {
     public dataArr: any;
     public isDataAvailable: boolean = false;
+    public targetDates: any;
 
     constructor(
         public toastr: ToastsManager,
@@ -22,13 +23,30 @@ export class ReportsCurrentdataComponent implements OnInit {
         this.reportService.getTerritoryStatistics()
             .subscribe(data => {
                 this.dataArr = data;
+                this.targetDates = data.targetDates;
                 this.isDataAvailable = true;
-
             });
     }
 
     changeBackgroundColor(color: string): any {
         return { 'background-color': this.colorService.getColor(color, '400'), 'color': '#000000' };
+    }
+
+    getLineBackgroundColor(lineData: any): string {
+        console.log(lineData);
+        var color = 'white';
+        if (lineData.from === undefined)
+            color = 'red';
+        else {
+            if (lineData.from < this.targetDates.greaterFourMonths)
+                color = 'yellow';
+            if (lineData.from < this.targetDates.greaterSixMonths)
+                color = 'red';
+            if (lineData.from < this.targetDates.greaterOneYear)
+                color = 'red';
+        }
+
+        return this.colorService.getColor(color, '200');
     }
 
     print(): void {

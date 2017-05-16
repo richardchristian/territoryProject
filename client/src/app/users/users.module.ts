@@ -12,8 +12,8 @@ import { UsersUserDialogComponent } from './dialogs/users-user-dialog.component'
 
 // Modal
 import { ModalModule } from 'ngx-bootstrap/modal';
-
 import { UserService } from '../_services/user.service';
+import { AuthenticationService } from '../_services/authentication.service';
 
 @NgModule({
     imports: [
@@ -33,6 +33,7 @@ import { UserService } from '../_services/user.service';
     ],
     exports: [],
     providers: [
+        AuthenticationService,
         UserService,
         { provide: ToastOptions, useClass: CustomToastOptions },
     ],

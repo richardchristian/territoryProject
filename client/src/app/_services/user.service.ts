@@ -51,9 +51,9 @@ export class UserService {
             .catch(err => this.handleError(err));
     }
 
-    delete(id: number): Observable<Response> {
+    delete(_id: string): Observable<Response> {
         return this.http
-            .delete(this.config.apiUrl + '/users/' + id, { withCredentials: true })
+            .delete(this.config.apiUrl + '/users/' + _id, { withCredentials: true })
             .catch(err => this.handleError(err));
     }
 
