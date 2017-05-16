@@ -9,8 +9,9 @@ import { User } from '../_models/user';
 })
 export class FullLayoutComponent implements OnInit {
 
-  loggedIn: boolean = false;
-  currentUser: User;
+  public loggedIn: boolean = false;
+  public currentUser: User;
+  public status: { isopen: boolean } = { isopen: false };
 
   constructor(
     private router: Router,
@@ -35,5 +36,11 @@ export class FullLayoutComponent implements OnInit {
       (data) => {
         this.router.navigate(['/pages/login']);
       });
+  }
+
+  public toggleDropdown($event: MouseEvent): void {
+    $event.preventDefault();
+    $event.stopPropagation();
+    this.status.isopen = !this.status.isopen;
   }
 }

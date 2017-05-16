@@ -33,7 +33,6 @@ export class ReportsCurrentdataComponent implements OnInit {
     }
 
     getLineBackgroundColor(lineData: any): string {
-        console.log(lineData);
         var color = 'white';
         if (lineData.from === undefined)
             color = 'red';

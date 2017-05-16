@@ -18,6 +18,7 @@ app.use(session({
     saveUninitialized: false
 }));
 var originsWhitelist = [
+    'http://local.territory-ui',
     'http://localhost:4200'
 ];
 var corsOptions = {
