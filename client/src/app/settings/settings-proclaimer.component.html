@@ -13,11 +13,16 @@
     <thead class="thead-default">
         <tr>
             <th>Name</th>
+            <th>Status</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let proclaimer of proclaimers |async" (click)="infoModal.show(proclaimer)">
             <td>{{proclaimer.lastName |uppercase}} {{proclaimer.firstName}}</td>
+            <td>
+                <span *ngIf="proclaimer.active==undefined || proclaimer.active==true" class="badge badge-success">Aktiv</span>
+                <span *ngIf="proclaimer.active!=undefined && proclaimer.active==false" class="badge badge-danger">Inaktiv</span>
+            </td>
         </tr>
     </tbody>
 </table>

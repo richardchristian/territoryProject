@@ -18,6 +18,13 @@
                     <input type="text" class="form-control" id="lastName" placeholder="Mustermann" [(ngModel)]="proclaimer.lastName" value="{{proclaimer.lastName}}"
                         [readonly]="readonly">
                 </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label for="checkboxActive">Aktiv </label>
+                        <input type="checkbox" id="checkboxActive" name="checkboxActive" [(ngModel)]="proclaimer.active" value="{{proclaimer.active}}"
+                            [disabled]="readonly">
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" (click)="infoModal.hide()" [hidden]="!readonly">Schließen</button>
