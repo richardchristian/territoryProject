@@ -10,12 +10,12 @@ import { User } from '../../_models/user';
 export class UsersUserDialogComponent {
     @ViewChild('infoModal') public infoModal: ModalDirective;
     @Output() userSave = new EventEmitter<User>();
-
+    @Output() userDelete = new EventEmitter<User>();
+    public currentUser: User;
     public user: User = { _id: "", email: "", firstName: "", lastName: "" };
     public readonly: boolean = true;
 
     constructor() { }
-
 
     show(param) {
         this.readonly = true;
@@ -27,6 +27,7 @@ export class UsersUserDialogComponent {
             this.readonly = false;
         }
         var dialog = this.infoModal.show();
+
     }
 
     hide() {
@@ -49,9 +50,18 @@ export class UsersUserDialogComponent {
         this.hide();
     }
 
+    delete() {
+        this.userDelete.emit(this.user);
+        this.hide();
+    }
+
     getEmail() {
         if (this.user._id == "")
             return "Neuer Benutzer";
         return this.user.email;
+    }
+
+    setCurrentUser(user: User): void {
+        this.currentUser = user;
     }
 }

@@ -162,6 +162,11 @@ function getTerritoryStatistics(req, res) {
         });
 
         var ret = {
+            'targetDates': {
+                'greaterOneYear': moment.utc().subtract(1, 'years'),
+                'greaterSixMonths': moment.utc().subtract(6, 'months'),
+                'greaterFourMonths': moment.utc().subtract(4, 'months')
+            },
             'assignedTerritories': _.sortBy(assignedTerritories, (o) => parseInt(o.territoryID.territoryNumber)),
             notAssignedTerritories,
             allTerritories,

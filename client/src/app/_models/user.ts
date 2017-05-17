@@ -4,4 +4,8 @@ export class User {
     firstName: string;
     lastName: string;
     password?: string;
+
+    // passport salt/hash
+    salt?: string;
+    hash?: string;
 }

@@ -5,18 +5,24 @@ import { UsersUserDialogComponent } from './dialogs/users-user-dialog.component'
 import { UserService } from '../_services/user.service';
 import { User } from '../_models/user';
 
+import { AuthenticationService } from '../_services/authentication.service';
+
+
 @Component({
     selector: 'users',
     templateUrl: './users.component.html'
 })
 export class UsersComponent implements OnInit {
+    public currentUser: User;
     public users: User[];
     @ViewChild('infoModal') infoModal: UsersUserDialogComponent;
 
     constructor(
+        private auth: AuthenticationService,
         private userService: UserService,
         public toastr: ToastsManager,
         vRef: ViewContainerRef) {
+
         this.toastr.setRootViewContainerRef(vRef);
     }
 
@@ -24,13 +30,14 @@ export class UsersComponent implements OnInit {
         this.userService.getAll()
             .subscribe(
             data => {
-                console.log(data);
                 this.users = data;
             },
             err => {
                 console.log(err);
                 this.toastr.error(err, "Fehler");
             });
+
+        this.infoModal.setCurrentUser(JSON.parse(localStorage.getItem('currentUser')).user);
     }
 
     save(_user: User) {
@@ -49,12 +56,27 @@ export class UsersComponent implements OnInit {
             this.userService.update(_user)
                 .subscribe(
                 data => {
-                    this.toastr.success("User erfolgreich bearbeitet", data.email)
+                    this.toastr.success("User erfolgreich bearbeitet", data.email);
                 },
                 err => {
                     console.log(err);
                     this.toastr.error(err, "Fehler");
                 });
+        }
+    }
+
+    delete(_user: User) {
+        if (_user._id !== "") {
+            this.userService.delete(_user._id)
+                .subscribe(
+                data => {
+                    this.toastr.success("User erfolgreich entfernt");
+                    this.users = this.users.filter(el => el._id !== _user._id);
+                },
+                err => {
+                    console.log(err);
+                    this.toastr.error(err, "Fehler");
+                })
         }
     }
 }

@@ -108,7 +108,7 @@ export class TerritoriesDialogComponent implements OnInit {
         return data;
     }
 
-    searchTerritories(searchString: string, init: boolean) {
+    searchTerritories(searchString?: string, init?: boolean) {
         /*if (searchString === this._territorySearchString) {
             // string was deleted so assign empty array to ng-select items
             this.territoriesInput.items = [];
@@ -137,7 +137,7 @@ export class TerritoriesDialogComponent implements OnInit {
             });
     }
 
-    searchProclaimers(searchString: string, init: boolean) {
+    searchProclaimers(searchString?: string, init?: boolean) {
         /*if (searchString === this._proclaimerSearchString) {
             // string was deleted so assign empty array to ng-select items
             this.proclaimersInput.items = [];

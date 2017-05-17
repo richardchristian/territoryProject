@@ -80,20 +80,37 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let yearNotProcessed of dataArr['oneYearNotProcessedData']">
-                                    <!-- If processing data exists -->
-                                    <td *ngIf="yearNotProcessed.territoryID!=undefined">{{yearNotProcessed.territoryID.territoryNumber}}</td>
-                                    <td *ngIf="yearNotProcessed.territoryID!=undefined">{{yearNotProcessed.territoryID.name}}</td>
-                                    <td *ngIf="yearNotProcessed.proclaimerID!=undefined">{{yearNotProcessed.proclaimerID.lastName |uppercase}} {{yearNotProcessed.proclaimerID.firstName}}</td>
-                                    <td *ngIf="yearNotProcessed.from!=undefined">{{yearNotProcessed.from | date: 'dd.MM.yyyy'}}</td>
-                                    <td *ngIf="(yearNotProcessed.extend==null || yearNotProcessed.extend==undefined) && yearNotProcessed.to!=undefined">{{yearNotProcessed.to | date: 'dd.MM.yyyy'}}</td>
-                                    <!-- else display territory data -->
-                                    <td *ngIf="yearNotProcessed.territoryID==undefined">{{yearNotProcessed.territoryNumber}}</td>
-                                    <td *ngIf="yearNotProcessed.territoryID==undefined">{{yearNotProcessed.name}}</td>
-                                    <td *ngIf="yearNotProcessed.extend!=null && yearNotProcessed.extend!=undefined">{{yearNotProcessed.extend | date: 'dd.MM.yyyy'}}</td>
-                                    <td *ngIf="yearNotProcessed.proclaimerID==undefined"></td>
-                                    <td *ngIf="yearNotProcessed.from==undefined"></td>
-                                    <td *ngIf="yearNotProcessed.to==undefined"></td>
+                                <tr *ngFor="let yearNotProcessed of dataArr['oneYearNotProcessedData']" [ngStyle]="{'background-color': getLineBackgroundColor(yearNotProcessed)}">
+                                    <ng-template [ngIf]="yearNotProcessed.territoryID!=undefined">
+                                        <!-- If processing data exists -->
+                                        <td>
+                                            {{yearNotProcessed.territoryID.territoryNumber}}
+                                        </td>
+                                        <td>
+                                            {{yearNotProcessed.territoryID.name}}
+                                        </td>
+                                        <td>
+                                            {{yearNotProcessed.proclaimerID.lastName |uppercase}} {{yearNotProcessed.proclaimerID.firstName}}
+                                        </td>
+                                        <td>
+                                            {{yearNotProcessed.from | date: 'dd.MM.yyyy'}}
+                                        </td>
+                                        <td *ngIf="yearNotProcessed.extend==null">
+                                            {{yearNotProcessed.to | date: 'dd.MM.yyyy'}}
+                                        </td>
+                                        <td *ngIf="yearNotProcessed.extend!=null">
+                                            {{yearNotProcessed.extend | date: 'dd.MM.yyyy'}}
+                                        </td>
+
+                                    </ng-template>
+                                    <ng-template [ngIf]="yearNotProcessed.territoryID==undefined">
+                                        <!-- else display territory data -->
+                                        <td>{{yearNotProcessed.territoryNumber}}</td>
+                                        <td>{{yearNotProcessed.name}}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </ng-template>
                                 </tr>
                             </tbody>
                         </table>

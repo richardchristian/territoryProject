@@ -20,8 +20,8 @@
           <div class="col-sm-6 col-lg-2">
             <select [(ngModel)]="selectedValue" (ngModelChange)="getData($event)" id="select" name="select" class="form-control form-control-lg"
               style="margin-left: 0px; padding-left: 0px; border: 0; outline: 0; background: transparent; border-bottom: 1px solid #8B9FA9;">
-          <option *ngFor="let t of dashboardTimesection" [ngValue]="t.id">{{t.name}}</option>
-        </select>
+              <option *ngFor="let t of dashboardTimesection" [ngValue]="t.id">{{t.name}}</option>
+            </select>
           </div>
           <br/>
           <div>
