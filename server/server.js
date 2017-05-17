@@ -8,7 +8,12 @@ const cookieParser = require('cookie-parser');
 
 var { mongoose } = require('./db/mongoose');
 
+var __projectRoot = '../client/';
+
 var app = express();
+
+//for production
+//app.use(express.static(__projectRoot));
 
 app.use(cookieParser(config.SESSION_SECRET));
 app.use(bodyParser.json());
