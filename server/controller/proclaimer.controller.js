@@ -58,17 +58,25 @@ function getAllProclaimers(req, res) {
 
 function getSearchProclaimers(req, res) {
     var searchTerm = req.query.term;
-    var findArr = [
-        { 'firstName': { $regex: searchTerm, $options: 'i' } },
-        { 'lastName': { $regex: searchTerm, $options: 'i' } }
-    ];
 
-    Proclaimer.find({ $or: findArr })
-        .sort({ lastName: 'asc', firstName: 'asc' }).then((proclaimers) => {
-            res.send({ proclaimers });
-        }, (e) => {
-            res.status(400).send(e);
-        });
+    var findObj = {
+        $and: [{
+            $or: [
+                { 'firstName': { $regex: searchTerm, $options: 'i' } },
+                { 'lastName': { $regex: searchTerm, $options: 'i' } }
+            ]
+        }]
+    };
+
+    if (req.query.active !== undefined)
+        findObj.$and.push({ 'active': req.query.active });
+
+
+    Proclaimer.find(findObj).sort({ lastName: 'asc', firstName: 'asc' }).then((proclaimers) => {
+        res.send({ proclaimers });
+    }, (e) => {
+        res.status(400).send(e);
+    });
 }
 
 function updateProclaimer(req, res) {

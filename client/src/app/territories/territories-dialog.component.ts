@@ -148,7 +148,7 @@ export class TerritoriesDialogComponent implements OnInit {
             return;
         }*/
         this._proclaimerSearchString = searchString
-        this.proclaimerService.search(searchString) // async fetch from server
+        this.proclaimerService.search(searchString, true) // async fetch from server
             .subscribe(
             data => {
 

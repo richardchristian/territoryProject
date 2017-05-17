@@ -79,9 +79,9 @@ export class TerritoriesComponent implements OnInit {
         var perc = this.getPercentage(from, to, extend);
         styles.width = perc + '%';
 
-        if (perc > 70)
+        if (perc > 150)
             styles['background-color'] = "#f8cb00";
-        if (perc > 95)
+        if (perc > 200)
             styles['background-color'] = "#f86c6b";
 
         return styles;

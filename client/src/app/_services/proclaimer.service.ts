@@ -61,9 +61,9 @@ export class ProclaimerService {
     }
 
 
-    search(term: string): Observable<Proclaimer[]> {
+    search(term: string, active?: boolean): Observable<Proclaimer[]> {
         return this.http
-            .get(this.config.apiUrl + '/proclaimers/search?term=' + term, { withCredentials: true })
+            .get(this.config.apiUrl + '/proclaimers/search?term=' + term + (active !== undefined ? '&active=' + active : ''), { withCredentials: true })
             .map(res => res.json().proclaimers)
             .catch(err => this.handleError(err));
         //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));

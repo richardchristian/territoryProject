@@ -19,10 +19,10 @@ export class SettingsProclaimerDialogComponent {
 
     show(param) {
         this.readonly = param !== undefined;
-        this.proclaimer = param || { _id: "", firstName: "", lastName: "" };
+        this.proclaimer = param || { _id: "", firstName: "", lastName: "", active: true };
         this.proclaimerOrig = param ?
-            { _id: param._id, firstName: param.firstName, lastName: param.lastName } :
-            { _id: "", firstName: "", lastName: "" };
+            { _id: param._id, firstName: param.firstName, lastName: param.lastName, active: param.active || true } :
+            { _id: "", firstName: "", lastName: "", active: true };
         var dialog = this.infoModal.show();
     }
 
@@ -57,6 +57,7 @@ export class SettingsProclaimerDialogComponent {
         this.readonly = true;
         this.proclaimer.firstName = this.proclaimerOrig.firstName;
         this.proclaimer.lastName = this.proclaimerOrig.lastName;
+        this.proclaimer.active = this.proclaimerOrig.active;
     }
 
     save() {
