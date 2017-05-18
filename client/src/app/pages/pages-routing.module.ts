@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Example Pages'
+      title: 'Pages'
     },
     children: [
       {
