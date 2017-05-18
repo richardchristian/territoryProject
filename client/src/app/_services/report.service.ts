@@ -28,14 +28,12 @@ export class ReportService {
             .get(this.config.apiUrl + '/reports/territorycards', { withCredentials: true })
             .map(res => res.json())
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     getTerritoryCardById(id: string): Observable<any> {
         return this.http
             .get(this.config.apiUrl + '/reports/territorycards/' + id, { withCredentials: true })
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     getTerritoryStatistics(timeSection?: string): Observable<any> {
@@ -47,6 +45,7 @@ export class ReportService {
     }
 
     getPDFfromHTML(html: string) {
+        // @TODO
         /*var doc = new jsPDF();*/
         /*return doc;*/
     }
@@ -58,8 +57,7 @@ export class ReportService {
                 setTimeout(() => { this.router.navigate(['/pages/login'], { queryParams: { returnUrl: this.router.url } }) }, 3000);
             });
         }
-        return Observable.of([]);
+        return Observable.throw(error.json().error || 'Server error')
 
-        //Observable.throw(error.json().error || 'Server error')
     }
 }

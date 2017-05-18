@@ -26,7 +26,6 @@ export class ProcessingDataService {
             .get(this.config.apiUrl + '/processing', { withCredentials: true })
             .map((res) => res.json().territories)
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     getById(id: string): Observable<ProcessingData> {
@@ -39,7 +38,6 @@ export class ProcessingDataService {
         return this.http
             .put(this.config.apiUrl + '/processing/' + processingData._id, processingData, { withCredentials: true })
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     create(processingData: ProcessingData): Observable<ProcessingData> {
@@ -47,14 +45,12 @@ export class ProcessingDataService {
             .post(this.config.apiUrl + '/processing/add', processingData, { withCredentials: true })
             .map(res => res.json())
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     delete(id: number): Observable<Response> {
         return this.http
             .delete(this.config.apiUrl + '/processing/' + id, { withCredentials: true })
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     search(term: string, sort: string, direction: string): Observable<ProcessingData[]> {
@@ -62,7 +58,6 @@ export class ProcessingDataService {
             .get(this.config.apiUrl + '/processing/search?term=' + term + '&sort=' + sort + '&direction=' + direction, { withCredentials: true })
             .map((res) => res.json().processingData)
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     private handleError(error: any): Observable<any> {
@@ -72,9 +67,8 @@ export class ProcessingDataService {
                 setTimeout(() => { this.router.navigate(['/pages/login'], { queryParams: { returnUrl: this.router.url } }) }, 3000);
             });
         }
-        return Observable.of([]);
+        return Observable.throw(error.json().error || 'Server error')
 
-        //Observable.throw(error.json().error || 'Server error')
     }
 
 }

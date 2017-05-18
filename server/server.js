@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 
 var { mongoose } = require('./db/mongoose');
 
-var __projectRoot = '../client/';
+var __projectRoot = '../client/dist/';
 
 var app = express();
 
@@ -22,6 +22,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+
 var originsWhitelist = [
     'http://local.territory-ui',
     'http://localhost:4200'

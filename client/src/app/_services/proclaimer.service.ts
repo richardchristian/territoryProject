@@ -27,14 +27,12 @@ export class ProclaimerService {
             .get(this.config.apiUrl + '/proclaimers', { withCredentials: true })
             .map(res => res.json().proclaimers)
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     getById(id: string): Observable<Proclaimer> {
         return this.http
             .get(this.config.apiUrl + '/proclaimers/' + id, { withCredentials: true })
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     update(proclaimer: Proclaimer): Observable<Proclaimer> {
@@ -42,7 +40,6 @@ export class ProclaimerService {
             .put(this.config.apiUrl + '/proclaimers/' + proclaimer._id, proclaimer, { withCredentials: true })
             .map(res => res.json().proclaimer)
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     create(proclaimer: Proclaimer): Observable<Proclaimer> {
@@ -50,14 +47,12 @@ export class ProclaimerService {
             .post(this.config.apiUrl + '/proclaimers/create', proclaimer, { withCredentials: true })
             .map(res => res.json())
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     delete(id: number): Observable<Response> {
         return this.http
             .delete(this.config.apiUrl + '/proclaimers/' + id, { withCredentials: true })
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
 
@@ -66,7 +61,6 @@ export class ProclaimerService {
             .get(this.config.apiUrl + '/proclaimers/search?term=' + term + (active !== undefined ? '&active=' + active : ''), { withCredentials: true })
             .map(res => res.json().proclaimers)
             .catch(err => this.handleError(err));
-        //.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     private handleError(error: any): Observable<any> {
@@ -76,8 +70,7 @@ export class ProclaimerService {
                 setTimeout(() => { this.router.navigate(['/pages/login'], { queryParams: { returnUrl: this.router.url } }) }, 3000);
             });
         }
-        return Observable.of([]);
+        return Observable.throw(error.json().error || 'Server error')
 
-        //Observable.throw(error.json().error || 'Server error')
     }
 }

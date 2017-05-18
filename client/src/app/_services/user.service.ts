@@ -64,9 +64,8 @@ export class UserService {
                 setTimeout(() => { this.router.navigate(['/pages/login'], { queryParams: { returnUrl: this.router.url } }) }, 3000);
             });
         }
-        return Observable.of([]);
+        return Observable.throw(error.json().error || 'Server error')
 
-        //Observable.throw(error.json().error || 'Server error')
     }
 
 }
