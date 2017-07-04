@@ -231,7 +231,7 @@ function updateProcessingData(req, res) {
         if (!territory) {
             return res.status(404).send();
         }
-        logger.info('Update Processing Territory-entry ( ' + JSON.stringify(processingData, null, 2) + ' )');
+        logger.info('Update Processing Territory-entry ( ' + JSON.stringify(territory, null, 2) + ' )');
 
         res.send({ territory });
     }).catch((e) => {
