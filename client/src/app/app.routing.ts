@@ -41,6 +41,7 @@ export const routes: Routes = [
     data: {
       title: 'Einstellungen'
     },
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -54,6 +55,7 @@ export const routes: Routes = [
     data: {
       title: 'Benutzer'
     },
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -76,7 +78,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'pages/404'
   }
 ];
 @NgModule({

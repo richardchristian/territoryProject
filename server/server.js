@@ -8,7 +8,12 @@ const cookieParser = require('cookie-parser');
 
 var { mongoose } = require('./db/mongoose');
 
+var __projectRoot = '../client/dist/';
+
 var app = express();
+
+//for production
+//app.use(express.static(__projectRoot));
 
 app.use(cookieParser(config.SESSION_SECRET));
 app.use(bodyParser.json());
@@ -17,9 +22,11 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+
 var originsWhitelist = [
     'http://local.territory-ui',
-    'http://localhost:4200'
+    'http://localhost:4200',
+    'http://territory-ui.com'
 ];
 var corsOptions = {
     origin: function (origin, callback) {

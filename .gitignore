@@ -29,6 +29,9 @@
 /server/*.launch
 /server/.settings/
 
+# logs
+/log
+
 # misc
 /.sass-cache
 /connect.lock

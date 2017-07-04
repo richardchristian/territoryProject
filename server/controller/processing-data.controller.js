@@ -1,7 +1,8 @@
-
 var mongoose = require('mongoose');
 var _ = require('lodash');
 var moment = require('moment');
+var logger = require('../logging/logger');
+
 var { ProcessingData } = require('../models/processing-data.model');
 var { Territory } = require('../models/territory.model');
 var { Proclaimer } = require('../models/proclaimer.model');
@@ -21,8 +22,6 @@ module.exports = {
 };
 
 function addProcessingData(req, res) {
-    console.log("add new processing Territory Entry");
-
     var processingData = new ProcessingData({
         proclaimerID: req.body.proclaimerID,
         territoryID: req.body.territoryID,
@@ -32,8 +31,11 @@ function addProcessingData(req, res) {
     });
 
     processingData.save().then((doc) => {
+        logger.info('Add new Processing Territory-entry ( ' + JSON.stringify(processingData, null, 2) + ' )');
         res.send(doc);
     }, (e) => {
+        logger.error('Error addProcessingData ( ' + JSON.stringify(processingData, null, 2) + ' )');
+        logger.error(JSON.stringify(e, null, 2));
         res.status(400).send(e);
     });
 }
@@ -47,6 +49,7 @@ function getProcessingDataById(req, res) {
 
     ProcessingData.findById(processingDataID).then((processingTerritory) => {
         if (!processingTerritory) {
+            logger.error('Error - getProcessingDataById - ID not existing ( ' + JSON.stringify(req.params, null, 2) + ' )');
             res.status(404).send();
         }
         res.send({
@@ -54,6 +57,8 @@ function getProcessingDataById(req, res) {
             processingTerritory: processingTerritory
         });
     }).catch((e) => {
+        logger.error('Error - getProcessingDataById ( ' + JSON.stringify(req.params, null, 2) + ' )');
+        logger.error(JSON.stringify(e, null, 2));
         res.status(400).send();
     });
 
@@ -65,6 +70,8 @@ function getAllProcessingData(req, res) {
         .then((processingTerritories) => {
             res.send({ processingTerritories });
         }, (e) => {
+            logger.error('Error - getAllProcessingData');
+            logger.error(JSON.stringify(e, null, 2));
             res.status(400).send(e);
         });
 }
@@ -75,9 +82,13 @@ function getAllNonProcessingTerritories(req, res) {
         Territory.find({ _id: { $nin: processingArr } }).then(territories => {
             res.send({ territories });
         }, (e) => {
+            logger.error('Error - getAllNonProcessingTerritories - TerritoryByID - ( ' + JSON.stringify(processingArr, null, 2) + ' )');
+            logger.error(JSON.stringify(e, null, 2));
             res.status(400).send(e);
         });
     }, (e) => {
+        logger.error('Error - getAllNonProcessingTerritories');
+        logger.error(JSON.stringify(e, null, 2));
         res.status(400).send(e);
     });
 
@@ -92,6 +103,8 @@ function getAllProcessingTerritories(req, res) {
             res.status(400).send(e);
         });
     }, (e) => {
+        logger.error('Error - getAllProcessingTerritories');
+        logger.error(JSON.stringify(e, null, 2));
         res.status(400).send(e);
     });
 
@@ -117,6 +130,8 @@ function getSearchNonProcessingTerritories(req, res) {
             res.status(400).send(e);
         });
     }, (e) => {
+        logger.error('Error - getSearchNonProcessingTerritories');
+        logger.error(JSON.stringify(e, null, 2));
         res.status(400).send(e);
     });
 
@@ -142,6 +157,8 @@ function getSearchProcessingTerritories(req, res) {
             res.status(400).send(e);
         });
     }, (e) => {
+        logger.error('Error - getSearchProcessingTerritories');
+        logger.error(JSON.stringify(e, null, 2));
         res.status(400).send(e);
     });
 }
@@ -174,6 +191,8 @@ function getSearchProcessingData(req, res) {
             processingData = direction == 'asc' ? processingData : processingData.reverse();
             res.send({ processingData });
         }, (e) => {
+            logger.error('Error - getSearchProcessingData');
+            logger.error(JSON.stringify(e, null, 2));
             res.status(400).send(e);
         });
 }
@@ -212,9 +231,12 @@ function updateProcessingData(req, res) {
         if (!territory) {
             return res.status(404).send();
         }
+        logger.info('Update Processing Territory-entry ( ' + JSON.stringify(processingData, null, 2) + ' )');
 
         res.send({ territory });
     }).catch((e) => {
+        logger.error('Error - updateProcessingData ( ' + JSON.stringify(req.body, null, 2) + ' )');
+        logger.error(JSON.stringify(e, null, 2));
         res.status(400).send();
     });
 }
@@ -260,8 +282,6 @@ function importData(req, res) {
                         proclaimerId = values[1][j]._id;
                 }
             }
-            if (!proclaimerId)
-                console.log(obj.proclaimer);
 
             return {
                 'proclaimerID': proclaimerId,
