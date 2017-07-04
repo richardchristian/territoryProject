@@ -25,7 +25,8 @@ app.use(session({
 
 var originsWhitelist = [
     'http://local.territory-ui',
-    'http://localhost:4200'
+    'http://localhost:4200',
+    'http://territory-ui.com'
 ];
 var corsOptions = {
     origin: function (origin, callback) {
