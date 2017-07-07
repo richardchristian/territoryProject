@@ -16,7 +16,8 @@ module.exports = {
 function createProclaimer(req, res) {
     var proclaimer = new Proclaimer({
         firstName: req.body.firstName,
-        lastName: req.body.lastName
+        lastName: req.body.lastName,
+        active: req.body.active
     });
 
     proclaimer.save().then((doc) => {
